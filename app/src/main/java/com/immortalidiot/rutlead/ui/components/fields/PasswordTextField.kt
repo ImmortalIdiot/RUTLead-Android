@@ -56,7 +56,7 @@ fun PasswordTextField(
         modifier = modifier,
         value = passwordValue,
         onValueChange = {
-            if (it.length <= (maxCharCount ?: (it.length + 1)) &&
+            if (it.length <= (maxCharCount ?: (it.length + 1)) ||
                (it.length >= (minCharCount ?: (it.length - 1)))) {
                 passwordValue = it
                 onTextChange(it)
