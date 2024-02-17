@@ -1,9 +1,7 @@
 package com.immortalidiot.rutlead.ui.components.fields
 
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.magnifier
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -18,7 +16,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -29,6 +26,8 @@ import com.immortalidiot.rutlead.R
 import com.immortalidiot.rutlead.ui.theme.boldInter16
 import com.immortalidiot.rutlead.ui.theme.boldLato12
 import com.immortalidiot.rutlead.ui.theme.classicWhite
+import com.immortalidiot.rutlead.ui.theme.mediumInter16
+import com.immortalidiot.rutlead.ui.theme.primaryDarkBlue
 import com.immortalidiot.rutlead.ui.theme.secondaryGrayLightTheme
 import com.immortalidiot.rutlead.ui.theme.primaryGrayLightTheme
 
@@ -68,12 +67,12 @@ fun PasswordTextField(
         } else {
             PasswordVisualTransformation()
         },
-        textStyle = boldInter16.copy(color = primaryGrayLightTheme),
+        textStyle = boldInter16.copy(color = classicWhite),
         placeholder = {
             placeholderText?.let {
                 Text(
                     text = it,
-                    style = boldInter16
+                    style = mediumInter16.copy(color = primaryGrayLightTheme)
                 )
             }
         },
@@ -96,7 +95,7 @@ fun PasswordTextField(
                     Icon(
                         painterResource(id = R.drawable.password_vision_on),
                         contentDescription = null,
-                        tint = Color.Unspecified
+                        tint = primaryDarkBlue
                     )
                 }
             } else {
@@ -108,7 +107,7 @@ fun PasswordTextField(
                     Icon(
                         painterResource(id = R.drawable.password_vision_off),
                         contentDescription = null,
-                        tint = Color.Unspecified
+                        tint = primaryDarkBlue
                     )
                 }
             }
@@ -139,7 +138,7 @@ fun PasswordTextFieldPreview() {
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
-        placeholderText = "Введите пароль",
+        placeholderText = "Пароль",
         errorText = "Длина пароля должна быть от 1 до 16 ",
         onTextChange = {},
         isEnabled = true,
