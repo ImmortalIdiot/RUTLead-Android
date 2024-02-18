@@ -79,6 +79,8 @@ fun PasswordTextField(
         enabled = isEnabled,
         isError = isError,
         colors = TextFieldDefaults.textFieldColors(
+            textColor = primaryDarkBlue,
+            containerColor = classicWhite,
             focusedIndicatorColor = primaryGrayLightTheme,
             focusedSupportingTextColor = primaryGrayLightTheme,
             unfocusedIndicatorColor = secondaryGrayLightTheme,

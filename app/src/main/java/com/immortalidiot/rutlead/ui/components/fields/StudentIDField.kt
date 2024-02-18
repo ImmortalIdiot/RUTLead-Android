@@ -21,6 +21,7 @@ import com.immortalidiot.rutlead.ui.theme.boldInter16
 import com.immortalidiot.rutlead.ui.theme.boldLato12
 import com.immortalidiot.rutlead.ui.theme.classicWhite
 import com.immortalidiot.rutlead.ui.theme.mediumInter16
+import com.immortalidiot.rutlead.ui.theme.primaryDarkBlue
 import com.immortalidiot.rutlead.ui.theme.secondaryGrayLightTheme
 import com.immortalidiot.rutlead.ui.theme.primaryGrayLightTheme
 
@@ -60,6 +61,8 @@ fun StudentIDTextField(
         },
         isError = isError,
         colors = TextFieldDefaults.textFieldColors(
+            textColor = primaryDarkBlue,
+            containerColor = classicWhite,
             focusedIndicatorColor = primaryGrayLightTheme,
             focusedSupportingTextColor = primaryGrayLightTheme,
             unfocusedIndicatorColor = secondaryGrayLightTheme,
