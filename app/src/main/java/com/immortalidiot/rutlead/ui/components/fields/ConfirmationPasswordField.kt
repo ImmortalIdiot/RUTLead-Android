@@ -67,7 +67,7 @@ fun ConfirmationPasswordTextField(
         } else {
             PasswordVisualTransformation()
         },
-        textStyle = boldInter16.copy(color = classicWhite),
+        textStyle = mediumInter16.copy(color = primaryDarkBlue),
         placeholder = {
             placeholderText?.let {
                 Text(
@@ -79,13 +79,12 @@ fun ConfirmationPasswordTextField(
         enabled = isEnabled,
         isError = isError,
         colors = TextFieldDefaults.textFieldColors(
-            textColor = primaryDarkBlue,
             containerColor = classicWhite,
             focusedIndicatorColor = primaryGrayLightTheme,
             focusedSupportingTextColor = primaryGrayLightTheme,
             unfocusedIndicatorColor = secondaryGrayLightTheme,
             unfocusedSupportingTextColor = secondaryGrayLightTheme,
-            placeholderColor = classicWhite,
+            placeholderColor = primaryGrayLightTheme,
         ),
         trailingIcon = {
             if (isPasswordVisible) {

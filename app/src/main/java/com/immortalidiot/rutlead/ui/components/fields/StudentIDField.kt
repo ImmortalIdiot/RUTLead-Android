@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.immortalidiot.rutlead.ui.theme.boldInter16
 import com.immortalidiot.rutlead.ui.theme.boldLato12
+import com.immortalidiot.rutlead.ui.theme.classicBlack
 import com.immortalidiot.rutlead.ui.theme.classicWhite
 import com.immortalidiot.rutlead.ui.theme.mediumInter16
 import com.immortalidiot.rutlead.ui.theme.primaryDarkBlue
@@ -50,7 +51,7 @@ fun StudentIDTextField(
                 onTextChange(it)
             }
         },
-        textStyle = boldInter16.copy(color = classicWhite),
+        textStyle = mediumInter16.copy(color = primaryDarkBlue),
         placeholder = {
             placeholderText?.let {
                 Text(
@@ -61,13 +62,12 @@ fun StudentIDTextField(
         },
         isError = isError,
         colors = TextFieldDefaults.textFieldColors(
-            textColor = primaryDarkBlue,
             containerColor = classicWhite,
             focusedIndicatorColor = primaryGrayLightTheme,
             focusedSupportingTextColor = primaryGrayLightTheme,
             unfocusedIndicatorColor = secondaryGrayLightTheme,
             unfocusedSupportingTextColor = secondaryGrayLightTheme,
-            placeholderColor = classicWhite,
+            placeholderColor = primaryGrayLightTheme,
         ),
         supportingText = {
             errorText?.let {
@@ -88,7 +88,7 @@ fun StudentIDTextField(
     )
 }
 
-@Preview
+@Preview()
 @Composable
 fun StudentIDTextFieldPreview() {
     StudentIDTextField(
