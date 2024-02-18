@@ -30,6 +30,7 @@ import com.immortalidiot.rutlead.ui.theme.boldInter18
 import com.immortalidiot.rutlead.ui.theme.boldInter32
 import com.immortalidiot.rutlead.ui.theme.classicWhite
 import com.immortalidiot.rutlead.ui.theme.mediumInter18
+import com.immortalidiot.rutlead.ui.theme.mediumInter24
 import com.immortalidiot.rutlead.ui.theme.primaryDarkBlue
 
 @Composable
@@ -129,6 +130,7 @@ fun SignUpScreen(
                     .fillMaxWidth(0.6f)
                     .padding(top = dimensions.verticalXLLargePadding),
                 text = stringResource(id = R.string.signup),
+                buttonStyle = mediumInter24.copy(color = primaryDarkBlue),
                 onButtonClick = {}
             )
             Row (
