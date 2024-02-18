@@ -64,3 +64,4 @@ val boldLato12 = boldLatoStyle.copy(fontSize = 12.sp)
 
 val mediumInter16 = mediumInterStyle.copy(fontSize = 16.sp)
 val mediumInter18 = mediumInterStyle.copy(fontSize = 18.sp)
+val mediumInter24 = mediumInterStyle.copy(fontSize = 24.sp)

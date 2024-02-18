@@ -6,6 +6,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import com.immortalidiot.rutlead.ui.theme.LocalDimensions
 import com.immortalidiot.rutlead.ui.theme.classicBlack
@@ -17,6 +18,7 @@ import com.immortalidiot.rutlead.ui.theme.primaryGrayLightTheme
 @Composable
 fun PrimaryButton(
     text: String?,
+    buttonStyle: TextStyle,
     onButtonClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -39,7 +41,7 @@ fun PrimaryButton(
     ) {
         Text(
             text = text ?: "",
-            style = mediumInter16.copy(color = primaryDarkBlue)
+            style = buttonStyle
         )
     }
 }
@@ -49,6 +51,7 @@ fun PrimaryButton(
 fun PrimaryButtonPreview() {
     PrimaryButton(
         text = "Something",
+        buttonStyle = mediumInter16.copy(color = primaryDarkBlue),
         onButtonClick = {}
     )
 }
