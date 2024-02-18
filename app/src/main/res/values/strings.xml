@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">RUTLead</string>
+
     <string name="signup">Регистрация</string>
+    <string name="student_id_hint">Номер студенческого билета</string>
+    <string name="password_hint">Пароль</string>
+    <string name="confirm_password_hint">Пароль повторно</string>
+    <string name="has_account">Есть аккаунт? </string>
+    <string name="enter">Войдите</string>
 </resources>

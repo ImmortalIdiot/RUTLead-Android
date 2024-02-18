@@ -50,8 +50,10 @@ private val boldLatoStyle = TextStyle(
 )
 
 val boldInter36 = boldInterStyle.copy(fontSize = 36.sp)
+val boldInter32 = boldInterStyle.copy(fontSize = 32.sp)
 val boldInter24 = boldInterStyle.copy(fontSize = 24.sp)
 val boldInter20 = boldInterStyle.copy(fontSize = 20.sp)
+val boldInter18 = boldInterStyle.copy(fontSize = 18.sp)
 val boldInter16 = boldInterStyle.copy(fontSize = 16.sp)
 val boldInter14 = boldInterStyle.copy(fontSize = 14.sp)
 
@@ -61,3 +63,4 @@ val boldLato16 = boldLatoStyle.copy(fontSize = 16.sp)
 val boldLato12 = boldLatoStyle.copy(fontSize = 12.sp)
 
 val mediumInter16 = mediumInterStyle.copy(fontSize = 16.sp)
+val mediumInter18 = mediumInterStyle.copy(fontSize = 18.sp)
