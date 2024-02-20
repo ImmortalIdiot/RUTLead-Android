@@ -89,6 +89,7 @@ fun SignUpScreen(
             (state is SignUpViewModel.State.Success) ->
                 snackbarHostState.showMessage("Успешный вход")
         }
+        viewModel.clearErrorStack()
     }
 
     val dimensions = LocalDimensions.current

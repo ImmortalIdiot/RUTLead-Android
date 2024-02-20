@@ -1,12 +1,8 @@
 package com.immortalidiot.rutlead.presentation.viewmodels
 
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.immortalidiot.rutlead.presentation.validation.ConfirmationPasswordValidator
-import com.immortalidiot.rutlead.presentation.validation.PasswordValidation
-import com.immortalidiot.rutlead.presentation.validation.StudentIDValidator
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -68,6 +64,12 @@ class SignUpViewModel() : ViewModel() {
     fun changeConfirmationPassword(confirmationPassword: String) {
         _uiState.update {
             it.copy(confirmationPassword = confirmationPassword)
+        }
+    }
+
+    fun clearErrorStack() {
+        mutableState.update {
+            State.Init
         }
     }
 
