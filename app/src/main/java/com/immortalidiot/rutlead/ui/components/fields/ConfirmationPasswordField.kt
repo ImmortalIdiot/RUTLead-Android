@@ -23,8 +23,6 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.immortalidiot.rutlead.R
-import com.immortalidiot.rutlead.ui.theme.boldInter16
-import com.immortalidiot.rutlead.ui.theme.boldLato12
 import com.immortalidiot.rutlead.ui.theme.classicWhite
 import com.immortalidiot.rutlead.ui.theme.mediumInter16
 import com.immortalidiot.rutlead.ui.theme.primaryDarkBlue
@@ -37,7 +35,6 @@ fun ConfirmationPasswordTextField(
     modifier: Modifier = Modifier,
     initialPasswordValue: String = "",
     placeholderText: String?,
-    errorText: String?,
     minCharCount: Int? = 0,
     maxCharCount: Int? = 16,
     maxLines: Int = 1,
@@ -45,16 +42,20 @@ fun ConfirmationPasswordTextField(
     isError: Boolean = false,
     onTextChange: (password: String) -> Unit,
 ) {
+    var passwordValue by rememberSaveable {
+        mutableStateOf(initialPasswordValue)
+    }
     var isPasswordVisible by rememberSaveable {
         mutableStateOf(false)
     }
 
     OutlinedTextField(
         modifier = modifier,
-        value = initialPasswordValue,
+        value = passwordValue,
         onValueChange = {
             if (it.length <= (maxCharCount ?: (it.length + 1)) ||
                 (it.length >= (minCharCount ?: (it.length - 1)))) {
+                passwordValue = it
                 onTextChange(it)
             }
         },
@@ -109,21 +110,8 @@ fun ConfirmationPasswordTextField(
                 }
             }
         },
-//        supportingText = {
-//            errorText?.let {
-//                if (isError) {
-//                    Text(
-//                        modifier = modifier,
-//                        text = it,
-//                        style = boldLato12.copy(color = secondaryGrayLightTheme)
-//                    )
-//                }
-//            }
-//        },
         maxLines = maxLines,
-        keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Password
-        ),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         shape = RoundedCornerShape(size = 12.dp)
     )
 }
@@ -131,12 +119,11 @@ fun ConfirmationPasswordTextField(
 @Preview
 @Composable
 fun ConfirmationPasswordTextFieldPreview() {
-    PasswordTextField(
+    ConfirmationPasswordTextField(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
         placeholderText = "Пароль повторно",
-        errorText = "Длина пароля должна быть от 1 до 16 ",
         onTextChange = {},
         isEnabled = true,
         isError = false
