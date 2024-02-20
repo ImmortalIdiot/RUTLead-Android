@@ -13,9 +13,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class SignUpViewModel(
-
-) : ViewModel() {
+class SignUpViewModel() : ViewModel() {
 
     @Immutable
     sealed class State {
@@ -47,13 +45,8 @@ class SignUpViewModel(
         }
     }
 
-    private val _uiState: MutableStateFlow<RegisterModel> = MutableStateFlow(
-        RegisterModel(
-            studentID = String(),
-            password = String(),
-            confirmationPassword = String()
-        )
-    )
+    private val _uiState: MutableStateFlow<RegisterModel> =
+        MutableStateFlow(RegisterModel.initial)
 
     val uiState: StateFlow<RegisterModel> = _uiState.asStateFlow()
 
@@ -61,16 +54,20 @@ class SignUpViewModel(
         private set
 
     fun changeStudentID(studentID: String) {
-        _uiState.value = uiState.value.copy(studentID = studentID)
+        _uiState.update {
+            it.copy(studentID = studentID)
+        }
     }
 
     fun changePassword(password: String) {
-        _uiState.value = uiState.value.copy(password  = password)
+        _uiState.update {
+            it.copy(password = password)
+        }
     }
 
     fun changeConfirmationPassword(confirmationPassword: String) {
         _uiState.update {
-            uiState.value.copy(confirmationPassword = confirmationPassword)
+            it.copy(confirmationPassword = confirmationPassword)
         }
     }
 
@@ -98,26 +95,36 @@ class SignUpViewModel(
         } else {
             mutableState.update {
                 State.Success
+                    // TODO: switch to Main screen
             }
         }
     }
 
     private fun validateStudentID(studentID: String): String? {
-        return if (studentID.isBlank()) "Поле не должно быть пустым"
-        else if (!studentID.all { it.isDigit() }) "Поле должно состоять только из цифр"
-        else if (studentID.length != 8) "Поле должно состоять из 8 символов"
+        return if (studentID.isBlank())
+            "Поле \"Номер студенческого билета\" не должно быть пустым"
+        else if (!studentID.all { it.isDigit() })
+            "Поле \"Номер студенческого билета\" должно состоять только из цифр"
+        else if (studentID.length != 8)
+            "Номер студенческого билета состоит из 8 символов"
         else null
 
     }
 
     private fun validatePassword(password: String): String? {
-        return if (password.isBlank()) "Поле пароля не должно быть пустым" else null
+        return if (password.isBlank())
+            "Поле пароля не должно быть пустым"
+        else if (password.length < 8)
+            "Пароль должен состоять не менее, чем из 8 символов"
+        else null
     }
 
     private fun validateConfirmationPassword(
         password: String,
         confirmationPassword: String
     ): String? {
-        return if (password != confirmationPassword) "Пароли не сопадают" else null
+        return if (password != confirmationPassword)
+            "Пароли не совпадают"
+        else null
     }
 }
