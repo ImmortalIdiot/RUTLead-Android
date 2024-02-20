@@ -45,20 +45,16 @@ fun ConfirmationPasswordTextField(
     isError: Boolean = false,
     onTextChange: (password: String) -> Unit,
 ) {
-    var passwordValue by rememberSaveable {
-        mutableStateOf(initialPasswordValue)
-    }
     var isPasswordVisible by rememberSaveable {
         mutableStateOf(false)
     }
 
     OutlinedTextField(
         modifier = modifier,
-        value = passwordValue,
+        value = initialPasswordValue,
         onValueChange = {
             if (it.length <= (maxCharCount ?: (it.length + 1)) ||
                 (it.length >= (minCharCount ?: (it.length - 1)))) {
-                passwordValue = it
                 onTextChange(it)
             }
         },
@@ -113,17 +109,17 @@ fun ConfirmationPasswordTextField(
                 }
             }
         },
-        supportingText = {
-            errorText?.let {
-                if (isError) {
-                    Text(
-                        modifier = modifier,
-                        text = it,
-                        style = boldLato12.copy(color = secondaryGrayLightTheme)
-                    )
-                }
-            }
-        },
+//        supportingText = {
+//            errorText?.let {
+//                if (isError) {
+//                    Text(
+//                        modifier = modifier,
+//                        text = it,
+//                        style = boldLato12.copy(color = secondaryGrayLightTheme)
+//                    )
+//                }
+//            }
+//        },
         maxLines = maxLines,
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Password

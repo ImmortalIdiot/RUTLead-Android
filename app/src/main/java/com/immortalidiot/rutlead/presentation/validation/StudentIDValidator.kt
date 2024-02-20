@@ -4,7 +4,7 @@ class StudentIDValidator {
     fun execute(studentID: String): ValidationResult {
         if (studentID.length != 8) {
             return ValidationResult(
-                successful = true,
+                successful = false,
                 errorMessage = "Длина студенческого билета 8 символов"
             )
         }

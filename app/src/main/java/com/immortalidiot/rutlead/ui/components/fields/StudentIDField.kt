@@ -9,22 +9,15 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.immortalidiot.rutlead.ui.theme.boldInter16
-import com.immortalidiot.rutlead.ui.theme.boldLato12
-import com.immortalidiot.rutlead.ui.theme.classicBlack
 import com.immortalidiot.rutlead.ui.theme.classicWhite
 import com.immortalidiot.rutlead.ui.theme.mediumInter16
 import com.immortalidiot.rutlead.ui.theme.primaryDarkBlue
-import com.immortalidiot.rutlead.ui.theme.secondaryGrayLightTheme
 import com.immortalidiot.rutlead.ui.theme.primaryGrayLightTheme
+import com.immortalidiot.rutlead.ui.theme.secondaryGrayLightTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,18 +31,15 @@ fun StudentIDTextField(
     isError: Boolean = false,
     onTextChange: (studentID: String) -> Unit,
 ) {
-    var studentIDValue by rememberSaveable {
-        mutableStateOf(initialStudentIDValue)
-    }
 
     OutlinedTextField(
         modifier = modifier,
-        value = studentIDValue,
+        value = initialStudentIDValue,
         onValueChange = {
-            if (it.length <= (charCount)){
-                studentIDValue = it
-                onTextChange(it)
-            }
+//            if (it.length <= (charCount)){
+//                onTextChange(it)
+//            }
+            onTextChange(it)
         },
         textStyle = mediumInter16.copy(color = primaryDarkBlue),
         placeholder = {
@@ -69,17 +59,17 @@ fun StudentIDTextField(
             unfocusedSupportingTextColor = secondaryGrayLightTheme,
             placeholderColor = primaryGrayLightTheme,
         ),
-        supportingText = {
-            errorText?.let {
-                if (isError) {
-                    Text(
-                        modifier = modifier,
-                        text = it,
-                        style = boldLato12.copy(color = secondaryGrayLightTheme)
-                    )
-                }
-            }
-        },
+//        supportingText = {
+//            errorText?.let {
+//                if (isError) {
+//                    Text(
+//                        modifier = modifier,
+//                        text = it,
+//                        style = boldLato12.copy(color = secondaryGrayLightTheme)
+//                    )
+//                }
+//            }
+//        },
         maxLines = maxLines,
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Number
