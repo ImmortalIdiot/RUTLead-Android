@@ -35,7 +35,6 @@ fun PasswordTextField(
     modifier: Modifier = Modifier,
     initialPasswordValue: String = "",
     placeholderText: String?,
-    errorText: String?,
     minCharCount: Int? = 0,
     maxCharCount: Int? = 16,
     maxLines: Int = 1,
@@ -51,10 +50,10 @@ fun PasswordTextField(
         modifier = modifier,
         value = initialPasswordValue,
         onValueChange = {
-//            if (it.length <= (maxCharCount ?: (it.length + 1)) ||
-//               (it.length >= (minCharCount ?: (it.length - 1)))) {
-//                onTextChange(it)
-//            }
+            if (it.length <= (maxCharCount ?: (it.length + 1)) ||
+               (it.length >= (minCharCount ?: (it.length - 1)))) {
+                onTextChange(it)
+            }
             onTextChange(it)
         },
         visualTransformation = if (isPasswordVisible) {
@@ -108,21 +107,8 @@ fun PasswordTextField(
                 }
             }
         },
-//        supportingText = {
-//            errorText?.let {
-//                if (isError) {
-//                    Text(
-//                        modifier = modifier,
-//                        text = it,
-//                        style = boldLato12.copy(color = secondaryGrayLightTheme)
-//                    )
-//                }
-//            }
-//        },
         maxLines = maxLines,
-        keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Password
-        ),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         shape = RoundedCornerShape(size = 12.dp)
     )
 }
@@ -135,7 +121,6 @@ fun PasswordTextFieldPreview() {
             .fillMaxWidth()
             .padding(16.dp),
         placeholderText = "Пароль",
-        errorText = "Длина пароля должна быть от 1 до 16 ",
         onTextChange = {},
         isEnabled = true,
         isError = false
