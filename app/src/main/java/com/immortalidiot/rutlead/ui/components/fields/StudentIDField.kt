@@ -25,7 +25,6 @@ fun StudentIDTextField(
     modifier: Modifier = Modifier,
     initialStudentIDValue: String = "",
     placeholderText: String?,
-    errorText: String?,
     charCount: Int = 8,
     maxLines: Int = 1,
     isError: Boolean = false,
@@ -36,9 +35,9 @@ fun StudentIDTextField(
         modifier = modifier,
         value = initialStudentIDValue,
         onValueChange = {
-//            if (it.length <= (charCount)){
-//                onTextChange(it)
-//            }
+            if (it.length <= (charCount)){
+                onTextChange(it)
+            }
             onTextChange(it)
         },
         textStyle = mediumInter16.copy(color = primaryDarkBlue),
@@ -59,21 +58,8 @@ fun StudentIDTextField(
             unfocusedSupportingTextColor = secondaryGrayLightTheme,
             placeholderColor = primaryGrayLightTheme,
         ),
-//        supportingText = {
-//            errorText?.let {
-//                if (isError) {
-//                    Text(
-//                        modifier = modifier,
-//                        text = it,
-//                        style = boldLato12.copy(color = secondaryGrayLightTheme)
-//                    )
-//                }
-//            }
-//        },
         maxLines = maxLines,
-        keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Number
-        ),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         shape = RoundedCornerShape(size = 12.dp)
     )
 }
@@ -86,7 +72,6 @@ fun StudentIDTextFieldPreview() {
             .fillMaxWidth()
             .padding(16.dp),
         placeholderText = "Номер студенческого билета",
-        errorText = "Длина номера должна быть 8 цифр",
         onTextChange = {},
         isError = false
     )
