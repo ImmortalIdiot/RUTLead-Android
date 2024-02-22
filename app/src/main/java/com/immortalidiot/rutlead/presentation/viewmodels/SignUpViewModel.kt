@@ -3,9 +3,9 @@ package com.immortalidiot.rutlead.presentation.viewmodels
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.immortalidiot.rutlead.presentation.validation.ConfirmationPasswordValidator
-import com.immortalidiot.rutlead.presentation.validation.PasswordValidator
-import com.immortalidiot.rutlead.presentation.validation.StudentIDValidator
+import com.immortalidiot.rutlead.presentation.validation.validateConfirmationPassword
+import com.immortalidiot.rutlead.presentation.validation.validatePassword
+import com.immortalidiot.rutlead.presentation.validation.validateStudentID
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -77,11 +77,12 @@ class SignUpViewModel() : ViewModel() {
     }
 
     fun request() {
-        val studentID = StudentIDValidator().execute(_uiState.value.studentID)
-        val password = PasswordValidator().execute(_uiState.value.password)
-        val confirmationPassword = ConfirmationPasswordValidator().execute(
+
+        val studentID = validateStudentID(_uiState.value.studentID)
+        val password = validatePassword(_uiState.value.password)
+        val confirmationPassword = validateConfirmationPassword(
             password = _uiState.value.password,
-            repeatedPassword = _uiState.value.confirmationPassword
+            confirmationPassword = _uiState.value.confirmationPassword
         )
 
         if (studentID != null
