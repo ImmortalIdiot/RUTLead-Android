@@ -3,6 +3,9 @@ package com.immortalidiot.rutlead.presentation.viewmodels
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.immortalidiot.rutlead.presentation.validation.ConfirmationPasswordValidator
+import com.immortalidiot.rutlead.presentation.validation.PasswordValidator
+import com.immortalidiot.rutlead.presentation.validation.StudentIDValidator
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -74,11 +77,11 @@ class SignUpViewModel() : ViewModel() {
     }
 
     fun request() {
-        val studentID = validateStudentID(_uiState.value.studentID)
-        val password = validatePassword(_uiState.value.password)
-        val confirmationPassword = validateConfirmationPassword(
+        val studentID = StudentIDValidator().execute(_uiState.value.studentID)
+        val password = PasswordValidator().execute(_uiState.value.password)
+        val confirmationPassword = ConfirmationPasswordValidator().execute(
             password = _uiState.value.password,
-            confirmationPassword = _uiState.value.confirmationPassword
+            repeatedPassword = _uiState.value.confirmationPassword
         )
 
         if (studentID != null
@@ -100,33 +103,5 @@ class SignUpViewModel() : ViewModel() {
                     // TODO: switch to Main screen
             }
         }
-    }
-
-    private fun validateStudentID(studentID: String): String? {
-        return if (studentID.isBlank())
-            "Поле \"Номер студенческого билета\" не должно быть пустым"
-        else if (!studentID.all { it.isDigit() })
-            "Поле \"Номер студенческого билета\" должно состоять только из цифр"
-        else if (studentID.length != 8)
-            "Номер студенческого билета состоит из 8 символов"
-        else null
-
-    }
-
-    private fun validatePassword(password: String): String? {
-        return if (password.isBlank())
-            "Поле пароля не должно быть пустым"
-        else if (password.length < 8)
-            "Пароль должен состоять не менее, чем из 8 символов"
-        else null
-    }
-
-    private fun validateConfirmationPassword(
-        password: String,
-        confirmationPassword: String
-    ): String? {
-        return if (password != confirmationPassword)
-            "Пароли не совпадают"
-        else null
     }
 }

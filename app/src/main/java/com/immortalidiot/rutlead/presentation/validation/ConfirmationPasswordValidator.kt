@@ -1,15 +1,10 @@
 package com.immortalidiot.rutlead.presentation.validation
 
 class ConfirmationPasswordValidator {
-    fun execute(password: String, repeatedPassword: String): ValidationResult {
-        if (password != repeatedPassword) {
-            return ValidationResult(
-                successful = false,
-                errorMessage = "Пароли не совпадают"
-            )
-        }
-        return ValidationResult(
-            successful = true
-        )
+    fun execute(password: String, repeatedPassword: String): String? {
+
+        return if (password != repeatedPassword) {
+            "Пароли не совпадают"
+        } else null
     }
 }

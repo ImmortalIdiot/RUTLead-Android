@@ -1,25 +1,20 @@
 package com.immortalidiot.rutlead.presentation.validation
 
 class StudentIDValidator {
-    fun execute(studentID: String): ValidationResult {
+    fun execute(studentID: String): String? {
+
+        if (studentID.isEmpty() || studentID.isBlank()) {
+            return "Поле \"Номер студенческого билета\" не должно быть пустым"
+        }
+
         if (studentID.length != 8) {
-            return ValidationResult(
-                successful = false,
-                errorMessage = "Длина студенческого билета 8 символов"
-            )
+            return "Длина студенческого билета 8 символов"
         }
 
         val containsDigits = studentID.all { it.isDigit() }
 
-        if (!containsDigits) {
-            return ValidationResult(
-                successful = false,
-                errorMessage = "Номер студенческого билета должен содержать только цифры"
-            )
-        }
-
-        return ValidationResult(
-            successful = true
-        )
+        return if (!containsDigits) {
+            "Номер студенческого билета должен содержать только цифры"
+        } else null
     }
 }
