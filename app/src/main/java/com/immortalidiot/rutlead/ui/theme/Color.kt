@@ -19,3 +19,5 @@ val secondaryGrayLightTheme = Color(0xFFC8C8C8)
 
 val primaryDarkBlue = Color(0xFF1E4A99)
 val secondaryDarkBlue = Color(0xFF2A5EBD)
+
+val primaryErrorTextColor = Color(0xFFFF5454)

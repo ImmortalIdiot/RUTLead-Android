@@ -44,6 +44,7 @@ import com.immortalidiot.rutlead.ui.theme.classicWhite
 import com.immortalidiot.rutlead.ui.theme.mediumInter18
 import com.immortalidiot.rutlead.ui.theme.mediumInter24
 import com.immortalidiot.rutlead.ui.theme.primaryDarkBlue
+import com.immortalidiot.rutlead.ui.theme.primaryErrorTextColor
 import kotlinx.coroutines.launch
 
 @Composable
@@ -222,7 +223,7 @@ fun SignUpScreen(
             ) {
                 Snackbar(
                     snackbarData = it,
-                    containerColor = Color.Red,
+                    containerColor = primaryErrorTextColor,
                     contentColor = classicWhite,
                     shape = RoundedCornerShape(size = dimensions.roundedStandard)
                 )
