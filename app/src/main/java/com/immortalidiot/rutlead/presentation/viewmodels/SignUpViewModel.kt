@@ -78,30 +78,29 @@ class SignUpViewModel() : ViewModel() {
 
     fun request() {
 
-        val studentID = validateStudentID(_uiState.value.studentID)
-        val password = validatePassword(_uiState.value.password)
-        val confirmationPassword = validateConfirmationPassword(
-            password = _uiState.value.password,
-            confirmationPassword = _uiState.value.confirmationPassword
-        )
+        val studentID = _uiState.value.studentID.validateStudentID()
+        val password = _uiState.value.password.validatePassword()
+        val confirmationPassword =
+            _uiState.value.confirmationPassword
+                .validateConfirmationPassword(password = _uiState.value.password)
 
-        if (studentID != null
-            || password != null
-            || confirmationPassword != null) {
-
+        if (studentID.isFailure
+            || password.isFailure
+            || confirmationPassword.isFailure
+        ) {
             viewModelScope.launch {
                 mutableState.update {
                     State.ValidationError(
-                        studentIDError = studentID,
-                        passwordError = password,
-                        confirmationPasswordError = confirmationPassword
+                        studentIDError = studentID.exceptionOrNull()?.message,
+                        passwordError = password.exceptionOrNull()?.message,
+                        confirmationPasswordError = confirmationPassword.exceptionOrNull()?.message
                     )
                 }
             }
         } else {
             mutableState.update {
                 State.Success
-                    // TODO: switch to Main screen
+                // TODO: switch to Main screen
             }
         }
     }
