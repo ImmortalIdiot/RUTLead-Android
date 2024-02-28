@@ -12,7 +12,7 @@ import com.immortalidiot.rutlead.ui.theme.LocalDimensions
 import com.immortalidiot.rutlead.ui.theme.classicBlack
 import com.immortalidiot.rutlead.ui.theme.classicWhite
 import com.immortalidiot.rutlead.ui.theme.mediumInter16
-import com.immortalidiot.rutlead.ui.theme.primaryDarkBlue
+import com.immortalidiot.rutlead.ui.theme.primaryLightBlue
 import com.immortalidiot.rutlead.ui.theme.primaryGrayLightTheme
 
 @Composable
@@ -51,7 +51,7 @@ fun PrimaryButton(
 fun PrimaryButtonPreview() {
     PrimaryButton(
         text = "Something",
-        buttonStyle = mediumInter16.copy(color = primaryDarkBlue),
+        buttonStyle = mediumInter16.copy(color = primaryLightBlue),
         onButtonClick = {}
     )
 }

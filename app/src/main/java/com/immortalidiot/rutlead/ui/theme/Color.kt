@@ -17,7 +17,7 @@ val classicRed = Color.Red
 val primaryGrayLightTheme = Color(0xFF878787)
 val secondaryGrayLightTheme = Color(0xFFC8C8C8)
 
-val primaryDarkBlue = Color(0xFF1E4A99)
-val secondaryDarkBlue = Color(0xFF2A5EBD)
+val primaryLightBlue = Color(0xFF2A5EBD)
+val secondaryLightBlue = Color(0xFF2552A3)
 
 val primaryErrorTextColor = Color(0xFFFF5454)

@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import com.immortalidiot.rutlead.R
 import com.immortalidiot.rutlead.ui.theme.classicWhite
 import com.immortalidiot.rutlead.ui.theme.mediumInter16
-import com.immortalidiot.rutlead.ui.theme.primaryDarkBlue
+import com.immortalidiot.rutlead.ui.theme.primaryLightBlue
 import com.immortalidiot.rutlead.ui.theme.primaryGrayLightTheme
 import com.immortalidiot.rutlead.ui.theme.secondaryGrayLightTheme
 
@@ -61,7 +61,7 @@ fun PasswordTextField(
         } else {
             PasswordVisualTransformation()
         },
-        textStyle = mediumInter16.copy(color = primaryDarkBlue),
+        textStyle = mediumInter16.copy(color = primaryLightBlue),
         placeholder = {
             placeholderText?.let {
                 Text(
@@ -90,7 +90,7 @@ fun PasswordTextField(
                     Icon(
                         painterResource(id = R.drawable.password_vision_on),
                         contentDescription = null,
-                        tint = primaryDarkBlue
+                        tint = primaryLightBlue
                     )
                 }
             } else {
@@ -102,7 +102,7 @@ fun PasswordTextField(
                     Icon(
                         painterResource(id = R.drawable.password_vision_off),
                         contentDescription = null,
-                        tint = primaryDarkBlue
+                        tint = primaryLightBlue
                     )
                 }
             }

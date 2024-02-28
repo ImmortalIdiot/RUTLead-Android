@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.immortalidiot.rutlead.ui.theme.classicWhite
 import com.immortalidiot.rutlead.ui.theme.mediumInter16
-import com.immortalidiot.rutlead.ui.theme.primaryDarkBlue
+import com.immortalidiot.rutlead.ui.theme.primaryLightBlue
 import com.immortalidiot.rutlead.ui.theme.primaryGrayLightTheme
 import com.immortalidiot.rutlead.ui.theme.secondaryGrayLightTheme
 
@@ -40,7 +40,7 @@ fun StudentIDTextField(
             }
             onTextChange(it)
         },
-        textStyle = mediumInter16.copy(color = primaryDarkBlue),
+        textStyle = mediumInter16.copy(color = primaryLightBlue),
         placeholder = {
             placeholderText?.let {
                 Text(

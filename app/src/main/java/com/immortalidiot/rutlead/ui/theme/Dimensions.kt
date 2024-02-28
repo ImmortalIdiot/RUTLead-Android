@@ -24,6 +24,8 @@ data class Dimensions(
     val horizontalStandard: Dp = 20.dp,
 
     val roundedStandard: Dp = 12.dp,
+
+    val standardBorder: Dp = 1.dp
 )
 
 val LocalDimensions = compositionLocalOf { Dimensions() }
