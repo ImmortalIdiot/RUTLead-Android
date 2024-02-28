@@ -1,7 +1,9 @@
 package com.immortalidiot.rutlead.presentation.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -42,8 +44,9 @@ import com.immortalidiot.rutlead.ui.theme.boldInter32
 import com.immortalidiot.rutlead.ui.theme.classicWhite
 import com.immortalidiot.rutlead.ui.theme.mediumInter18
 import com.immortalidiot.rutlead.ui.theme.mediumInter24
-import com.immortalidiot.rutlead.ui.theme.primaryDarkBlue
+import com.immortalidiot.rutlead.ui.theme.primaryLightBlue
 import com.immortalidiot.rutlead.ui.theme.primaryErrorTextColor
+import com.immortalidiot.rutlead.ui.theme.secondaryLightBlue
 import kotlinx.coroutines.launch
 
 @Composable
@@ -105,15 +108,19 @@ fun SignUpScreen(
             painter = painterResource(id = R.drawable.auth_icon),
             contentDescription = null
         )
-        Spacer(modifier = Modifier.height(dimensions.verticalXLarge))
+        Spacer(modifier = Modifier.height(dimensions.verticalXXLLarge))
         Column(
             modifier = modifier
                 .background(
-                    color = primaryDarkBlue,
+                    color = primaryLightBlue,
                     shape = RoundedCornerShape(dimensions.roundedStandard)
                 )
                 .fillMaxWidth(0.9f)
-                .padding(top = dimensions.verticalSSmall),
+                .padding(top = dimensions.verticalSSmall)
+                .border(BorderStroke(
+                    width = dimensions.standardBorder,
+                    color = secondaryLightBlue
+                )),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
 
@@ -178,7 +185,7 @@ fun SignUpScreen(
                     .fillMaxWidth(0.6f)
                     .padding(top = dimensions.verticalXLLargePadding),
                 text = stringResource(id = R.string.signup),
-                buttonStyle = mediumInter24.copy(color = primaryDarkBlue),
+                buttonStyle = mediumInter24.copy(color = primaryLightBlue),
                 onButtonClick = {
                     scope.launch {
                         viewModel.request()
