@@ -8,7 +8,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -31,9 +30,7 @@ import androidx.compose.ui.unit.sp
 import com.immortalidiot.rutlead.R
 import com.immortalidiot.rutlead.ui.theme.DarkBlue
 import com.immortalidiot.rutlead.ui.theme.InterFontFamily
-import com.immortalidiot.rutlead.ui.theme.LatoFontFamily
 import com.immortalidiot.rutlead.ui.theme.LightBlue
-import com.immortalidiot.rutlead.ui.theme.boldInter14
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

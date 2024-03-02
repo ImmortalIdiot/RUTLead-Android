@@ -1,14 +1,11 @@
 package com.immortalidiot.rutlead.fields
 
-import android.graphics.fonts.FontStyle
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -29,8 +26,6 @@ import com.immortalidiot.rutlead.ui.theme.DarkBlue
 import com.immortalidiot.rutlead.ui.theme.InterFontFamily
 import com.immortalidiot.rutlead.ui.theme.LightBlue
 import com.immortalidiot.rutlead.ui.theme.boldInter14
-import com.immortalidiot.rutlead.ui.theme.boldInter36
-import com.immortalidiot.rutlead.ui.theme.mediumInter14
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
