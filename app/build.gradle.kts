@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.immortalidiot.rutlead"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.immortalidiot.rutlead"
