@@ -1,5 +1,6 @@
 package com.immortalidiot.rutlead.fields
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
@@ -12,6 +13,6 @@ fun AccountMissing() {
     Text(
         text = stringResource(id = R.string.account_missing),
         style = boldInter14,
-        color = Color.White
+        color = MaterialTheme.colorScheme.surface
     )
 }
