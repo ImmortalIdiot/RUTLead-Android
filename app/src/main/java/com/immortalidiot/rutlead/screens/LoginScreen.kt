@@ -1,4 +1,4 @@
-package com.immortalidiot.rutlead.auth
+package com.immortalidiot.rutlead.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
