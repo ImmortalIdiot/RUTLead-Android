@@ -1,8 +1,6 @@
 package com.immortalidiot.rutlead.fields
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -12,7 +10,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -35,10 +32,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.immortalidiot.rutlead.R
-import com.immortalidiot.rutlead.ui.theme.DarkBlue
-import com.immortalidiot.rutlead.ui.theme.DarkWhite
 import com.immortalidiot.rutlead.ui.theme.InterFontFamily
-import com.immortalidiot.rutlead.ui.theme.LightBlue
 import com.immortalidiot.rutlead.ui.theme.LocalDimensions
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -56,9 +50,9 @@ fun PasswordField(type: String) {
         derivedStateOf { password.isEmpty() }
     }
     val icon = if(passwordVisible)
-        painterResource(id = R.drawable.design_ic_visibility)
+        painterResource(id = R.drawable.password_visibility_on)
     else
-        painterResource(id = R.drawable.design_ic_visibility_off)
+        painterResource(id = R.drawable.password_visibility_off)
     CompositionLocalProvider(LocalTextSelectionColors provides customCursorHandleColor) {
         TextField(
             modifier = Modifier

@@ -1,8 +1,5 @@
 package com.immortalidiot.rutlead.ui.theme
 
-import androidx.compose.material3.ColorScheme
-import androidx.compose.material3.lightColorScheme
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 val Purple80 = Color(0xFFD0BCFF)
