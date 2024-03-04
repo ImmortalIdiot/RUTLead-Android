@@ -28,28 +28,38 @@ val LightBlue = Color(0xFF2A5EBD)
 val DarkBlack = Color(0xFF1C1B1B)
 val LightBlack = Color(0xFF232323)
 
+
 sealed class ThemeColors(
-    val background: Color,
     val surface: Color,
     val primary: Color,
-    val secondary: Color,
     val outline: Color,
-    val text: Color
+    val text: Color,
+    val container: Color,
+    val label: Color,
+    val buttonOutline: Color,
+    val textSelection: Color,
+    val handle: Color
 ) {
     object Light: ThemeColors(
-        background = Color.White,
         surface = Color.White,
         primary = LightBlue,
-        secondary = DarkBlue,
         outline = Color.Transparent,
-        text = LightBlue
+        text = LightBlue,
+        container = Color.White,
+        label = Color.White,
+        buttonOutline = Color.White,
+        textSelection = DarkWhite,
+        handle = DarkBlue
     )
     object Dark: ThemeColors(
-        background = LightBlack,
         surface = DarkBlack,
         primary = LightBlack,
-        secondary = DarkBlue,
         outline = primaryDarkBlue,
-        text = DarkWhite
+        text = DarkWhite,
+        container = LightBlack,
+        label = DarkWhite,
+        buttonOutline = DarkBlue,
+        textSelection = primaryDarkBlue,
+        handle = DarkWhite
     )
 }

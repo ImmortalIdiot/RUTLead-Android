@@ -23,7 +23,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.immortalidiot.rutlead.R
 import com.immortalidiot.rutlead.buttons.SignInButton
 import com.immortalidiot.rutlead.fields.AccountMissing
@@ -60,12 +59,12 @@ fun LoginDesign() {
                 contentAlignment = Alignment.Center,
                 modifier = Modifier
                     .fillMaxWidth(0.85f)
-                    .fillMaxHeight(0.55f)
-                    .clip(RoundedCornerShape(dimensions.shapeRound))
+                    .fillMaxHeight(0.6f)
+                    .clip(RoundedCornerShape(dimensions.shapeXXLRound))
                     .background(MaterialTheme.colorScheme.primary)
                     .border(
-                        BorderStroke(2.dp, MaterialTheme.colorScheme.outline),
-                        shape = RoundedCornerShape(dimensions.shapeRound)
+                        BorderStroke(dimensions.borderXSWidth, MaterialTheme.colorScheme.outline),
+                        shape = RoundedCornerShape(dimensions.shapeXXLRound)
                     )
             ) {
                 Column(

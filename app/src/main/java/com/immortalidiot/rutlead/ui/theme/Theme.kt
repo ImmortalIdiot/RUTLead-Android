@@ -3,6 +3,7 @@ package com.immortalidiot.rutlead.ui.theme
 import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
@@ -18,29 +19,33 @@ import androidx.core.view.WindowCompat
 
 val DarkColorScheme = darkColorScheme(
     primary = ThemeColors.Dark.primary,
-    secondary = ThemeColors.Dark.secondary,
+    surface = ThemeColors.Dark.surface,
     outline = ThemeColors.Dark.outline,
-    background = ThemeColors.Dark.background
+    primaryContainer = ThemeColors.Dark.container,
+    onSecondary = ThemeColors.Dark.text,
+    onTertiary = ThemeColors.Dark.label,
+    onPrimaryContainer = ThemeColors.Dark.container,
+    onSecondaryContainer = ThemeColors.Dark.buttonOutline,
+    scrim = ThemeColors.Dark.handle,
+    onBackground = ThemeColors.Dark.textSelection
+
 )
 
 val LightColorScheme = lightColorScheme(
     primary = ThemeColors.Light.primary,
-    secondary = ThemeColors.Light.secondary,
+    surface = ThemeColors.Light.surface,
     outline = ThemeColors.Light.outline,
-    background = ThemeColors.Light.background,
+    primaryContainer = ThemeColors.Light.container,
+    onSecondary = ThemeColors.Light.text,
+    onTertiary = ThemeColors.Light.label,
+    onPrimaryContainer = ThemeColors.Light.container,
+    onSecondaryContainer = ThemeColors.Light.buttonOutline,
+    scrim = ThemeColors.Light.handle,
+    onBackground = ThemeColors.Light.textSelection
 
-
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
 )
+
+
 
 @Composable
 fun RUTLeadTheme(
@@ -52,7 +57,7 @@ fun RUTLeadTheme(
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+            if (darkTheme) DarkColorScheme else LightColorScheme
         }
 
         darkTheme -> DarkColorScheme

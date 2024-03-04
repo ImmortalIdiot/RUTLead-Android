@@ -2,16 +2,23 @@ package com.immortalidiot.rutlead.fields
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.selection.LocalTextSelectionColors
+import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -29,65 +36,83 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.immortalidiot.rutlead.R
 import com.immortalidiot.rutlead.ui.theme.DarkBlue
+import com.immortalidiot.rutlead.ui.theme.DarkWhite
 import com.immortalidiot.rutlead.ui.theme.InterFontFamily
 import com.immortalidiot.rutlead.ui.theme.LightBlue
+import com.immortalidiot.rutlead.ui.theme.LocalDimensions
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PasswordField(type: String) {
+    val customCursorHandleColor = TextSelectionColors(
+        handleColor = MaterialTheme.colorScheme.scrim,
+        backgroundColor = MaterialTheme.colorScheme.onBackground
+    )
     var password by rememberSaveable { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
     var isFocused by remember { mutableStateOf(false) }
+    val dimensions = LocalDimensions.current
+    val isFieldEmpty by remember {
+        derivedStateOf { password.isEmpty() }
+    }
     val icon = if(passwordVisible)
         painterResource(id = R.drawable.design_ic_visibility)
     else
         painterResource(id = R.drawable.design_ic_visibility_off)
-    TextField(
-        modifier = Modifier
-            .fillMaxWidth()
-            .onFocusChanged { isFocused = !isFocused }
-            .border(
-                BorderStroke(width = 3.dp, color = Color.Transparent),
-                shape = RoundedCornerShape(15.dp)
+    CompositionLocalProvider(LocalTextSelectionColors provides customCursorHandleColor) {
+        TextField(
+            modifier = Modifier
+                .fillMaxWidth()
+                .onFocusChanged { isFocused = !isFocused }
+                .border(
+                    width = dimensions.borderXSWidth,
+                    color = MaterialTheme.colorScheme.outline,
+                    shape = RoundedCornerShape(dimensions.shapeXXLRound)
+                ),
+            value = password,
+            onValueChange = { password = it },
+            label = {
+                Text(
+                    type,
+                    style = if (!isFocused || !isFieldEmpty) TextStyle(
+                        fontSize = 12.sp,
+                        fontFamily = InterFontFamily
+                    )
+                    else TextStyle(
+                        fontSize = 14.sp,
+                        fontFamily = InterFontFamily
+                    )
+                )
+            },
+            singleLine = true,
+            visualTransformation = if (passwordVisible) VisualTransformation.None
+            else PasswordVisualTransformation(),
+            trailingIcon = {
+                IconButton(onClick = {
+                    passwordVisible = !passwordVisible
+                }) {
+                    Icon(
+                        painter = icon,
+                        contentDescription = "Visibility Icon"
+                    )
+                }
+            },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Password
             ),
-        value = password,
-        onValueChange = {password = it},
-        label = { Text(type,
-            style = if (!isFocused) TextStyle(
-                fontSize = 10.sp,
-                fontFamily = InterFontFamily
-            )
-            else TextStyle(
-                fontSize = 14.sp,
-                fontFamily = InterFontFamily
-            )
-        ) },
-        singleLine = true,
-        visualTransformation = if (passwordVisible) VisualTransformation.None
-        else PasswordVisualTransformation(),
-        trailingIcon = {
-            IconButton(onClick = {
-                passwordVisible = !passwordVisible
-            }) {
-                Icon(
-                    painter = icon,
-                    contentDescription = "Visibility Icon")
-            }
-        },
-        keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Password
-        ),
-        colors = TextFieldDefaults.textFieldColors(
-            containerColor = Color.White,
-            textColor = Color.Black,
-            cursorColor = LightBlue,
-            unfocusedLabelColor = LightBlue,
-            focusedLabelColor = DarkBlue,
-            unfocusedIndicatorColor = LightBlue,
-            focusedIndicatorColor = Color.Transparent,
-            focusedTrailingIconColor = LightBlue,
-            unfocusedTrailingIconColor = LightBlue
-        ),
-        shape = RoundedCornerShape(15.dp)
-    )
+            colors = TextFieldDefaults.textFieldColors(
+                containerColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                textColor = MaterialTheme.colorScheme.onSecondary,
+                cursorColor = MaterialTheme.colorScheme.onSecondary,
+                unfocusedLabelColor = MaterialTheme.colorScheme.onSecondary,
+                focusedLabelColor = MaterialTheme.colorScheme.onSecondary,
+                unfocusedIndicatorColor = Color.Transparent,
+                focusedIndicatorColor = Color.Transparent,
+                focusedTrailingIconColor = MaterialTheme.colorScheme.onSecondary,
+                unfocusedTrailingIconColor = MaterialTheme.colorScheme.onSecondary
+            ),
+
+            shape = RoundedCornerShape(15.dp)
+        )
+    }
 }
