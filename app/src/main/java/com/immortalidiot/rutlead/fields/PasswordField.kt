@@ -49,10 +49,11 @@ fun PasswordField(type: String) {
     val isFieldEmpty by remember {
         derivedStateOf { password.isEmpty() }
     }
-    val icon = if(passwordVisible)
+    val icon = if (passwordVisible)
         painterResource(id = R.drawable.password_visibility_on)
     else
         painterResource(id = R.drawable.password_visibility_off)
+
     CompositionLocalProvider(LocalTextSelectionColors provides customCursorHandleColor) {
         TextField(
             modifier = Modifier

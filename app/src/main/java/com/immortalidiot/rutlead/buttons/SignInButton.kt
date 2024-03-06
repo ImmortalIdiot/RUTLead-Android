@@ -31,9 +31,11 @@ fun SignInButton() {
         shape = RoundedCornerShape(LocalDimensions.current.shapeXLRound),
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.primary
-        )) {
+        )
+    ) {
         Box(contentAlignment = Alignment.Center) {
-            Text(text = "Войти",
+            Text(
+                text = "Войти",
                 style = boldLato20,
                 color = MaterialTheme.colorScheme.onTertiary
             )

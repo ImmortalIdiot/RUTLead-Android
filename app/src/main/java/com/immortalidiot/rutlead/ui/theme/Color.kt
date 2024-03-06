@@ -37,7 +37,7 @@ sealed class ThemeColors(
     val textSelection: Color,
     val handle: Color
 ) {
-    object Light: ThemeColors(
+    object Light : ThemeColors(
         surface = Color.White,
         primary = LightBlue,
         outline = Color.Transparent,
@@ -48,7 +48,8 @@ sealed class ThemeColors(
         textSelection = DarkWhite,
         handle = DarkBlue
     )
-    object Dark: ThemeColors(
+
+    object Dark : ThemeColors(
         surface = DarkBlack,
         primary = LightBlack,
         outline = primaryDarkBlue,

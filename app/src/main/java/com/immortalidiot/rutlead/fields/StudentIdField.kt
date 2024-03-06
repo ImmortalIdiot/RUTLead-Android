@@ -37,11 +37,12 @@ fun StudentIdTextField(type: String) {
     )
     var text by remember { mutableStateOf("") }
     var isFocused by remember { mutableStateOf(false) }
-    val textLength = 6
+    val textLength = 8
     val isFieldEmpty by remember {
         derivedStateOf { text.isEmpty() }
     }
     val dimensions = LocalDimensions.current
+
     CompositionLocalProvider(LocalTextSelectionColors provides customCursorHandleColor) {
         TextField(
             modifier = Modifier

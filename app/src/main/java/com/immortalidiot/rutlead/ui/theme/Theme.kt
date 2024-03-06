@@ -42,7 +42,6 @@ val LightColorScheme = lightColorScheme(
 )
 
 
-
 @Composable
 fun RUTLeadTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),

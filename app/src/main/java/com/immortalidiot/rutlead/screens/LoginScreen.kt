@@ -32,18 +32,20 @@ import com.immortalidiot.rutlead.fields.SignUpRedirect
 import com.immortalidiot.rutlead.fields.StudentIdTextField
 import com.immortalidiot.rutlead.ui.theme.LocalDimensions
 
-@Preview (showBackground = true)
+@Preview(showBackground = true)
 @Composable
 fun LoginDesign() {
     val dimensions = LocalDimensions.current
+
     Surface(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.surface),
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally,
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
-            ) {
+        ) {
             Image(
                 painter = painterResource(
                     id = if (isSystemInDarkTheme()) R.drawable.ic_app_dark_logo
@@ -80,9 +82,11 @@ fun LoginDesign() {
                     Spacer(modifier = Modifier.height(dimensions.verticalXXLarge))
                     SignInButton()
                     Spacer(modifier = Modifier.height(dimensions.verticalXLarge))
-                    Row(modifier = Modifier
-                        .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
                         AccountMissing()
                         SignUpRedirect()
                     }
