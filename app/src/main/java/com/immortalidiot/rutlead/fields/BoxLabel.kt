@@ -6,6 +6,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
+import com.immortalidiot.rutlead.ui.theme.boldInter34
+import com.immortalidiot.rutlead.ui.theme.boldInter36
 import com.immortalidiot.rutlead.ui.theme.mediumInter32
 
 @Composable
@@ -15,6 +17,6 @@ fun BoxLabel() {
         modifier = Modifier.fillMaxWidth(),
         color = MaterialTheme.colorScheme.onTertiary,
         textAlign = TextAlign.Center,
-        style = mediumInter32
+        style = boldInter34
     )
 }

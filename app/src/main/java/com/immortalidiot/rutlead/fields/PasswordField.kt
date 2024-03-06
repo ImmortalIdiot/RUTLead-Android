@@ -34,6 +34,8 @@ import androidx.compose.ui.unit.sp
 import com.immortalidiot.rutlead.R
 import com.immortalidiot.rutlead.ui.theme.InterFontFamily
 import com.immortalidiot.rutlead.ui.theme.LocalDimensions
+import com.immortalidiot.rutlead.ui.theme.mediumInter12
+import com.immortalidiot.rutlead.ui.theme.mediumInter14
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -69,14 +71,8 @@ fun PasswordField(type: String) {
             label = {
                 Text(
                     type,
-                    style = if (!isFocused || !isFieldEmpty) TextStyle(
-                        fontSize = 12.sp,
-                        fontFamily = InterFontFamily
-                    )
-                    else TextStyle(
-                        fontSize = 14.sp,
-                        fontFamily = InterFontFamily
-                    )
+                    style = if (!isFocused || !isFieldEmpty) mediumInter12
+                    else mediumInter14
                 )
             },
             singleLine = true,
