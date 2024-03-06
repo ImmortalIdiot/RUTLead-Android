@@ -71,13 +71,19 @@ fun PasswordField(type: String) {
             label = {
                 Text(
                     type,
-                    style = if (!isFocused || !isFieldEmpty) mediumInter12
-                    else mediumInter14
+                    style = if (!isFocused || !isFieldEmpty) {
+                        mediumInter12
+                    } else {
+                        mediumInter14
+                    }
                 )
             },
             singleLine = true,
-            visualTransformation = if (passwordVisible) VisualTransformation.None
-            else PasswordVisualTransformation(),
+            visualTransformation = if (passwordVisible) {
+                VisualTransformation.None
+            } else {
+                PasswordVisualTransformation()
+            },
             trailingIcon = {
                 IconButton(onClick = {
                     passwordVisible = !passwordVisible

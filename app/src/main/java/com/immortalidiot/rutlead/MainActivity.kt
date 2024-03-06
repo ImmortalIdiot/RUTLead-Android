@@ -12,7 +12,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             RUTLeadTheme {
                 // A surface container using the 'background' color from the theme
-                LoginDesign()
             }
         }
     }
