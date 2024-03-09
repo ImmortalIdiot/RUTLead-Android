@@ -1,6 +1,5 @@
 package com.immortalidiot.rutlead.screens
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -27,8 +26,8 @@ import com.immortalidiot.rutlead.R
 import com.immortalidiot.rutlead.buttons.login.SignInButton
 import com.immortalidiot.rutlead.components.login.AccountMissing
 import com.immortalidiot.rutlead.components.login.BoxLabel
+import com.immortalidiot.rutlead.components.login.RedirectText
 import com.immortalidiot.rutlead.fields.PasswordField
-import com.immortalidiot.rutlead.components.login.SignUpRedirect
 import com.immortalidiot.rutlead.fields.StudentIdTextField
 import com.immortalidiot.rutlead.ui.theme.LocalDimensions
 
@@ -61,13 +60,13 @@ fun LoginDesign() {
                 contentAlignment = Alignment.Center,
                 modifier = Modifier
                     .fillMaxWidth(0.85f)
-                    .fillMaxHeight(0.6f)
-                    .clip(RoundedCornerShape(dimensions.shapeXXLRound))
+                    .fillMaxHeight(0.65f)
+                    .clip(RoundedCornerShape(dimensions.shapeXLarge))
                     .background(MaterialTheme.colorScheme.primary)
                     .border(
-                        width = dimensions.borderXSWidth,
-                        color =  MaterialTheme.colorScheme.outline,
-                        shape = RoundedCornerShape(dimensions.shapeXXLRound)
+                        width = dimensions.borderSSmall,
+                        color = MaterialTheme.colorScheme.outline,
+                        shape = RoundedCornerShape(dimensions.shapeXLarge)
                     )
             ) {
                 Column(
@@ -79,7 +78,7 @@ fun LoginDesign() {
                     StudentIdTextField("Номер студенческого билета")
                     Spacer(modifier = Modifier.height(dimensions.verticalXLarge))
                     PasswordField("Пароль")
-                    Spacer(modifier = Modifier.height(dimensions.verticalXXLarge))
+                    Spacer(modifier = Modifier.height(dimensions.verticalXLarge))
                     SignInButton()
                     Spacer(modifier = Modifier.height(dimensions.verticalXLarge))
                     Row(
@@ -87,8 +86,10 @@ fun LoginDesign() {
                         horizontalArrangement = Arrangement.Center
                     ) {
                         AccountMissing()
-                        SignUpRedirect()
+                        RedirectText(text = "Зарегистрируйтесь")
                     }
+                    Spacer(modifier = Modifier.height(dimensions.verticalXSmall))
+                    RedirectText(text = "Забыли пароль?")
                 }
             }
         }

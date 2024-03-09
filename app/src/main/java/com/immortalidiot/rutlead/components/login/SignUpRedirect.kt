@@ -13,12 +13,12 @@ import com.immortalidiot.rutlead.ui.theme.LocalDimensions
 import com.immortalidiot.rutlead.ui.theme.boldInter14
 
 @Composable
-fun SignUpRedirect() {
+fun RedirectText(text: String) {
     Text(
         modifier = Modifier
             .padding(start = LocalDimensions.current.verticalSmallPadding)
             .clickable { /*TODO*/ },
-        text = stringResource(id = R.string.registration_redirect),
+        text = text,
         style = boldInter14,
         color = MaterialTheme.colorScheme.onTertiary,
         textDecoration = TextDecoration.Underline

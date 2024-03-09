@@ -25,14 +25,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.immortalidiot.rutlead.R
-import com.immortalidiot.rutlead.ui.theme.InterFontFamily
 import com.immortalidiot.rutlead.ui.theme.LocalDimensions
 import com.immortalidiot.rutlead.ui.theme.mediumInter12
 import com.immortalidiot.rutlead.ui.theme.mediumInter14
@@ -60,9 +56,9 @@ fun PasswordField(type: String) {
                 .fillMaxWidth()
                 .onFocusChanged { isFocused = !isFocused }
                 .border(
-                    width = dimensions.borderXSWidth,
+                    width = dimensions.borderSSmall,
                     color = MaterialTheme.colorScheme.outline,
-                    shape = RoundedCornerShape(dimensions.shapeXXLRound)
+                    shape = RoundedCornerShape(dimensions.shapeXLarge)
                 ),
             value = password,
             onValueChange = { password = it },
@@ -98,7 +94,7 @@ fun PasswordField(type: String) {
                 focusedTrailingIconColor = MaterialTheme.colorScheme.onSecondary,
                 unfocusedTrailingIconColor = MaterialTheme.colorScheme.onSecondary
             ),
-            shape = RoundedCornerShape(dimensions.shapeXXLRound)
+            shape = RoundedCornerShape(dimensions.shapeXLarge)
         )
     }
 }

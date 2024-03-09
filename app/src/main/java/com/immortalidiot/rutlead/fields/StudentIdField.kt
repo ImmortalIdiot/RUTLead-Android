@@ -21,14 +21,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.immortalidiot.rutlead.ui.theme.InterFontFamily
 import com.immortalidiot.rutlead.ui.theme.LocalDimensions
-import com.immortalidiot.rutlead.ui.theme.boldInter12
-import com.immortalidiot.rutlead.ui.theme.boldInter14
 import com.immortalidiot.rutlead.ui.theme.mediumInter12
 import com.immortalidiot.rutlead.ui.theme.mediumInter14
 
@@ -53,9 +47,9 @@ fun StudentIdTextField(type: String) {
                 .fillMaxWidth()
                 .onFocusChanged { isFocused = !isFocused }
                 .border(
-                    width = dimensions.borderXSWidth,
+                    width = dimensions.borderSSmall,
                     color = MaterialTheme.colorScheme.outline,
-                    shape = RoundedCornerShape(dimensions.shapeXXLRound)
+                    shape = RoundedCornerShape(dimensions.shapeXLarge)
                 ),
             value = text,
             onValueChange = {
@@ -80,7 +74,7 @@ fun StudentIdTextField(type: String) {
                 unfocusedIndicatorColor = Color.Transparent,
                 focusedIndicatorColor = Color.Transparent
             ),
-            shape = RoundedCornerShape(dimensions.shapeXXLRound)
+            shape = RoundedCornerShape(dimensions.shapeXLarge)
         )
     }
 }

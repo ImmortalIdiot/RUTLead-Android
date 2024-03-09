@@ -16,15 +16,15 @@ data class Dimensions(
     val verticalSmallPadding: Dp = 4.dp,
     val verticalNormalPadding: Dp = 6.dp,
 
-    val shapeXSRound: Dp = 2.dp,
-    val shapeSRound: Dp = 4.dp,
-    val shapeMRound: Dp = 8.dp,
-    val shapeXLRound: Dp = 10.dp,
-    val shapeXXLRound: Dp = 15.dp,
+    val shapeSSmall: Dp = 2.dp,
+    val shapeXSmall: Dp = 4.dp,
+    val shapeNormal: Dp = 8.dp,
+    val shapeSLarge: Dp = 10.dp,
+    val shapeXLarge: Dp = 15.dp,
 
-    val borderXSWidth: Dp = 3.dp,
-    val borderSWidth: Dp = 5.dp,
-    val borderMWidth: Dp = 8.dp
+    val borderSSmall: Dp = 3.dp,
+    val borderNormal: Dp = 5.dp,
+    val borderXLarge: Dp = 8.dp
 )
 
 val LocalDimensions = compositionLocalOf { Dimensions() }
