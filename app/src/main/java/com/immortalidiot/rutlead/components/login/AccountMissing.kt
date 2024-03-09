@@ -1,4 +1,4 @@
-package com.immortalidiot.rutlead.components
+package com.immortalidiot.rutlead.components.login
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.Text

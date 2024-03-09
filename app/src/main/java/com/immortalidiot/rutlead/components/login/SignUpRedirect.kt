@@ -1,4 +1,4 @@
-package com.immortalidiot.rutlead.components
+package com.immortalidiot.rutlead.components.login
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding

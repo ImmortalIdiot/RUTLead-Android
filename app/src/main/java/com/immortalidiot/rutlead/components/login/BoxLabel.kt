@@ -1,4 +1,4 @@
-package com.immortalidiot.rutlead.fields
+package com.immortalidiot.rutlead.components.login
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.MaterialTheme
