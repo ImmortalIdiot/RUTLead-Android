@@ -63,7 +63,7 @@ fun StudentIdTextField(type: String) {
             },
             label = {
                 Text(
-                    type,
+                    text = type,
                     style = if (!isFocused || !isFieldEmpty) mediumInter12
                             else mediumInter14
                 )

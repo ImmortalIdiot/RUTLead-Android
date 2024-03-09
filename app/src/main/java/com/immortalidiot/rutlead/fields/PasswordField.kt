@@ -68,7 +68,7 @@ fun PasswordField(type: String) {
             onValueChange = { password = it },
             label = {
                 Text(
-                    type,
+                    text = type,
                     style = if (!isFocused || !isFieldEmpty) mediumInter12
                             else mediumInter14
                 )
