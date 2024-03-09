@@ -25,10 +25,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.immortalidiot.rutlead.R
 import com.immortalidiot.rutlead.buttons.SignInButton
-import com.immortalidiot.rutlead.fields.AccountMissing
+import com.immortalidiot.rutlead.components.AccountMissing
 import com.immortalidiot.rutlead.fields.BoxLabel
 import com.immortalidiot.rutlead.fields.PasswordField
-import com.immortalidiot.rutlead.fields.SignUpRedirect
+import com.immortalidiot.rutlead.components.SignUpRedirect
 import com.immortalidiot.rutlead.fields.StudentIdTextField
 import com.immortalidiot.rutlead.ui.theme.LocalDimensions
 
