@@ -65,7 +65,8 @@ fun LoginDesign() {
                     .clip(RoundedCornerShape(dimensions.shapeXXLRound))
                     .background(MaterialTheme.colorScheme.primary)
                     .border(
-                        BorderStroke(dimensions.borderXSWidth, MaterialTheme.colorScheme.outline),
+                        width = dimensions.borderXSWidth,
+                        color =  MaterialTheme.colorScheme.outline,
                         shape = RoundedCornerShape(dimensions.shapeXXLRound)
                     )
             ) {
