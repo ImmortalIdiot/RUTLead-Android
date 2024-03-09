@@ -2,6 +2,8 @@ package com.immortalidiot.rutlead.buttons.login
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,8 +23,8 @@ fun SignInButton() {
     Button(
         onClick = { /*TODO*/ },
         modifier = Modifier
-            .height(50.dp)
-            .width(150.dp)
+            .fillMaxHeight(0.3f)
+            .fillMaxWidth(0.55f)
             .border(
                 width = LocalDimensions.current.borderXSWidth,
                 shape = RoundedCornerShape(LocalDimensions.current.shapeXLRound),
