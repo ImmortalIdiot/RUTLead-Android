@@ -73,7 +73,6 @@ fun PasswordField(type: String) {
                             else mediumInter14
                 )
             },
-            singleLine = true,
             visualTransformation = if (passwordVisible) VisualTransformation.None
                                    else PasswordVisualTransformation(),
             trailingIcon = {
@@ -86,9 +85,8 @@ fun PasswordField(type: String) {
                     )
                 }
             },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Password
-            ),
+            singleLine = true,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             colors = TextFieldDefaults.textFieldColors(
                 containerColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 textColor = MaterialTheme.colorScheme.onSecondary,
@@ -100,8 +98,7 @@ fun PasswordField(type: String) {
                 focusedTrailingIconColor = MaterialTheme.colorScheme.onSecondary,
                 unfocusedTrailingIconColor = MaterialTheme.colorScheme.onSecondary
             ),
-
-            shape = RoundedCornerShape(15.dp)
+            shape = RoundedCornerShape(dimensions.shapeXXLRound)
         )
     }
 }

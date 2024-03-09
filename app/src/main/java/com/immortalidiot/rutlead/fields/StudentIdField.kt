@@ -69,6 +69,7 @@ fun StudentIdTextField(type: String) {
                 )
             },
             singleLine = true,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             colors = TextFieldDefaults.textFieldColors(
                 containerColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 textColor = MaterialTheme.colorScheme.onSecondary,
@@ -79,9 +80,7 @@ fun StudentIdTextField(type: String) {
                 unfocusedIndicatorColor = Color.Transparent,
                 focusedIndicatorColor = Color.Transparent
             ),
-
-            shape = RoundedCornerShape(15.dp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            shape = RoundedCornerShape(dimensions.shapeXXLRound)
         )
     }
 }
