@@ -49,7 +49,7 @@ fun LoginDesign() {
             Image(
                 painter = painterResource(
                     id = if (isSystemInDarkTheme()) R.drawable.ic_app_dark_logo
-                    else R.drawable.ic_app_light_logo
+                         else R.drawable.ic_app_light_logo
                 ),
                 contentDescription = "logo",
                 modifier = Modifier
@@ -72,8 +72,7 @@ fun LoginDesign() {
             ) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .fillMaxWidth(0.85f)
+                    modifier = Modifier.fillMaxWidth(0.85f)
                 ) {
                     BoxLabel()
                     Spacer(modifier = Modifier.height(dimensions.verticalXXLarge))
@@ -84,8 +83,7 @@ fun LoginDesign() {
                     SignInButton()
                     Spacer(modifier = Modifier.height(dimensions.verticalXLarge))
                     Row(
-                        modifier = Modifier
-                            .fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.Center
                     ) {
                         AccountMissing()
