@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">RUTLead</string>
     <string name="account_missing">Нет аккаунта? </string>
+
 </resources>

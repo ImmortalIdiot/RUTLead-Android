@@ -15,6 +15,6 @@ fun AccountMissing() {
         text = stringResource(id = R.string.account_missing),
         style = boldInter14,
         color = if (isSystemInDarkTheme()) darkWhite
-        else Color.White
+                else Color.White
     )
 }

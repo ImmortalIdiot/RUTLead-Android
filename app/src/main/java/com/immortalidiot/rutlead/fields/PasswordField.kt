@@ -43,12 +43,11 @@ fun PasswordField(type: String) {
     var password by rememberSaveable { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
     var isFocused by remember { mutableStateOf(false) }
-    val dimensions = LocalDimensions.current
-    val isFieldEmpty by remember {
-        derivedStateOf { password.isEmpty() }
-    }
+    val isFieldEmpty by remember { derivedStateOf { password.isEmpty() } }
     val icon = if (passwordVisible) painterResource(id = R.drawable.password_visibility_on)
                else painterResource(id = R.drawable.password_visibility_off)
+
+    val dimensions = LocalDimensions.current
 
     CompositionLocalProvider(LocalTextSelectionColors provides customCursorHandleColor) {
         TextField(
@@ -72,9 +71,13 @@ fun PasswordField(type: String) {
             visualTransformation = if (passwordVisible) VisualTransformation.None
                                    else PasswordVisualTransformation(),
             trailingIcon = {
-                IconButton(onClick = {
-                    passwordVisible = !passwordVisible
-                }) {
+                IconButton(
+                    onClick =
+                    {
+                        passwordVisible = !passwordVisible
+                    }
+                )
+                {
                     Icon(
                         painter = icon,
                         contentDescription = "Visibility Icon"
