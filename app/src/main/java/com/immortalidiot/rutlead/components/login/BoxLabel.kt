@@ -9,9 +9,11 @@ import androidx.compose.ui.text.style.TextAlign
 import com.immortalidiot.rutlead.ui.theme.boldInter34
 
 @Composable
-fun BoxLabel() {
+fun BoxLabel(
+    text: String
+) {
     Text(
-        text = "Авторизация",
+        text = text,
         modifier = Modifier.fillMaxWidth(),
         color = MaterialTheme.colorScheme.onTertiary,
         textAlign = TextAlign.Center,
