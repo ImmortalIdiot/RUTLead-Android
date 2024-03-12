@@ -15,9 +15,10 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.VisualTransformation
 import com.immortalidiot.rutlead.ui.theme.LocalDimensions
 import com.immortalidiot.rutlead.ui.theme.mediumInter12
 import com.immortalidiot.rutlead.ui.theme.mediumInter14
@@ -30,9 +31,14 @@ fun PrimaryTextField(
     value: String = "",
     isSingleLine: Boolean = false,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
     colors: TextFieldColors,
+    minTextLength: Int? = null,
     maxTextLength: Int? = null,
+    trailingIcon: ImageVector? = null,
     onTextChange: (String) -> Unit,
+    onTrailingIconClicked: () -> Unit = {}
 ) {
     val dimensions = LocalDimensions.current
     val colorScheme = MaterialTheme.colorScheme
