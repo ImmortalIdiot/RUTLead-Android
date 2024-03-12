@@ -16,27 +16,35 @@ import com.immortalidiot.rutlead.ui.theme.LocalDimensions
 import com.immortalidiot.rutlead.ui.theme.boldLato20
 
 @Composable
-fun SignInButton() {
+fun SignInButton(
+    modifier: Modifier,
+    text: String,
+    onButtonClick: () -> Unit,
+) {
+    val dimensions = LocalDimensions.current
+    val colorScheme = MaterialTheme.colorScheme
+    val roundedShape = RoundedCornerShape(dimensions.shapeSLarge)
+
     Button(
-        onClick = { /*TODO*/ },
-        modifier = Modifier
+        onClick = {
+            onButtonClick()
+        },
+        modifier = modifier
             .fillMaxHeight(0.3f)
             .fillMaxWidth(0.55f)
             .border(
-                width = LocalDimensions.current.borderSSmall,
-                shape = RoundedCornerShape(LocalDimensions.current.shapeSLarge),
-                color = MaterialTheme.colorScheme.onSecondaryContainer
+                width = dimensions.borderSSmall,
+                shape = roundedShape,
+                color = colorScheme.onSecondaryContainer
             ),
-        shape = RoundedCornerShape(LocalDimensions.current.shapeSLarge),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = MaterialTheme.colorScheme.primary
-        )
+        shape = roundedShape,
+        colors = ButtonDefaults.buttonColors(containerColor = colorScheme.primary)
     ) {
         Box(contentAlignment = Alignment.Center) {
             Text(
-                text = "Войти",
+                text = text,
                 style = boldLato20,
-                color = MaterialTheme.colorScheme.onTertiary
+                color = colorScheme.onTertiary
             )
         }
     }
