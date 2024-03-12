@@ -27,17 +27,18 @@ import com.immortalidiot.rutlead.ui.theme.mediumInter14
 fun PrimaryTextField(
     modifier: Modifier,
     hint: String,
+    value: String = "",
     isSingleLine: Boolean = false,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     colors: TextFieldColors,
-    textLength: Int = Int.MAX_VALUE,
+    maxTextLength: Int? = null,
+    onTextChange: (String) -> Unit,
 ) {
     val dimensions = LocalDimensions.current
     val colorScheme = MaterialTheme.colorScheme
 
-    var text by remember { mutableStateOf("") }
     val isFocused by remember { mutableStateOf(false) }
-    val isFieldEmpty by remember { derivedStateOf { text.isEmpty() } }
+    val isFieldEmpty by remember { derivedStateOf { value == "" } }
 
     val customCursorHandleColor = TextSelectionColors(
         handleColor = colorScheme.scrim,
@@ -47,9 +48,11 @@ fun PrimaryTextField(
     CompositionLocalProvider(LocalTextSelectionColors provides customCursorHandleColor) {
         TextField(
             modifier = modifier,
-            value = text,
-            onValueChange = {
-                if (textLength != Int.MAX_VALUE && it.length <= textLength) text = it
+            value = value,
+            onValueChange = { text ->
+                if (text.length <= (maxTextLength ?: (text.length + 1))) {
+                    onTextChange(text)
+                }
             },
             label = {
                 Text(
