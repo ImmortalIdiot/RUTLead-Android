@@ -7,13 +7,10 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
 import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,58 +20,68 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import com.immortalidiot.rutlead.ui.theme.LocalDimensions
+import com.immortalidiot.rutlead.ui.theme.ThemeColors
 import com.immortalidiot.rutlead.ui.theme.mediumInter12
 import com.immortalidiot.rutlead.ui.theme.mediumInter14
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun StudentIdTextField(type: String) {
+fun StudentIdTextField(
+    hint: String,
+    palette: ThemeColors,
+    modifier: Modifier = Modifier
+) {
+
+    val dimensions = LocalDimensions.current
+    val roundedShape = RoundedCornerShape(dimensions.shapeXLarge)
+
     val customCursorHandleColor = TextSelectionColors(
-        handleColor = MaterialTheme.colorScheme.scrim,
-        backgroundColor = MaterialTheme.colorScheme.onBackground
+        handleColor = palette.handle,
+        backgroundColor = palette.handleBackground
     )
     var text by remember { mutableStateOf("") }
     var isFocused by remember { mutableStateOf(false) }
+
     val textLength = 8
-    val isFieldEmpty by remember {
-        derivedStateOf { text.isEmpty() }
-    }
-    val dimensions = LocalDimensions.current
 
     CompositionLocalProvider(LocalTextSelectionColors provides customCursorHandleColor) {
-        TextField(
-            modifier = Modifier
+        PrimaryTextField(
+            modifier = modifier
                 .fillMaxWidth()
-                .onFocusChanged { isFocused = !isFocused }
+                .onFocusChanged {
+                    isFocused = !isFocused
+                }
                 .border(
                     width = dimensions.borderSSmall,
-                    color = MaterialTheme.colorScheme.outline,
-                    shape = RoundedCornerShape(dimensions.shapeXLarge)
+                    color = palette.outline,
+                    shape = roundedShape
                 ),
             value = text,
-            onValueChange = {
+            onTextChange = {
                 if (it.length <= textLength) text = it
             },
             label = {
                 Text(
-                    text = type,
-                    style = if (!isFocused || !isFieldEmpty) mediumInter12
-                            else mediumInter14
+                    text = hint,
+                    style = if (!isFocused || text.isNotBlank()) {
+                        mediumInter12.copy(color = palette.containerText)
+                    } else {
+                        mediumInter14.copy(color = palette.containerText)
+                    }
                 )
             },
-            singleLine = true,
+            isSingleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             colors = TextFieldDefaults.textFieldColors(
-                containerColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                textColor = MaterialTheme.colorScheme.onSecondary,
-                cursorColor = MaterialTheme.colorScheme.onSecondary,
-                unfocusedLabelColor = MaterialTheme.colorScheme.onSecondary,
-                focusedLabelColor = MaterialTheme.colorScheme.onSecondary,
+                containerColor = palette.container,
+                textColor = palette.containerText,
+                cursorColor = palette.cursor,
+                unfocusedLabelColor = palette.label,
+                focusedLabelColor = palette.label,
                 focusedSupportingTextColor = Color.White,
                 unfocusedIndicatorColor = Color.Transparent,
                 focusedIndicatorColor = Color.Transparent
             ),
-            shape = RoundedCornerShape(dimensions.shapeXLarge)
         )
     }
 }
