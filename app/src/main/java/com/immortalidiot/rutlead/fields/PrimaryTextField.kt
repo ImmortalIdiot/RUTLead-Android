@@ -6,45 +6,32 @@ import androidx.compose.foundation.text.selection.LocalTextSelectionColors
 import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import com.immortalidiot.rutlead.ui.theme.LocalDimensions
-import com.immortalidiot.rutlead.ui.theme.mediumInter12
-import com.immortalidiot.rutlead.ui.theme.mediumInter14
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PrimaryTextField(
     modifier: Modifier,
-    hint: String,
     value: String = "",
     isSingleLine: Boolean = false,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    keyboardType: KeyboardType = KeyboardType.Text,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     colors: TextFieldColors,
     minTextLength: Int? = null,
     maxTextLength: Int? = null,
-    trailingIcon: ImageVector? = null,
+    label: @Composable (() -> Unit)? = {},
+    trailingIcon: @Composable (() -> Unit)? = null, // TODO: change to trailingIcon: Painter? = null
     onTextChange: (String) -> Unit,
     onTrailingIconClicked: () -> Unit = {}
 ) {
     val dimensions = LocalDimensions.current
     val colorScheme = MaterialTheme.colorScheme
-
-    val isFocused by remember { mutableStateOf(false) }
-    val isFieldEmpty by remember { derivedStateOf { value == "" } }
 
     val customCursorHandleColor = TextSelectionColors(
         handleColor = colorScheme.scrim,
@@ -60,15 +47,11 @@ fun PrimaryTextField(
                     onTextChange(text)
                 }
             },
-            label = {
-                Text(
-                    text = hint,
-                    style = if (!isFocused || !isFieldEmpty) mediumInter12
-                            else mediumInter14
-                )
-            },
+            label = label,
+            trailingIcon = trailingIcon,
             singleLine = isSingleLine,
             keyboardOptions = keyboardOptions,
+            visualTransformation = visualTransformation,
             colors = colors,
             shape = RoundedCornerShape(dimensions.shapeXLarge)
         )
