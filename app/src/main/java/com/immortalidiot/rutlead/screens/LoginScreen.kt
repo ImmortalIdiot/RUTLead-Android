@@ -136,6 +136,9 @@ fun LoginDesign(
                         modifier = modifier,
                         text = "Зарегистрируйтесь",
                         palette = palette,
+                        onTextClick = {
+                            // TODO: move user to sign up screen
+                        }
                     )
                 }
                 Spacer(modifier = modifier.height(dimensions.verticalXSmall))
@@ -143,6 +146,9 @@ fun LoginDesign(
                     modifier = modifier,
                     text = "Забыли пароль?",
                     palette = palette,
+                    onTextClick = {
+                        // TODO: show the password changing window to the user
+                    }
                 )
             }
         }
