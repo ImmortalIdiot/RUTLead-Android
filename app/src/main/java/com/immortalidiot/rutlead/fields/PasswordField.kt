@@ -42,19 +42,21 @@ fun PasswordField(
     hint: String,
     palette: ThemeColors,
     modifier: Modifier = Modifier,
-    //TODO: add onTextChange: (enteringPassword: String) -> Unit when viewModel will be realised
+    passwordValue: String = "",
+    onTextChange: (password: String) -> Unit
 ) {
     val customCursorHandleColor = TextSelectionColors(
         handleColor = palette.handle,
         backgroundColor = palette.handleBackground
     )
 
-    var password by rememberSaveable { mutableStateOf("") }
+    var password by rememberSaveable { mutableStateOf(value = passwordValue) }
     var passwordVisible by remember { mutableStateOf(true) }
     var isFocused by remember { mutableStateOf(false) }
 
-    val icon = if (passwordVisible) ImageVector.vectorResource(id = R.drawable.password_visibility_on)
-               else ImageVector.vectorResource(id = R.drawable.password_visibility_off)
+    val icon =
+        if (passwordVisible) ImageVector.vectorResource(id = R.drawable.password_visibility_on)
+        else ImageVector.vectorResource(id = R.drawable.password_visibility_off)
 
     val transparentColor = Color.Transparent
 
@@ -63,7 +65,11 @@ fun PasswordField(
             modifier = modifier
                 .fillMaxWidth()
                 .onFocusChanged { isFocused = !isFocused },
-            onTextChange = { password = it },
+            value = password,
+            onTextChange = {
+                password = it
+                onTextChange(it)
+            },
             label = {
                 Text(
                     text = hint,
@@ -74,8 +80,11 @@ fun PasswordField(
                     }
                 )
             },
-            visualTransformation = if (passwordVisible) { VisualTransformation.None }
-                                   else { PasswordVisualTransformation() },
+            visualTransformation = if (passwordVisible) {
+                VisualTransformation.None
+            } else {
+                PasswordVisualTransformation()
+            },
             trailingIcon = {
                 IconButton(
                     onClick = { passwordVisible = !passwordVisible },
@@ -90,7 +99,6 @@ fun PasswordField(
                 }
             },
             // TODO: change the trailingIcon and realise the onTrailingIconClicked using by viewModel
-
             isSingleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             colors = TextFieldDefaults.textFieldColors(
@@ -104,7 +112,6 @@ fun PasswordField(
                 focusedTrailingIconColor = palette.content,
                 unfocusedTrailingIconColor = palette.content
             ),
-            value = password,
         )
     }
 }
@@ -115,7 +122,7 @@ fun PasswordFieldPreview() {
     PasswordField(
         hint = "Пароль",
         palette = if (isSystemInDarkTheme()) ThemeColors.Dark
-                  else ThemeColors.Light,
+        else ThemeColors.Light,
         modifier = Modifier
             .padding(
                 top = 100.dp,
@@ -126,6 +133,7 @@ fun PasswordFieldPreview() {
                 width = 5.dp,
                 color = ThemeColors.Light.content,
                 shape = RoundedCornerShape(size = 20.dp)
-            )
+            ),
+        onTextChange = {}
     )
 }
