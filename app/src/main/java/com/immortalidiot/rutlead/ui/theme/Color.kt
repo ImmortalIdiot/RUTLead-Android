@@ -16,6 +16,8 @@ val LightGray = Color.LightGray
 val DarkBlack = Color(0xFF1C1B1B)
 val LightBlack = Color(0xFF232323)
 
+val LightRed = Color(0xFFFF5454)
+val DarkRed = Color(0xFF51221f)
 
 sealed class ThemeColors(
     val header: Color,
@@ -26,6 +28,8 @@ sealed class ThemeColors(
     val text: Color,
     val containerText: Color,
     val container: Color,
+    val containerColorError: Color,
+    val textColorError: Color,
     val label: Color,
     val labelText: Color,
     val cursor: Color,
@@ -43,6 +47,8 @@ sealed class ThemeColors(
         text = ClassicWhite,
         container = ClassicWhite,
         containerText = LightBlue,
+        containerColorError = LightRed,
+        textColorError = Color.White,
         label = ClassicWhite,
         labelText = LightBlue,
         cursor = LightBlue,
@@ -61,6 +67,8 @@ sealed class ThemeColors(
         text = DarkWhite,
         container = LightBlack,
         containerText = DarkWhite,
+        containerColorError = DarkRed,
+        textColorError = DarkWhite,
         label = DarkWhite,
         labelText = DarkWhite,
         cursor = DarkBlue,
