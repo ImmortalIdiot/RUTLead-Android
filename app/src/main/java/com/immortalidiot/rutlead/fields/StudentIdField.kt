@@ -41,6 +41,7 @@ fun StudentIdTextField(
         handleColor = palette.handle,
         backgroundColor = palette.handleBackground
     )
+
     var isFocused by remember { mutableStateOf(false) }
 
     CompositionLocalProvider(LocalTextSelectionColors provides customCursorHandleColor) {
