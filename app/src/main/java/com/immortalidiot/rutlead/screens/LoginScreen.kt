@@ -15,6 +15,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,17 +32,21 @@ import com.immortalidiot.rutlead.fields.PasswordField
 import com.immortalidiot.rutlead.fields.StudentIdTextField
 import com.immortalidiot.rutlead.ui.theme.LocalDimensions
 import com.immortalidiot.rutlead.ui.theme.ThemeColors
+import com.immortalidiot.rutlead.viewmodels.LoginScreenViewModel
 
-@Preview(showBackground = true)
 @Composable
 fun LoginDesign(
     modifier: Modifier = Modifier,
-    isDarkTheme: Boolean = isSystemInDarkTheme()
+    isDarkTheme: Boolean = isSystemInDarkTheme(),
+    viewModel: LoginScreenViewModel
 ) {
     val dimensions = LocalDimensions.current
     val roundedShape = RoundedCornerShape(dimensions.shapeXLarge)
+
     val palette = if (isDarkTheme) ThemeColors.Dark
-                      else ThemeColors.Light
+    else ThemeColors.Light
+
+    val uiState by viewModel.uiState.collectAsState()
 
     Column(
         modifier = modifier
@@ -88,7 +94,11 @@ fun LoginDesign(
                 Spacer(modifier = modifier.height(dimensions.verticalXXLarge))
                 StudentIdTextField(
                     hint = "Номер студенческого билета",
-                    palette = palette
+                    palette = palette,
+                    value = uiState.studentID,
+                    onTextChange = { studentID ->
+                        viewModel.changeLogin(studentID)
+                    }
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalXLarge))
                 PasswordField(
@@ -99,7 +109,11 @@ fun LoginDesign(
                             width = dimensions.borderSSmall,
                             color = palette.outline,
                             shape = roundedShape
-                        )
+                        ),
+                    passwordValue = uiState.password,
+                    onTextChange = { password ->
+                        viewModel.changePassword(password)
+                    },
                 )
                 Spacer(modifier = Modifier.height(dimensions.verticalXLarge))
                 SignInButton(
@@ -107,7 +121,7 @@ fun LoginDesign(
                     palette = palette,
                     text = "Войти",
                     onButtonClick = {
-                        // TODO: realise body of the fun when the view model appears
+                        viewModel.request()
                     },
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalXLarge))
@@ -131,4 +145,10 @@ fun LoginDesign(
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun LoginScreenPreview() {
+    LoginDesign(viewModel = LoginScreenViewModel())
 }
