@@ -44,7 +44,7 @@ fun LoginDesign(
     val roundedShape = RoundedCornerShape(dimensions.shapeXLarge)
 
     val palette = if (isDarkTheme) ThemeColors.Dark
-    else ThemeColors.Light
+                  else ThemeColors.Light
 
     val uiState by viewModel.uiState.collectAsState()
 
