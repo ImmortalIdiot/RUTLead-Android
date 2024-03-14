@@ -1,6 +1,6 @@
 package com.immortalidiot.rutlead.validation
 
-class AuthValidationException(message: String) : Exception(message = message)
+class AuthValidationException(message: String) : Exception(message)
 
 fun String.validateStudentID(): Result<Boolean> {
     val containsOnlyDigits = this.all { char ->
