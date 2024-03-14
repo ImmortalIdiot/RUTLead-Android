@@ -19,7 +19,6 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
@@ -50,12 +49,11 @@ fun PasswordField(
         backgroundColor = palette.handleBackground
     )
 
-    var password by rememberSaveable { mutableStateOf(value = passwordValue) }
-    var passwordVisible by remember { mutableStateOf(true) }
+    var isPasswordVisible by remember { mutableStateOf(true) }
     var isFocused by remember { mutableStateOf(false) }
 
     val icon =
-        if (passwordVisible) ImageVector.vectorResource(id = R.drawable.password_visibility_on)
+        if (isPasswordVisible) ImageVector.vectorResource(id = R.drawable.password_visibility_on)
         else ImageVector.vectorResource(id = R.drawable.password_visibility_off)
 
     val transparentColor = Color.Transparent
@@ -65,29 +63,28 @@ fun PasswordField(
             modifier = modifier
                 .fillMaxWidth()
                 .onFocusChanged { isFocused = !isFocused },
-            value = password,
+            value = passwordValue,
             onTextChange = {
-                password = it
                 onTextChange(it)
             },
             label = {
                 Text(
                     text = hint,
-                    style = if (!isFocused || password.isNotBlank()) {
+                    style = if (!isFocused || passwordValue.isNotBlank()) {
                         mediumInter12.copy(color = palette.containerText)
                     } else {
                         mediumInter14.copy(color = palette.containerText)
                     }
                 )
             },
-            visualTransformation = if (passwordVisible) {
+            visualTransformation = if (isPasswordVisible) {
                 VisualTransformation.None
             } else {
                 PasswordVisualTransformation()
             },
             trailingIcon = {
                 IconButton(
-                    onClick = { passwordVisible = !passwordVisible },
+                    onClick = { isPasswordVisible = !isPasswordVisible },
                     colors = IconButtonDefaults.iconButtonColors(
                         contentColor = palette.content
                     )
@@ -98,7 +95,6 @@ fun PasswordField(
                     )
                 }
             },
-            // TODO: change the trailingIcon and realise the onTrailingIconClicked using by viewModel
             isSingleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             colors = TextFieldDefaults.textFieldColors(
