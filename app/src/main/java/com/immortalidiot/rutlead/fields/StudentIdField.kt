@@ -14,7 +14,6 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
@@ -42,7 +41,6 @@ fun StudentIdTextField(
         handleColor = palette.handle,
         backgroundColor = palette.handleBackground
     )
-    var studentID by rememberSaveable { mutableStateOf(value = value) }
     var isFocused by remember { mutableStateOf(false) }
 
     CompositionLocalProvider(LocalTextSelectionColors provides customCursorHandleColor) {
@@ -57,16 +55,15 @@ fun StudentIdTextField(
                     color = palette.outline,
                     shape = roundedShape
                 ),
-            value = studentID,
+            value = value,
             maxTextLength = 8,
             onTextChange = {
-                studentID = it
                 onTextChange(it)
             },
             label = {
                 Text(
                     text = hint,
-                    style = if (!isFocused || studentID.isNotBlank()) {
+                    style = if (!isFocused || value.isNotBlank()) {
                         mediumInter12.copy(color = palette.containerText)
                     } else {
                         mediumInter14.copy(color = palette.containerText)
