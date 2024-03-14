@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -26,10 +27,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.immortalidiot.rutlead.R
 import com.immortalidiot.rutlead.buttons.login.SignInButton
 import com.immortalidiot.rutlead.components.login.AccountMissing
+import com.immortalidiot.rutlead.components.login.BottomSnackbar
 import com.immortalidiot.rutlead.components.login.BoxLabel
 import com.immortalidiot.rutlead.components.login.RedirectText
 import com.immortalidiot.rutlead.fields.PasswordField
 import com.immortalidiot.rutlead.fields.StudentIdTextField
+import com.immortalidiot.rutlead.providers.LocalSnackbarHostState
+import com.immortalidiot.rutlead.providers.showMessage
 import com.immortalidiot.rutlead.ui.theme.LocalDimensions
 import com.immortalidiot.rutlead.ui.theme.ThemeColors
 import com.immortalidiot.rutlead.viewmodels.LoginScreenViewModel
@@ -38,16 +42,38 @@ import com.immortalidiot.rutlead.viewmodels.LoginScreenViewModel
 fun LoginDesign(
     modifier: Modifier = Modifier,
     isDarkTheme: Boolean = isSystemInDarkTheme(),
-    viewModel: LoginScreenViewModel
+    viewModel: LoginScreenViewModel,
 ) {
     val dimensions = LocalDimensions.current
     val roundedShape = RoundedCornerShape(dimensions.shapeXLarge)
 
     val palette = if (isDarkTheme) ThemeColors.Dark
-                  else ThemeColors.Light
+    else ThemeColors.Light
 
     val uiState by viewModel.uiState.collectAsState()
+    val state by viewModel.mutableState.collectAsState()
 
+    val snackbarHostState = LocalSnackbarHostState.current
+
+    val studentIDErrorMessage = (state as?
+            LoginScreenViewModel.State.ValidationError)?.studentIDError.toString()
+    val passwordErrorMessage = (state as?
+            LoginScreenViewModel.State.ValidationError)?.passwordError.toString()
+
+    LaunchedEffect(key1 = state) {
+        if (state is LoginScreenViewModel.State.ValidationError) {
+            val errorState = state as LoginScreenViewModel.State.ValidationError
+
+            when {
+                errorState.studentIDError != null ->
+                    snackbarHostState.showMessage(studentIDErrorMessage)
+
+                errorState.passwordError != null ->
+                    snackbarHostState.showMessage(passwordErrorMessage)
+            }
+            viewModel.clearErrorStack()
+        }
+    }
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -153,10 +179,17 @@ fun LoginDesign(
             }
         }
     }
+    BottomSnackbar(
+        modifier = modifier,
+        palette = palette,
+        snackbarHostState = snackbarHostState
+    )
 }
 
 @Preview
 @Composable
 fun LoginScreenPreview() {
-    LoginDesign(viewModel = LoginScreenViewModel())
+    LoginDesign(
+        viewModel = LoginScreenViewModel(),
+    )
 }
