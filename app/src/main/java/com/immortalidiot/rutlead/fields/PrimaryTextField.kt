@@ -30,9 +30,8 @@ fun PrimaryTextField(
     minTextLength: Int = 0,
     maxTextLength: Int = Int.MAX_VALUE,
     label: @Composable (() -> Unit)? = {},
-    trailingIcon: @Composable (() -> Unit)? = null, // TODO: change to trailingIcon: Painter? = null
+    trailingIcon: @Composable (() -> Unit)? = null,
     onTextChange: (String) -> Unit,
-    onTrailingIconClicked: () -> Unit = {}
 ) {
     val dimensions = LocalDimensions.current
     val colorScheme = MaterialTheme.colorScheme
