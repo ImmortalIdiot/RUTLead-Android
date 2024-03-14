@@ -37,6 +37,11 @@ class LoginScreenViewModel : ViewModel() {
 
     val uiState: StateFlow<LoginModel> = _uiState.asStateFlow()
 
+    fun clearErrorStack() {
+        mutableState.update {
+            State.Init
+        }
+    }
     fun changeLogin(studentID: String) {
         _uiState.update {
             uiState.value.copy(studentID = studentID)
