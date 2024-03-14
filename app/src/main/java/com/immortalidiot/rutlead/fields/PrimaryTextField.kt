@@ -10,6 +10,10 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.VisualTransformation
 import com.immortalidiot.rutlead.ui.theme.LocalDimensions
@@ -23,8 +27,8 @@ fun PrimaryTextField(
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     colors: TextFieldColors,
-    minTextLength: Int? = null,
-    maxTextLength: Int? = null,
+    minTextLength: Int = 0,
+    maxTextLength: Int = Int.MAX_VALUE,
     label: @Composable (() -> Unit)? = {},
     trailingIcon: @Composable (() -> Unit)? = null, // TODO: change to trailingIcon: Painter? = null
     onTextChange: (String) -> Unit,
@@ -32,6 +36,8 @@ fun PrimaryTextField(
 ) {
     val dimensions = LocalDimensions.current
     val colorScheme = MaterialTheme.colorScheme
+
+    var localValue by rememberSaveable { mutableStateOf(value = value) }
 
     val customCursorHandleColor = TextSelectionColors(
         handleColor = colorScheme.scrim,
@@ -41,9 +47,10 @@ fun PrimaryTextField(
     CompositionLocalProvider(LocalTextSelectionColors provides customCursorHandleColor) {
         TextField(
             modifier = modifier,
-            value = value,
+            value = localValue,
             onValueChange = { text ->
-                if (text.length <= (maxTextLength ?: (text.length + 1))) {
+                if (text.length <= maxTextLength) {
+                    localValue = text
                     onTextChange(text)
                 }
             },

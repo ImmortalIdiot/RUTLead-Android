@@ -29,7 +29,7 @@ import com.immortalidiot.rutlead.ui.theme.mediumInter14
 fun StudentIdTextField(
     hint: String,
     palette: ThemeColors,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
 
     val dimensions = LocalDimensions.current
@@ -41,8 +41,6 @@ fun StudentIdTextField(
     )
     var text by remember { mutableStateOf("") }
     var isFocused by remember { mutableStateOf(false) }
-
-    val textLength = 8
 
     CompositionLocalProvider(LocalTextSelectionColors provides customCursorHandleColor) {
         PrimaryTextField(
@@ -56,9 +54,10 @@ fun StudentIdTextField(
                     color = palette.outline,
                     shape = roundedShape
                 ),
+            maxTextLength = 8,
             value = text,
             onTextChange = {
-                if (it.length <= textLength) text = it
+                text = it
             },
             label = {
                 Text(
