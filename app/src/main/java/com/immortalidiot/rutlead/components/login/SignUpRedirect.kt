@@ -12,12 +12,13 @@ import com.immortalidiot.rutlead.ui.theme.boldInter14
 
 @Composable
 fun RedirectText(
+    modifier: Modifier,
     text: String,
     palette: ThemeColors,
     onTextClick: () -> Unit
 ) {
     Text(
-        modifier = Modifier
+        modifier = modifier
             .padding(start = LocalDimensions.current.verticalSmallPadding)
             .clickable {
                 onTextClick()

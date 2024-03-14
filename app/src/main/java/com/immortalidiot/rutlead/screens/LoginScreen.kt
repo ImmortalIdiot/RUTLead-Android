@@ -133,14 +133,16 @@ fun LoginDesign(
                         palette = palette
                     )
                     RedirectText(
+                        modifier = modifier,
                         text = "Зарегистрируйтесь",
-                        palette = palette
+                        palette = palette,
                     )
                 }
                 Spacer(modifier = modifier.height(dimensions.verticalXSmall))
                 RedirectText(
+                    modifier = modifier,
                     text = "Забыли пароль?",
-                    palette = palette
+                    palette = palette,
                 )
             }
         }
