@@ -41,14 +41,11 @@ import com.immortalidiot.rutlead.viewmodels.LoginScreenViewModel
 @Composable
 fun LoginDesign(
     modifier: Modifier = Modifier,
-    isDarkTheme: Boolean = isSystemInDarkTheme(),
     viewModel: LoginScreenViewModel,
+    palette: ThemeColors,
 ) {
     val dimensions = LocalDimensions.current
     val roundedShape = RoundedCornerShape(dimensions.shapeXLarge)
-
-    val palette = if (isDarkTheme) ThemeColors.Dark
-    else ThemeColors.Light
 
     val uiState by viewModel.uiState.collectAsState()
     val state by viewModel.mutableState.collectAsState()
@@ -191,5 +188,7 @@ fun LoginDesign(
 fun LoginScreenPreview() {
     LoginDesign(
         viewModel = LoginScreenViewModel(),
+        palette = if (isSystemInDarkTheme()) ThemeColors.Dark
+        else ThemeColors.Light
     )
 }
