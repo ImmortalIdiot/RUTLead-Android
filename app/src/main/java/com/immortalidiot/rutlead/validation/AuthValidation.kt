@@ -2,13 +2,13 @@ package com.immortalidiot.rutlead.validation
 
 class AuthValidationException(message: String) : Exception(message)
 
-fun String.validateStudentID(): Result<Boolean> {
+fun String.validateStudentID(): Result<Unit> {
     val containsOnlyDigits = this.all { char ->
         char.isDigit()
     }
 
     return if (this.isNotBlank() && containsOnlyDigits && this.length == 8) {
-        Result.success(true)
+        Result.success(Unit)
     } else if (this.isBlank()) {
         Result.failure(
             AuthValidationException(
