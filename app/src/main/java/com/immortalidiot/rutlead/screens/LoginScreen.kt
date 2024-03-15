@@ -19,9 +19,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.immortalidiot.rutlead.R
@@ -38,6 +40,7 @@ import com.immortalidiot.rutlead.ui.theme.LocalDimensions
 import com.immortalidiot.rutlead.ui.theme.ThemeColors
 import com.immortalidiot.rutlead.viewmodels.LoginScreenViewModel
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun LoginDesign(
     modifier: Modifier = Modifier,
@@ -51,6 +54,7 @@ fun LoginDesign(
     val state by viewModel.mutableState.collectAsState()
 
     val snackbarHostState = LocalSnackbarHostState.current
+    val keyboardController = LocalSoftwareKeyboardController.current
 
     val studentIDErrorMessage = (state as?
             LoginScreenViewModel.State.ValidationError)?.studentIDError.toString()
@@ -109,6 +113,7 @@ fun LoginDesign(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = modifier
                     .fillMaxWidth(0.85f)
+
             ) {
                 BoxLabel(
                     text = "Авторизация",
@@ -144,6 +149,7 @@ fun LoginDesign(
                     palette = palette,
                     text = "Войти",
                     onButtonClick = {
+                        keyboardController?.hide()
                         viewModel.request()
                     },
                 )
