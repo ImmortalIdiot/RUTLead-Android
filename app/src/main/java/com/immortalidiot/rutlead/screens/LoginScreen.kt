@@ -23,6 +23,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -55,6 +56,7 @@ fun LoginDesign(
 
     val snackbarHostState = LocalSnackbarHostState.current
     val keyboardController = LocalSoftwareKeyboardController.current
+    val focusManager = LocalFocusManager.current
 
     val studentIDErrorMessage = (state as?
             LoginScreenViewModel.State.ValidationError)?.studentIDError.toString()
@@ -149,6 +151,7 @@ fun LoginDesign(
                     palette = palette,
                     text = "Войти",
                     onButtonClick = {
+                        focusManager.clearFocus()
                         keyboardController?.hide()
                         viewModel.request()
                     },
