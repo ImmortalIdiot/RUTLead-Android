@@ -1,6 +1,7 @@
 package com.immortalidiot.rutlead.fields
 
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
 import androidx.compose.foundation.text.selection.TextSelectionColors
@@ -25,6 +26,7 @@ fun PrimaryTextField(
     value: String = "",
     isSingleLine: Boolean = false,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    keyboardActions: KeyboardActions = KeyboardActions.Default,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     colors: TextFieldColors,
     minTextLength: Int = 0,
@@ -56,6 +58,7 @@ fun PrimaryTextField(
             label = label,
             trailingIcon = trailingIcon,
             singleLine = isSingleLine,
+            keyboardActions = keyboardActions,
             keyboardOptions = keyboardOptions,
             visualTransformation = visualTransformation,
             colors = colors,

@@ -140,6 +140,11 @@ fun LoginDesign(
                             color = palette.outline,
                             shape = roundedShape
                         ),
+                    onDoneAction = {
+                        focusManager.clearFocus()
+                        keyboardController?.hide()
+                        viewModel.request()
+                    },
                     passwordValue = uiState.password,
                     onTextChange = { password ->
                         viewModel.changePassword(password)

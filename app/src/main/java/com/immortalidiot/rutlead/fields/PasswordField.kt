@@ -5,6 +5,7 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
 import androidx.compose.foundation.text.selection.TextSelectionColors
@@ -42,6 +43,7 @@ fun PasswordField(
     palette: ThemeColors,
     modifier: Modifier = Modifier,
     passwordValue: String = "",
+    onDoneAction: () -> Unit?,
     onTextChange: (password: String) -> Unit
 ) {
     val customCursorHandleColor = TextSelectionColors(
@@ -97,6 +99,11 @@ fun PasswordField(
             },
             isSingleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            keyboardActions = KeyboardActions(
+                onDone = {
+                    onDoneAction()
+                }
+            ),
             colors = TextFieldDefaults.textFieldColors(
                 containerColor = palette.container,
                 textColor = palette.containerText,
@@ -130,6 +137,7 @@ fun PasswordFieldPreview() {
                 color = ThemeColors.Light.content,
                 shape = RoundedCornerShape(size = 20.dp)
             ),
+        onDoneAction = {},
         onTextChange = {}
     )
 }
