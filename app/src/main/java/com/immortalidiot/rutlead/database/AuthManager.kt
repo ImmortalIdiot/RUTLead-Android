@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.SharedPreferences
 
 object AuthManager {
-
     private const val PREFERENCE_NAME = "auth"
     private const val SECRET_KEY =
         "26fe1746b40acf3f263de2736060b6dceeafb8e0b140de23d9f59dbf11764e41"
