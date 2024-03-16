@@ -182,6 +182,7 @@ fun LoginDesign(
                         // TODO: show the password changing window to the user
                     }
                 )
+                Spacer(modifier = modifier.height(dimensions.verticalSLarge))
             }
         }
     }
