@@ -26,6 +26,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import com.immortalidiot.rutlead.R
 import com.immortalidiot.rutlead.buttons.login.SignInButton
@@ -140,12 +142,25 @@ fun LoginDesign(
                             color = palette.outline,
                             shape = roundedShape
                         ),
+                    passwordValue = uiState.password,
+                    imageVector = if (uiState.isPasswordVisible) {
+                        ImageVector.vectorResource(id = R.drawable.password_visibility_on)
+                    } else {
+                        ImageVector.vectorResource(id = R.drawable.password_visibility_off)
+                    },
+                    visualTransformation = if (uiState.isPasswordVisible) {
+                        VisualTransformation.None
+                    } else {
+                        PasswordVisualTransformation()
+                    },
                     onDoneAction = {
                         focusManager.clearFocus()
                         keyboardController?.hide()
                         viewModel.request()
                     },
-                    passwordValue = uiState.password,
+                    onIconClick = {
+                        viewModel.changePasswordVisibility(uiState.isPasswordVisible)
+                    },
                     onTextChange = { password ->
                         viewModel.changePassword(password)
                     },

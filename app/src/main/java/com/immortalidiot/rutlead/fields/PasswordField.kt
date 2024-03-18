@@ -27,7 +27,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -43,7 +42,10 @@ fun PasswordField(
     palette: ThemeColors,
     modifier: Modifier = Modifier,
     passwordValue: String = "",
+    imageVector: ImageVector,
+    visualTransformation: VisualTransformation,
     onDoneAction: () -> Unit?,
+    onIconClick: () -> Unit,
     onTextChange: (password: String) -> Unit
 ) {
     val customCursorHandleColor = TextSelectionColors(
@@ -51,12 +53,7 @@ fun PasswordField(
         backgroundColor = palette.handleBackground
     )
 
-    var isPasswordVisible by remember { mutableStateOf(true) }
     var isFocused by remember { mutableStateOf(false) }
-
-    val icon =
-        if (isPasswordVisible) ImageVector.vectorResource(id = R.drawable.password_visibility_on)
-        else ImageVector.vectorResource(id = R.drawable.password_visibility_off)
 
     val transparentColor = Color.Transparent
 
@@ -79,20 +76,16 @@ fun PasswordField(
                     }
                 )
             },
-            visualTransformation = if (isPasswordVisible) {
-                VisualTransformation.None
-            } else {
-                PasswordVisualTransformation()
-            },
+            visualTransformation = visualTransformation,
             trailingIcon = {
                 IconButton(
-                    onClick = { isPasswordVisible = !isPasswordVisible },
+                    onClick = onIconClick,
                     colors = IconButtonDefaults.iconButtonColors(
                         contentColor = palette.content
                     )
                 ) {
                     Icon(
-                        imageVector = icon,
+                        imageVector = imageVector,
                         contentDescription = "Visibility Icon"
                     )
                 }
@@ -124,8 +117,7 @@ fun PasswordField(
 fun PasswordFieldPreview() {
     PasswordField(
         hint = "Пароль",
-        palette = if (isSystemInDarkTheme()) ThemeColors.Dark
-        else ThemeColors.Light,
+        palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light,
         modifier = Modifier
             .padding(
                 top = 100.dp,
@@ -137,6 +129,9 @@ fun PasswordFieldPreview() {
                 color = ThemeColors.Light.content,
                 shape = RoundedCornerShape(size = 20.dp)
             ),
+        imageVector = ImageVector.vectorResource(id = R.drawable.password_visibility_on),
+        visualTransformation = VisualTransformation.None,
+        onIconClick = {},
         onDoneAction = {},
         onTextChange = {}
     )

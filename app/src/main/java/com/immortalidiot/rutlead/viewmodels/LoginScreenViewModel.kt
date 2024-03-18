@@ -31,7 +31,8 @@ class LoginScreenViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(
         LoginModel(
             studentID = String(),
-            password = String()
+            password = String(),
+            isPasswordVisible = true
         )
     )
 
@@ -51,6 +52,12 @@ class LoginScreenViewModel : ViewModel() {
     fun changePassword(password: String) {
         _uiState.update {
             uiState.value.copy(password = password)
+        }
+    }
+
+    fun changePasswordVisibility(isPasswordVisible: Boolean) {
+        _uiState.update {
+            uiState.value.copy(isPasswordVisible = !isPasswordVisible)
         }
     }
 
