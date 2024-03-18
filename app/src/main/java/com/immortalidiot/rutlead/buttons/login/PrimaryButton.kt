@@ -20,7 +20,7 @@ fun SignInButton(
     modifier: Modifier,
     palette: ThemeColors,
     text: String,
-    onButtonClick: () -> Unit,
+    onButtonClick: () -> Unit
 ) {
     val dimensions = LocalDimensions.current
     val roundedShape = RoundedCornerShape(dimensions.shapeSLarge)

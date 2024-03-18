@@ -28,8 +28,7 @@ class MainActivity : ComponentActivity() {
 
                 val keyboardController = LocalSoftwareKeyboardController.current
 
-                val palette = if (isSystemInDarkTheme()) ThemeColors.Dark
-                else ThemeColors.Light
+                val palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
 
                 CompositionLocalProvider(LocalSnackbarHostState provides snackbarHostState) {
                     LoginDesign(
