@@ -1,7 +1,6 @@
 package com.immortalidiot.rutlead.ui.theme
 
 import androidx.compose.material3.Typography
-import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -50,11 +49,25 @@ private val boldLatoStyle = TextStyle(
 )
 
 val boldInter36 = boldInterStyle.copy(fontSize = 36.sp)
+val boldInter34 = boldInterStyle.copy(fontSize = 34.sp)
+val boldInter32 = boldInterStyle.copy(fontSize = 32.sp)
 val boldInter24 = boldInterStyle.copy(fontSize = 24.sp)
 val boldInter20 = boldInterStyle.copy(fontSize = 20.sp)
 val boldInter16 = boldInterStyle.copy(fontSize = 16.sp)
 val boldInter14 = boldInterStyle.copy(fontSize = 14.sp)
+val boldInter12 = boldInterStyle.copy(fontSize = 12.sp)
 
+val mediumInter36 = mediumInterStyle.copy(fontSize = 36.sp)
+val mediumInter32 = mediumInterStyle.copy(fontSize = 32.sp)
+val mediumInter24 = mediumInterStyle.copy(fontSize = 24.sp)
+val mediumInter20 = mediumInterStyle.copy(fontSize = 20.sp)
+val mediumInter16 = mediumInterStyle.copy(fontSize = 16.sp)
+val mediumInter14 = mediumInterStyle.copy(fontSize = 14.sp)
+val mediumInter12 = mediumInterStyle.copy(fontSize = 12.sp)
+
+val boldLato36 = boldLatoStyle.copy(fontSize = 36.sp)
+val boldLato32 = boldLatoStyle.copy(fontSize = 32.sp)
+val boldLato20 = boldLatoStyle.copy(fontSize = 20.sp)
 val boldLato18 = boldLatoStyle.copy(fontSize = 18.sp)
 val boldLato17 = boldLatoStyle.copy(fontSize = 17.sp)
 val boldLato16 = boldLatoStyle.copy(fontSize = 16.sp)
