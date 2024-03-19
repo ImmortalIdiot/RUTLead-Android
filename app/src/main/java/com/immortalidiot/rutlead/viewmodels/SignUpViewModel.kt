@@ -103,13 +103,11 @@ class SignUpViewModel : ViewModel() {
         }
     }
 
-    private val email = _uiState.value.email.validateEmail()
-    private val studentID = _uiState.value.studentID.validateStudentID()
-    private val password = _uiState.value.password.validatePassword()
-    private val group = _uiState.value.group.validateGroup()
-    private val name = _uiState.value.name.validateName()
-
     fun updateScreen() {
+        val email = _uiState.value.email.validateEmail()
+        val studentID = _uiState.value.studentID.validateStudentID()
+        val password = _uiState.value.password.validatePassword()
+
         if (email.isFailure || studentID.isFailure || password.isFailure) {
             mutableState.update {
                 State.SignUpValidationFirstPartError(
@@ -124,6 +122,9 @@ class SignUpViewModel : ViewModel() {
     }
 
     fun register() {
+        val group = _uiState.value.group.validateGroup()
+        val name = _uiState.value.name.validateName()
+
         if (group.isFailure || name.isFailure) {
             mutableState.update {
                 State.SignUpValidationSecondPartError(
