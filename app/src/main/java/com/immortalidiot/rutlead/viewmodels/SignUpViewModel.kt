@@ -22,8 +22,8 @@ class SignUpViewModel : ViewModel() {
         object SecondPart : State()
         data class Error(val message: String) : State()
         data class SignUpValidationFirstPartError(
-            val emailError: String?,
             val studentIDError: String?,
+            val emailError: String?,
             val passwordError: String?,
         ) : State()
         data class SignUpValidationSecondPartError(
@@ -41,7 +41,9 @@ class SignUpViewModel : ViewModel() {
             studentID = String(),
             password = String(),
             group = String(),
-            name = String()
+            name = String(),
+            isFocused = false,
+            isPasswordVisible = true
         )
     )
 
@@ -86,6 +88,18 @@ class SignUpViewModel : ViewModel() {
     fun changeName(name: String) {
         _uiState.update {
             uiState.value.copy(name = name)
+        }
+    }
+
+    fun changeFocus(isFocused: Boolean) {
+        _uiState.update {
+            uiState.value.copy(isFocused = isFocused)
+        }
+    }
+
+    fun changePasswordVisibility(isVisible: Boolean) {
+        _uiState.update {
+            uiState.value.copy(isPasswordVisible = !isVisible)
         }
     }
 
