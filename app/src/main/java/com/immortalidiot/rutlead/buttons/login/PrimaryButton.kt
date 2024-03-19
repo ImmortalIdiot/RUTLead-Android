@@ -2,7 +2,6 @@ package com.immortalidiot.rutlead.buttons.login
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -16,7 +15,7 @@ import com.immortalidiot.rutlead.ui.theme.ThemeColors
 import com.immortalidiot.rutlead.ui.theme.boldLato20
 
 @Composable
-fun SignInButton(
+fun PrimaryButton(
     modifier: Modifier,
     palette: ThemeColors,
     text: String,
