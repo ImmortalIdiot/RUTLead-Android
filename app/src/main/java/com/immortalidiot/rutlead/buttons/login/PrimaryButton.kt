@@ -29,7 +29,6 @@ fun PrimaryButton(
             onButtonClick()
         },
         modifier = modifier
-            .fillMaxWidth(0.55f)
             .border(
                 width = dimensions.borderSSmall,
                 shape = roundedShape,

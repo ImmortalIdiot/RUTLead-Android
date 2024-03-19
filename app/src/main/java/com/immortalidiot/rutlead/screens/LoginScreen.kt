@@ -170,7 +170,9 @@ fun LoginDesign(
                 )
                 Spacer(modifier = Modifier.height(dimensions.verticalXLarge))
                 PrimaryButton(
-                    modifier = modifier.fillMaxHeight(0.14f),
+                    modifier = modifier
+                        .fillMaxHeight(0.14f)
+                        .fillMaxWidth(0.55f),
                     palette = palette,
                     text = "Войти",
                     onButtonClick = {
