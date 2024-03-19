@@ -136,5 +136,4 @@ class SignUpViewModel : ViewModel() {
             // TODO: register the user
         }
     }
-
 }
