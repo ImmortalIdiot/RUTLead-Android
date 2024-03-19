@@ -5,5 +5,7 @@ data class SignUpModel(
     val studentID: String,
     val password: String,
     val group: String,
-    val name: String
+    val name: String,
+    val isFocused: Boolean,
+    val isPasswordVisible: Boolean
 )
