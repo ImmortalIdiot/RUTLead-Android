@@ -30,7 +30,6 @@ fun SignInButton(
             onButtonClick()
         },
         modifier = modifier
-            .fillMaxHeight(0.3f)
             .fillMaxWidth(0.55f)
             .border(
                 width = dimensions.borderSSmall,
