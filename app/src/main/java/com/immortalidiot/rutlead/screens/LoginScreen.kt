@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -30,7 +31,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import com.immortalidiot.rutlead.R
-import com.immortalidiot.rutlead.buttons.login.SignInButton
+import com.immortalidiot.rutlead.buttons.login.PrimaryButton
 import com.immortalidiot.rutlead.components.login.AccountMissing
 import com.immortalidiot.rutlead.components.login.BottomSnackbar
 import com.immortalidiot.rutlead.components.login.BoxLabel
@@ -104,7 +105,6 @@ fun LoginDesign(
             contentAlignment = Alignment.Center,
             modifier = modifier
                 .fillMaxWidth(0.85f)
-                .fillMaxHeight(0.65f)
                 .clip(roundedShape)
                 .background(color = palette.primary)
                 .border(
@@ -112,12 +112,15 @@ fun LoginDesign(
                     color = palette.outline,
                     shape = roundedShape
                 )
+                .padding(
+                    top = dimensions.verticalBigPadding,
+                    bottom = dimensions.verticalBigPadding
+                )
         ) {
             Column(
+                modifier = modifier.fillMaxWidth(0.85f),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = modifier
-                    .fillMaxWidth(0.85f)
-
+                verticalArrangement = Arrangement.Center
             ) {
                 BoxLabel(
                     text = "Авторизация",
@@ -166,15 +169,15 @@ fun LoginDesign(
                     },
                 )
                 Spacer(modifier = Modifier.height(dimensions.verticalXLarge))
-                SignInButton(
-                    modifier = modifier,
+                PrimaryButton(
+                    modifier = modifier.fillMaxHeight(0.14f),
                     palette = palette,
                     text = "Войти",
                     onButtonClick = {
                         focusManager.clearFocus()
                         keyboardController?.hide()
                         viewModel.request()
-                    },
+                    }
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalXLarge))
                 Row(
