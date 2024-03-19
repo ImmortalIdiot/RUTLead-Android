@@ -122,57 +122,54 @@ fun SignUpScreen(
             }
         }
     }
-
-    if (state is SignUpViewModel.State.Init ||
-        state is SignUpViewModel.State.SignUpValidationFirstPartError
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(color = palette.surface),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
-        Column(
+        Image(
             modifier = modifier
-                .fillMaxSize()
-                .background(color = palette.surface),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+                .fillMaxWidth(0.4f)
+                .fillMaxHeight(0.07f),
+            imageVector = ImageVector.vectorResource(
+                id = if (isSystemInDarkTheme()) {
+                    R.drawable.ic_app_dark_logo
+                } else {
+                    R.drawable.ic_app_light_logo
+                }
+            ),
+            contentDescription = "icon"
+        )
+        Spacer(modifier = modifier.height(dimensions.verticalXXLarge))
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = modifier
+                .fillMaxWidth(0.85f)
+                .clip(roundedShape)
+                .background(color = palette.primary)
+                .border(
+                    width = dimensions.borderSSmall,
+                    color = palette.outline,
+                    shape = roundedShape
+                )
+                .padding(
+                    top = dimensions.verticalBigPadding,
+                    bottom = dimensions.verticalBigPadding
+                )
         ) {
-            Image(
-                modifier = modifier
-                    .fillMaxWidth(0.4f)
-                    .fillMaxHeight(0.07f),
-                imageVector = ImageVector.vectorResource(
-                    id = if (isSystemInDarkTheme()) {
-                        R.drawable.ic_app_dark_logo
-                    } else {
-                        R.drawable.ic_app_light_logo
-                    }
-                ),
-                contentDescription = "icon"
-            )
-            Spacer(modifier = modifier.height(dimensions.verticalXXLarge))
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = modifier
-                    .fillMaxWidth(0.85f)
-                    .clip(roundedShape)
-                    .background(color = palette.primary)
-                    .border(
-                        width = dimensions.borderSSmall,
-                        color = palette.outline,
-                        shape = roundedShape
-                    )
-                    .padding(
-                        top = dimensions.verticalBigPadding,
-                        bottom = dimensions.verticalBigPadding
-                    )
+            Column(
+                modifier = modifier.fillMaxWidth(0.85f),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
             ) {
-                Column(
-                    modifier = modifier.fillMaxWidth(0.85f),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    BoxLabel(
-                        text = "Регистрация",
-                        palette = palette
-                    )
-                    Spacer(modifier = modifier.height(dimensions.verticalXXLarge))
+                BoxLabel(
+                    text = "Регистрация",
+                    palette = palette
+                )
+                Spacer(modifier = modifier.height(dimensions.verticalXXLarge))
+                if (state is SignUpViewModel.State.Init || state is SignUpViewModel.State.SignUpValidationFirstPartError) {
                     StudentIdTextField(
                         hint = "Номер студенческого билета",
                         palette = palette,
@@ -259,82 +256,7 @@ fun SignUpScreen(
                             viewModel.updateScreen()
                         }
                     )
-                    Spacer(modifier = modifier.height(dimensions.verticalXLarge))
-                    Row(
-                        modifier = modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        Text(
-                            text = "Есть аккаунт?",
-                            style = boldInter14.copy(color = palette.text),
-                        )
-                        RedirectText(
-                            modifier = modifier,
-                            text = "Войдите",
-                            palette = palette,
-                            onTextClick = {
-                                // TODO: move the user to login screen
-                            }
-                        )
-                    }
-                }
-            }
-        }
-        BottomSnackbar(
-            modifier = modifier,
-            palette = palette,
-            snackbarHostState = snackbarHostState
-        )
-    } else if (state is SignUpViewModel.State.SecondPart ||
-               state is SignUpViewModel.State.SignUpValidationSecondPartError
-    ) {
-        Column(
-            modifier = modifier
-                .fillMaxSize()
-                .background(color = palette.surface),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Image(
-                modifier = modifier
-                    .fillMaxWidth(0.4f)
-                    .fillMaxHeight(0.07f),
-                imageVector = ImageVector.vectorResource(
-                    id = if (isSystemInDarkTheme()) {
-                        R.drawable.ic_app_dark_logo
-                    } else {
-                        R.drawable.ic_app_light_logo
-                    }
-                ),
-                contentDescription = "icon"
-            )
-            Spacer(modifier = modifier.height(dimensions.verticalXXLarge))
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = modifier
-                    .fillMaxWidth(0.85f)
-                    .clip(roundedShape)
-                    .background(color = palette.primary)
-                    .border(
-                        width = dimensions.borderSSmall,
-                        color = palette.outline,
-                        shape = roundedShape
-                    )
-                    .padding(
-                        top = dimensions.verticalBigPadding,
-                        bottom = dimensions.verticalBigPadding
-                    )
-            ) {
-                Column(
-                    modifier = modifier.fillMaxWidth(0.85f),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    BoxLabel(
-                        text = "Регистрация",
-                        palette = palette
-                    )
-                    Spacer(modifier = modifier.height(dimensions.verticalXXLarge))
+                } else if (state is SignUpViewModel.State.SecondPart || state is SignUpViewModel.State.SignUpValidationSecondPartError) {
                     PrimaryTextField(
                         modifier = modifier
                             .border(
@@ -413,33 +335,33 @@ fun SignUpScreen(
                             viewModel.register()
                         }
                     )
-                    Spacer(modifier = modifier.height(dimensions.verticalXLarge))
-                    Row(
-                        modifier = modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        Text(
-                            text = "Есть аккаунт?",
-                            style = boldInter14.copy(color = palette.text),
-                        )
-                        RedirectText(
-                            modifier = modifier,
-                            text = "Войдите",
-                            palette = palette,
-                            onTextClick = {
-                                // TODO: move the user to login screen
-                            }
-                        )
-                    }
+                }
+                Spacer(modifier = modifier.height(dimensions.verticalXLarge))
+                Row(
+                    modifier = modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        text = "Есть аккаунт?",
+                        style = boldInter14.copy(color = palette.text),
+                    )
+                    RedirectText(
+                        modifier = modifier,
+                        text = "Войдите",
+                        palette = palette,
+                        onTextClick = {
+                            // TODO: move the user to login screen
+                        }
+                    )
                 }
             }
         }
-        BottomSnackbar(
-            modifier = modifier,
-            palette = palette,
-            snackbarHostState = snackbarHostState
-        )
     }
+    BottomSnackbar(
+        modifier = modifier,
+        palette = palette,
+        snackbarHostState = snackbarHostState
+    )
 }
 
 @Preview
