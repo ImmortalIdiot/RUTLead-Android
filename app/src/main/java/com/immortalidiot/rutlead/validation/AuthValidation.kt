@@ -76,12 +76,30 @@ fun String.validateGroup(): Result<Boolean> {
         && this.length == 7
         && this[3] == '-'
         && containsFirstLetters
-        && containsLastDigits) {
+        && containsLastDigits
+    ) {
         Result.success(true)
     } else {
         Result.failure(
             AuthValidationException(
                 "Неверный формат группы. Пример: УВП-111"
+            )
+        )
+    }
+}
+
+fun String.validateName(): Result<Boolean> {
+    val fullName = this.split(' ')
+
+    return if (fullName.size == 3 &&
+        fullName.all { it.isNotBlank() } &&
+        fullName.all { it.all { it.isLetter() } }
+    ) {
+        Result.success(true)
+    } else {
+        Result.failure(
+            AuthValidationException(
+                "Введите верные ФИО. Пример: Иванов Иван Иванович"
             )
         )
     }
