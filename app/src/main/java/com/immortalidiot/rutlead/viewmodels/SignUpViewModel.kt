@@ -91,12 +91,6 @@ class SignUpViewModel : ViewModel() {
         }
     }
 
-    fun changeFocus(isFocused: Boolean) {
-        _uiState.update {
-            uiState.value.copy(isFocused = isFocused)
-        }
-    }
-
     fun changePasswordVisibility(isVisible: Boolean) {
         _uiState.update {
             uiState.value.copy(isPasswordVisible = !isVisible)
