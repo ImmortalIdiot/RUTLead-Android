@@ -1,0 +1,49 @@
+name: RUTLead
+
+on:
+  push:
+    branches: 
+    - "develop"
+    - "feature/*"
+    - "bugfix/*"
+    - "hotfix/*"
+    - "release/*"
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      
+    - name: Gradle check
+      run: ./gradlew check
+
+  assembleRelease:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      
+    - name: Gradle assembleRelease
+      run: ./gradlew assembleRelease
