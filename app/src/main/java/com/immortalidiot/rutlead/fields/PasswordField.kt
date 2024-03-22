@@ -44,7 +44,7 @@ fun PasswordField(
     passwordValue: String = "",
     imageVector: ImageVector,
     visualTransformation: VisualTransformation,
-    onDoneAction: () -> Unit?,
+    onDoneAction: () -> Unit,
     onIconClick: () -> Unit,
     onTextChange: (password: String) -> Unit
 ) {
