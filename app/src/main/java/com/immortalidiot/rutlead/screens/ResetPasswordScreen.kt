@@ -197,8 +197,8 @@ fun ResetPassword(
                         PasswordVisualTransformation()
                     },
                     onDoneAction = {},
-                    onIconClick = remember {
-                        { viewModel.changePasswordVisibility(uiState.isPasswordVisible) }
+                    onIconClick = {
+                        viewModel.changePasswordVisibility(uiState.isPasswordVisible)
                     },
                     onTextChange = { password ->
                         viewModel.changePassword(password)
@@ -232,8 +232,8 @@ fun ResetPassword(
                             viewModel.resetPassword()
                         }
                     },
-                    onIconClick = remember {
-                        { viewModel.changePasswordVisibility(uiState.isPasswordVisible) }
+                    onIconClick = {
+                        viewModel.changePasswordVisibility(uiState.isPasswordVisible)
                     },
                     onTextChange = { confirmPassword ->
                         viewModel.changeConfirmPassword(confirmPassword = confirmPassword)
