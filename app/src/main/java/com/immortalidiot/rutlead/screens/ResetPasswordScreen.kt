@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.SnackbarHostState
@@ -121,7 +122,6 @@ fun ResetPassword(
             contentAlignment = Alignment.Center,
             modifier = modifier
                 .fillMaxWidth(0.85f)
-                .fillMaxHeight(0.65f)
                 .clip(roundedShape)
                 .background(color = palette.primary)
                 .border(
@@ -129,12 +129,11 @@ fun ResetPassword(
                     color = palette.outline,
                     shape = roundedShape
                 )
+                .padding(vertical = dimensions.verticalBigPadding)
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = modifier
-                    .fillMaxWidth(0.85f)
-
+                modifier = modifier.fillMaxWidth(0.85f)
             ) {
                 BoxLabel(
                     text = "Сброс пароля",
@@ -240,7 +239,9 @@ fun ResetPassword(
                 )
                 Spacer(modifier = Modifier.height(dimensions.verticalXLarge))
                 SignInButton(
-                    modifier = modifier,
+                    modifier = modifier
+                        .fillMaxHeight(0.16f)
+                        .fillMaxWidth(0.55f),
                     palette = palette,
                     text = "Сменить",
                     onButtonClick = {
@@ -249,7 +250,7 @@ fun ResetPassword(
                         viewModel.resetPassword()
                     },
                 )
-                Spacer(modifier = modifier.height(dimensions.verticalXLarge))
+                Spacer(modifier = modifier.height(dimensions.verticalSLarge))
                 Row(
                     modifier = modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center
