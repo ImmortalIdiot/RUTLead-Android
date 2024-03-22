@@ -86,6 +86,7 @@ fun ResetPassword(
     LaunchedEffect(key1 = state) {
         if (state is ResetPasswordViewModel.State.ValidationError) {
             val errorState = state as ResetPasswordViewModel.State.ValidationError
+
             when {
                 errorState.emailError != null ->
                     snackbarHostState.showMessage(emailErrorMessage)
@@ -94,6 +95,7 @@ fun ResetPassword(
                 errorState.confirmPasswordError != null ->
                     snackbarHostState.showMessage(confirmPasswordErrorMessage)
             }
+            viewModel.clearErrorStack()
         }
     }
 
