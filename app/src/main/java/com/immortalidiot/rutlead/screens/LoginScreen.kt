@@ -62,10 +62,13 @@ fun LoginDesign(
     val keyboardController = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
 
-    val studentIDErrorMessage = (state as?
-            LoginScreenViewModel.State.ValidationError)?.studentIDError.toString()
-    val passwordErrorMessage = (state as?
-            LoginScreenViewModel.State.ValidationError)?.passwordError.toString()
+    var studentIDErrorMessage = ""
+    var passwordErrorMessage = ""
+
+    (state as? LoginScreenViewModel.State.ValidationError)?.let { errorState ->
+        studentIDErrorMessage = errorState.studentIDError.toString()
+        passwordErrorMessage = errorState.passwordError.toString()
+    }
 
     LaunchedEffect(key1 = state) {
         if (state is LoginScreenViewModel.State.ValidationError) {

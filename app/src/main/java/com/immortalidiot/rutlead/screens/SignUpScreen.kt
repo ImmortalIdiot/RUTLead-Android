@@ -74,16 +74,22 @@ fun SignUpScreen(
 
     val roundedShape = RoundedCornerShape(dimensions.shapeXLarge)
 
-    val studentIDErrorMessage = (state as?
-            SignUpViewModel.State.SignUpValidationFirstPartError)?.studentIDError.toString()
-    val emailErrorMessage = (state as?
-            SignUpViewModel.State.SignUpValidationFirstPartError)?.emailError.toString()
-    val passwordErrorMessage = (state as?
-            SignUpViewModel.State.SignUpValidationFirstPartError)?.passwordError.toString()
-    val groupErrorMessage = (state as?
-            SignUpViewModel.State.SignUpValidationSecondPartError)?.groupError.toString()
-    val nameErrorMessage = (state as?
-            SignUpViewModel.State.SignUpValidationSecondPartError)?.nameError.toString()
+    var studentIDErrorMessage = ""
+    var emailErrorMessage = ""
+    var passwordErrorMessage = ""
+    var groupErrorMessage = ""
+    var nameErrorMessage = ""
+
+    (state as? SignUpViewModel.State.SignUpValidationFirstPartError)?.let { errorState ->
+        studentIDErrorMessage = errorState.studentIDError.toString()
+        emailErrorMessage = errorState.emailError.toString()
+        passwordErrorMessage = errorState.passwordError.toString()
+    }
+
+    (state as? SignUpViewModel.State.SignUpValidationSecondPartError)?.let { errorState ->
+        groupErrorMessage = errorState.groupError.toString()
+        nameErrorMessage = errorState.nameError.toString()
+    }
 
     LaunchedEffect(key1 = state) {
         when {
