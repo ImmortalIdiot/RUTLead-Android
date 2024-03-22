@@ -167,7 +167,7 @@ fun LoginDesign(
                 )
                 Spacer(modifier = Modifier.height(dimensions.verticalXLarge))
                 SignInButton(
-                    modifier = modifier,
+                    modifier = modifier.fillMaxWidth(0.55f),
                     palette = palette,
                     text = "Войти",
                     onButtonClick = {
