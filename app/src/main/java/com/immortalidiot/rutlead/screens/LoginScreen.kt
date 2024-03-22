@@ -160,15 +160,13 @@ fun LoginDesign(
                     } else {
                         PasswordVisualTransformation()
                     },
-                    onDoneAction = remember {
-                        {
-                            focusManager.clearFocus()
-                            keyboardController?.hide()
-                            viewModel.request()
-                        }
+                    onDoneAction = {
+                        focusManager.clearFocus()
+                        keyboardController?.hide()
+                        viewModel.request()
                     },
-                    onIconClick = remember {
-                        { viewModel.changePasswordVisibility(uiState.isPasswordVisible) }
+                    onIconClick = {
+                        viewModel.changePasswordVisibility(uiState.isPasswordVisible)
                     },
                     onTextChange = { password ->
                         viewModel.changePassword(password)
@@ -181,12 +179,10 @@ fun LoginDesign(
                         .fillMaxWidth(0.55f),
                     palette = palette,
                     text = "Войти",
-                    onButtonClick = remember {
-                        {
-                            focusManager.clearFocus()
-                            keyboardController?.hide()
-                            viewModel.request()
-                        }
+                    onButtonClick = {
+                        focusManager.clearFocus()
+                        keyboardController?.hide()
+                        viewModel.request()
                     }
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalXLarge))
@@ -201,10 +197,8 @@ fun LoginDesign(
                         modifier = modifier,
                         text = "Зарегистрируйтесь",
                         palette = palette,
-                        onTextClick = remember {
-                            {
+                        onTextClick = {
                                 // TODO: move user to sign up screen
-                            }
                         }
                     )
                 }
@@ -213,10 +207,8 @@ fun LoginDesign(
                     modifier = modifier,
                     text = "Забыли пароль?",
                     palette = palette,
-                    onTextClick = remember {
-                        {
-                            // TODO: show the password changing window to the user
-                        }
+                    onTextClick = {
+                        // TODO: show the password changing window to the user
                     }
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalSLarge))

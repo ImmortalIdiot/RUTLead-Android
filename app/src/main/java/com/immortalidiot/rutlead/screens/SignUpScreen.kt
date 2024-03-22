@@ -234,15 +234,13 @@ fun SignUpScreen(
                         } else {
                             PasswordVisualTransformation()
                         },
-                        onDoneAction = remember {
-                            {
-                                focusManager.clearFocus()
-                                keyboardController?.hide()
-                                viewModel.updateScreen()
-                            }
+                        onDoneAction = {
+                            focusManager.clearFocus()
+                            keyboardController?.hide()
+                            viewModel.updateScreen()
                         },
-                        onIconClick = remember {
-                            { viewModel.changePasswordVisibility(uiState.isPasswordVisible) }
+                        onIconClick = {
+                            viewModel.changePasswordVisibility(uiState.isPasswordVisible)
                         },
                         onTextChange = { password ->
                             viewModel.changePassword(password = password)
@@ -255,12 +253,10 @@ fun SignUpScreen(
                             .fillMaxWidth(0.55f),
                         palette = palette,
                         text = "Далее",
-                        onButtonClick = remember {
-                            {
-                                focusManager.clearFocus()
-                                keyboardController?.hide()
-                                viewModel.updateScreen()
-                            }
+                        onButtonClick = {
+                            focusManager.clearFocus()
+                            keyboardController?.hide()
+                            viewModel.updateScreen()
                         }
                     )
                 } else if (state is SignUpViewModel.State.SecondPart ||
