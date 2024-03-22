@@ -1,5 +1,7 @@
 package com.immortalidiot.rutlead.validation
 
+import android.util.Patterns
+
 class AuthValidationException(message: String) : Exception(message)
 
 fun String.validateStudentID(): Result<Unit> {
@@ -43,6 +45,36 @@ fun String.validatePassword(): Result<Boolean> {
         Result.failure(
             AuthValidationException(
                 "Пароль должен содержать минимум 8 символов"
+            )
+        )
+    }
+}
+
+fun String.validateConfirmPassword(password: String, confirmPassword: String):Result<Unit> {
+    return if (password == confirmPassword) {
+        Result.success(Unit)
+    } else {
+        Result.failure(
+            AuthValidationException(
+                "Пароли не совпадают"
+            )
+        )
+    }
+}
+
+fun String.validateEmail(): Result<Boolean> {
+    return if (this.isNotBlank() && Patterns.EMAIL_ADDRESS.matcher(this).matches()) {
+        Result.success(true)
+    } else if (this.isBlank()) {
+        Result.failure(
+            AuthValidationException(
+                "Поле \"Email \" не должно быть пустым"
+            )
+        )
+    } else {
+        Result.failure(
+            AuthValidationException(
+                "Ввод не соответствует Email's"
             )
         )
     }
