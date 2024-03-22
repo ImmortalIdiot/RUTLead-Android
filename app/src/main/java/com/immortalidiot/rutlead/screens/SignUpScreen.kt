@@ -75,20 +75,15 @@ fun SignUpScreen(
     val roundedShape = RoundedCornerShape(dimensions.shapeXLarge)
 
     val studentIDErrorMessage = (state as?
-            SignUpViewModel.State.SignUpValidationFirstPartError)
-        ?.studentIDError.toString()
+            SignUpViewModel.State.SignUpValidationFirstPartError)?.studentIDError.toString()
     val emailErrorMessage = (state as?
-            SignUpViewModel.State.SignUpValidationFirstPartError)
-        ?.emailError.toString()
+            SignUpViewModel.State.SignUpValidationFirstPartError)?.emailError.toString()
     val passwordErrorMessage = (state as?
-            SignUpViewModel.State.SignUpValidationFirstPartError)
-        ?.passwordError.toString()
+            SignUpViewModel.State.SignUpValidationFirstPartError)?.passwordError.toString()
     val groupErrorMessage = (state as?
-            SignUpViewModel.State.SignUpValidationSecondPartError)
-        ?.groupError.toString()
+            SignUpViewModel.State.SignUpValidationSecondPartError)?.groupError.toString()
     val nameErrorMessage = (state as?
-            SignUpViewModel.State.SignUpValidationSecondPartError)
-        ?.nameError.toString()
+            SignUpViewModel.State.SignUpValidationSecondPartError)?.nameError.toString()
 
     LaunchedEffect(key1 = state) {
         when {
@@ -169,7 +164,9 @@ fun SignUpScreen(
                     palette = palette
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalXXLarge))
-                if (state is SignUpViewModel.State.Init || state is SignUpViewModel.State.SignUpValidationFirstPartError) {
+                if (state is SignUpViewModel.State.Init ||
+                    state is SignUpViewModel.State.SignUpValidationFirstPartError
+                ) {
                     StudentIdTextField(
                         hint = "Номер студенческого билета",
                         palette = palette,
@@ -260,7 +257,9 @@ fun SignUpScreen(
                             }
                         }
                     )
-                } else if (state is SignUpViewModel.State.SecondPart || state is SignUpViewModel.State.SignUpValidationSecondPartError) {
+                } else if (state is SignUpViewModel.State.SecondPart ||
+                    state is SignUpViewModel.State.SignUpValidationSecondPartError
+                ) {
                     PrimaryTextField(
                         modifier = modifier
                             .border(
@@ -296,12 +295,11 @@ fun SignUpScreen(
                     )
                     Spacer(modifier = modifier.height(dimensions.verticalXLarge))
                     PrimaryTextField(
-                        modifier = modifier
-                            .border(
-                                width = dimensions.borderSSmall,
-                                color = palette.outline,
-                                shape = roundedShape
-                            ),
+                        modifier = modifier.border(
+                            width = dimensions.borderSSmall,
+                            color = palette.outline,
+                            shape = roundedShape
+                        ),
                         value = uiState.group,
                         isSingleLine = true,
                         label = {
