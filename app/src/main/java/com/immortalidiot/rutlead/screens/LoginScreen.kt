@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -156,13 +157,15 @@ fun LoginDesign(
                     } else {
                         PasswordVisualTransformation()
                     },
-                    onDoneAction = {
-                        focusManager.clearFocus()
-                        keyboardController?.hide()
-                        viewModel.request()
+                    onDoneAction = remember {
+                        {
+                            focusManager.clearFocus()
+                            keyboardController?.hide()
+                            viewModel.request()
+                        }
                     },
-                    onIconClick = {
-                        viewModel.changePasswordVisibility(uiState.isPasswordVisible)
+                    onIconClick = remember {
+                        { viewModel.changePasswordVisibility(uiState.isPasswordVisible) }
                     },
                     onTextChange = { password ->
                         viewModel.changePassword(password)
@@ -175,10 +178,12 @@ fun LoginDesign(
                         .fillMaxWidth(0.55f),
                     palette = palette,
                     text = "Войти",
-                    onButtonClick = {
-                        focusManager.clearFocus()
-                        keyboardController?.hide()
-                        viewModel.request()
+                    onButtonClick = remember {
+                        {
+                            focusManager.clearFocus()
+                            keyboardController?.hide()
+                            viewModel.request()
+                        }
                     }
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalXLarge))
@@ -193,8 +198,10 @@ fun LoginDesign(
                         modifier = modifier,
                         text = "Зарегистрируйтесь",
                         palette = palette,
-                        onTextClick = {
-                            // TODO: move user to sign up screen
+                        onTextClick = remember {
+                            {
+                                // TODO: move user to sign up screen
+                            }
                         }
                     )
                 }
@@ -203,8 +210,10 @@ fun LoginDesign(
                     modifier = modifier,
                     text = "Забыли пароль?",
                     palette = palette,
-                    onTextClick = {
-                        // TODO: show the password changing window to the user
+                    onTextClick = remember {
+                        {
+                            // TODO: show the password changing window to the user
+                        }
                     }
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalSLarge))

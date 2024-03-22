@@ -231,13 +231,15 @@ fun SignUpScreen(
                         } else {
                             PasswordVisualTransformation()
                         },
-                        onDoneAction = {
-                            focusManager.clearFocus()
-                            keyboardController?.hide()
-                            viewModel.updateScreen()
+                        onDoneAction = remember {
+                            {
+                                focusManager.clearFocus()
+                                keyboardController?.hide()
+                                viewModel.updateScreen()
+                            }
                         },
-                        onIconClick = {
-                            viewModel.changePasswordVisibility(uiState.isPasswordVisible)
+                        onIconClick = remember {
+                            { viewModel.changePasswordVisibility(uiState.isPasswordVisible) }
                         },
                         onTextChange = { password ->
                             viewModel.changePassword(password = password)
@@ -250,10 +252,12 @@ fun SignUpScreen(
                             .fillMaxWidth(0.55f),
                         palette = palette,
                         text = "Далее",
-                        onButtonClick = {
-                            focusManager.clearFocus()
-                            keyboardController?.hide()
-                            viewModel.updateScreen()
+                        onButtonClick = remember {
+                            {
+                                focusManager.clearFocus()
+                                keyboardController?.hide()
+                                viewModel.updateScreen()
+                            }
                         }
                     )
                 } else if (state is SignUpViewModel.State.SecondPart || state is SignUpViewModel.State.SignUpValidationSecondPartError) {
@@ -329,10 +333,12 @@ fun SignUpScreen(
                         modifier = modifier.fillMaxHeight(0.13f),
                         palette = palette,
                         text = "Зарегистрироваться",
-                        onButtonClick = {
-                            focusManager.clearFocus()
-                            keyboardController?.hide()
-                            viewModel.register()
+                        onButtonClick = remember {
+                            {
+                                focusManager.clearFocus()
+                                keyboardController?.hide()
+                                viewModel.register()
+                            }
                         }
                     )
                 }
@@ -349,8 +355,10 @@ fun SignUpScreen(
                         modifier = modifier,
                         text = "Войдите",
                         palette = palette,
-                        onTextClick = {
-                            // TODO: move the user to login screen
+                        onTextClick = remember {
+                            {
+                                // TODO: move the user to login screen
+                            }
                         }
                     )
                 }
