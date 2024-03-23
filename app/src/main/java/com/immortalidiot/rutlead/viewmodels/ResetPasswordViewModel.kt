@@ -72,7 +72,7 @@ class ResetPasswordViewModel : ViewModel() {
     fun resetPassword() {
         val email = _uiState.value.email.validateEmail()
         val password = _uiState.value.password.validatePassword()
-        val confirmPassword = _uiState.value.confirmPassword.validateConfirmPassword(
+        val confirmPassword = validateConfirmPassword(
             password = uiState.value.password,
             confirmPassword = uiState.value.confirmPassword
         )

@@ -50,7 +50,7 @@ fun String.validatePassword(): Result<Boolean> {
     }
 }
 
-fun String.validateConfirmPassword(password: String, confirmPassword: String):Result<Unit> {
+fun validateConfirmPassword(password: String, confirmPassword: String):Result<Unit> {
     return if (password == confirmPassword) {
         Result.success(Unit)
     } else {
