@@ -143,12 +143,11 @@ fun ResetPassword(
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalXXLarge))
                 PrimaryTextField(
-                    modifier = modifier
-                        .border(
-                            width = dimensions.borderSSmall,
-                            color = palette.outline,
-                            shape = roundedShape
-                        ),
+                    modifier = modifier.border(
+                        width = dimensions.borderSSmall,
+                        color = palette.outline,
+                        shape = roundedShape
+                    ),
                     value = uiState.email,
                     isSingleLine = true,
                     label = {
@@ -179,12 +178,11 @@ fun ResetPassword(
                 PasswordField(
                     hint = "Пароль",
                     palette = palette,
-                    modifier = modifier
-                        .border(
-                            width = dimensions.borderSSmall,
-                            color = palette.outline,
-                            shape = roundedShape
-                        ),
+                    modifier = modifier.border(
+                        width = dimensions.borderSSmall,
+                        color = palette.outline,
+                        shape = roundedShape
+                    ),
                     passwordValue = uiState.password,
                     imageVector = if (uiState.isPasswordVisible) {
                         ImageVector.vectorResource(id = R.drawable.password_visibility_on)
@@ -208,12 +206,11 @@ fun ResetPassword(
                 PasswordField(
                     hint = "Пароль повторно",
                     palette = palette,
-                    modifier = modifier
-                        .border(
-                            width = dimensions.borderSSmall,
-                            color = palette.outline,
-                            shape = roundedShape
-                        ),
+                    modifier = modifier.border(
+                        width = dimensions.borderSSmall,
+                        color = palette.outline,
+                        shape = roundedShape
+                    ),
                     passwordValue = uiState.confirmPassword,
                     imageVector = if (uiState.isPasswordVisible) {
                         ImageVector.vectorResource(id = R.drawable.password_visibility_on)
