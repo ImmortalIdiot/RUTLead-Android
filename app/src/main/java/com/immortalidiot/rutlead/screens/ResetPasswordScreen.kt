@@ -222,12 +222,10 @@ fun ResetPassword(
                     } else {
                         PasswordVisualTransformation()
                     },
-                    onDoneAction = remember {
-                        {
-                            focusManager.clearFocus()
-                            keyboardController?.hide()
-                            viewModel.resetPassword()
-                        }
+                    onDoneAction = {
+                        focusManager.clearFocus()
+                        keyboardController?.hide()
+                        viewModel.resetPassword()
                     },
                     onIconClick = {
                         viewModel.changePasswordVisibility(uiState.isPasswordVisible)
