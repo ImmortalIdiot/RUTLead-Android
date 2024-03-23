@@ -155,10 +155,7 @@ fun SignUpScreen(
                     color = palette.outline,
                     shape = roundedShape
                 )
-                .padding(
-                    top = dimensions.verticalBigPadding,
-                    bottom = dimensions.verticalBigPadding
-                )
+                .padding(vertical = dimensions.verticalBigPadding)
         ) {
             Column(
                 modifier = modifier.fillMaxWidth(0.85f),
@@ -183,12 +180,11 @@ fun SignUpScreen(
                     )
                     Spacer(modifier = modifier.height(dimensions.verticalXLarge))
                     PrimaryTextField(
-                        modifier = modifier
-                            .border(
-                                width = dimensions.borderSSmall,
-                                color = palette.outline,
-                                shape = roundedShape
-                            ),
+                        modifier = modifier.border(
+                            width = dimensions.borderSSmall,
+                            color = palette.outline,
+                            shape = roundedShape
+                        ),
                         value = uiState.email,
                         isSingleLine = true,
                         label = {
@@ -263,12 +259,11 @@ fun SignUpScreen(
                     state is SignUpViewModel.State.SignUpValidationSecondPartError
                 ) {
                     PrimaryTextField(
-                        modifier = modifier
-                            .border(
-                                width = dimensions.borderSSmall,
-                                color = palette.outline,
-                                shape = roundedShape
-                            ),
+                        modifier = modifier.border(
+                            width = dimensions.borderSSmall,
+                            color = palette.outline,
+                            shape = roundedShape
+                        ),
                         value = uiState.name,
                         isSingleLine = true,
                         label = {

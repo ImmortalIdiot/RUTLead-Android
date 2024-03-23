@@ -115,10 +115,7 @@ fun LoginDesign(
                     color = palette.outline,
                     shape = roundedShape
                 )
-                .padding(
-                    top = dimensions.verticalBigPadding,
-                    bottom = dimensions.verticalBigPadding
-                )
+                .padding(vertical = dimensions.verticalBigPadding)
         ) {
             Column(
                 modifier = modifier.fillMaxWidth(0.85f),
@@ -142,12 +139,11 @@ fun LoginDesign(
                 PasswordField(
                     hint = "Пароль",
                     palette = palette,
-                    modifier = modifier
-                        .border(
-                            width = dimensions.borderSSmall,
-                            color = palette.outline,
-                            shape = roundedShape
-                        ),
+                    modifier = modifier.border(
+                        width = dimensions.borderSSmall,
+                        color = palette.outline,
+                        shape = roundedShape
+                    ),
                     passwordValue = uiState.password,
                     imageVector = if (uiState.isPasswordVisible) {
                         ImageVector.vectorResource(id = R.drawable.password_visibility_on)
