@@ -33,6 +33,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -139,7 +140,7 @@ fun ResetPassword(
                 modifier = modifier.fillMaxWidth(0.85f)
             ) {
                 BoxLabel(
-                    text = "Сброс пароля",
+                    text = stringResource(id = R.string.reset_password),
                     palette = palette
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalXXLarge))
@@ -153,7 +154,7 @@ fun ResetPassword(
                     isSingleLine = true,
                     label = {
                         Text(
-                            text = "Email",
+                            text = stringResource(id = R.string.email),
                             style = if (uiState.isFocused || uiState.email.isNotBlank()) {
                                 mediumInter12.copy(color = palette.containerText)
                             } else {
@@ -177,7 +178,7 @@ fun ResetPassword(
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalXLarge))
                 PasswordField(
-                    hint = "Пароль",
+                    hint = stringResource(id = R.string.password),
                     palette = palette,
                     modifier = modifier.border(
                         width = dimensions.borderSSmall,
@@ -205,7 +206,7 @@ fun ResetPassword(
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalXLarge))
                 PasswordField(
-                    hint = "Пароль повторно",
+                    hint = stringResource(id = R.string.confirm_password),
                     palette = palette,
                     modifier = modifier.border(
                         width = dimensions.borderSSmall,
@@ -241,7 +242,7 @@ fun ResetPassword(
                         .fillMaxHeight(0.16f)
                         .fillMaxWidth(0.55f),
                     palette = palette,
-                    text = "Сменить",
+                    text = stringResource(id = R.string.change_password),
                     onButtonClick = {
                         focusManager.clearFocus()
                         keyboardController?.hide()
@@ -254,12 +255,12 @@ fun ResetPassword(
                     horizontalArrangement = Arrangement.Center
                 ) {
                     Text(
-                        text = "Есть аккаунт?",
+                        text = stringResource(id = R.string.account_existing),
                         style = boldInter14.copy(color = palette.text),
                     )
                     RedirectText(
                         modifier = modifier,
-                        text = "Войдите",
+                        text = stringResource(id = R.string.login_text_button),
                         palette = palette,
                         onTextClick = {
                             // TODO: move the user to login screen

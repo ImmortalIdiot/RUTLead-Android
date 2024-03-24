@@ -2,4 +2,12 @@
     <string name="app_name">RUTLead</string>
     <string name="account_missing">Нет аккаунта? </string>
 
+    <string name="reset_password">Сброс пароля</string>
+    <string name="email">Email</string>
+    <string name="password">Пароль</string>
+    <string name="confirm_password">Пароль повторно</string>
+    <string name="change_password">Сменить</string>
+    <string name="account_existing">Есть аккаунт?</string>
+    <string name="login_text_button">Войдите</string>
+
 </resources>
