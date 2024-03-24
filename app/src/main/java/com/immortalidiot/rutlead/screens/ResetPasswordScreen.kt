@@ -77,13 +77,14 @@ fun ResetPassword(
     var passwordErrorMessage = ""
     var confirmPasswordErrorMessage = ""
 
-    (state as? ResetPasswordViewModel.State.ValidationError)?.let {
-        emailErrorMessage = it.emailError.toString()
-        passwordErrorMessage = it.passwordError.toString()
-        confirmPasswordErrorMessage = it.confirmPasswordError.toString()
-    }
 
     LaunchedEffect(key1 = state) {
+        (state as? ResetPasswordViewModel.State.ValidationError)?.let {
+            emailErrorMessage = it.emailError.toString()
+            passwordErrorMessage = it.passwordError.toString()
+            confirmPasswordErrorMessage = it.confirmPasswordError.toString()
+        }
+
         if (state is ResetPasswordViewModel.State.ValidationError) {
             val errorState = state as ResetPasswordViewModel.State.ValidationError
 
