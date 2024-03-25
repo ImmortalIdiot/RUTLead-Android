@@ -41,6 +41,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.immortalidiot.rutlead.R
+import com.immortalidiot.rutlead.navigation.auth.AuthScreen
+import com.immortalidiot.rutlead.navigation.main.RUTLeadScreen
 import com.immortalidiot.rutlead.ui.components.buttons.PrimaryButton
 import com.immortalidiot.rutlead.ui.components.other.BottomSnackbar
 import com.immortalidiot.rutlead.ui.components.other.BoxLabel
@@ -263,7 +265,12 @@ fun ResetPassword(
                         text = stringResource(id = R.string.login_text_button),
                         palette = palette,
                         onTextClick = {
-                            // TODO: move the user to login screen
+                            navController.navigate(AuthScreen.LoginScreen.route) {
+                                popUpTo(0) {
+                                    inclusive = true
+                                    saveState = false
+                                }
+                            }
                         }
                     )
                 }

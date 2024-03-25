@@ -207,7 +207,12 @@ fun LoginScreen(
                     text = "Забыли пароль?",
                     palette = palette,
                     onTextClick = {
-                        // TODO: show the password changing window to the user
+                        navHostController.navigate(AuthScreen.ResetPasswordScreen.route) {
+                            popUpTo(0) {
+                                inclusive = true
+                                saveState = false
+                            }
+                        }
                     }
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalSLarge))
