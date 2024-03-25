@@ -33,6 +33,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.immortalidiot.rutlead.R
+import com.immortalidiot.rutlead.navigation.auth.AuthScreen
 import com.immortalidiot.rutlead.ui.components.buttons.PrimaryButton
 import com.immortalidiot.rutlead.ui.components.other.AccountMissing
 import com.immortalidiot.rutlead.ui.components.other.BottomSnackbar
@@ -191,7 +192,12 @@ fun LoginScreen(
                         text = "Зарегистрируйтесь",
                         palette = palette,
                         onTextClick = {
-                            // TODO: move user to sign up screen
+                            navHostController.navigate(AuthScreen.SignUpScreen.route) {
+                                popUpTo(0) {
+                                    inclusive = true
+                                    saveState = false
+                                }
+                            }
                         }
                     )
                 }
