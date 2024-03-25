@@ -30,6 +30,8 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.immortalidiot.rutlead.R
 import com.immortalidiot.rutlead.ui.components.buttons.PrimaryButton
 import com.immortalidiot.rutlead.ui.components.other.AccountMissing
@@ -49,8 +51,10 @@ import com.immortalidiot.rutlead.presentation.viemodels.auth.LoginScreenViewMode
 fun LoginScreen(
     modifier: Modifier = Modifier,
     viewModel: LoginScreenViewModel,
-    palette: ThemeColors,
+    navHostController: NavHostController
 ) {
+    val palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
+
     val dimensions = LocalDimensions.current
     val roundedShape = RoundedCornerShape(dimensions.shapeXLarge)
 
@@ -216,6 +220,6 @@ fun LoginScreen(
 fun LoginScreenPreview() {
     LoginScreen(
         viewModel = LoginScreenViewModel(),
-        palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
+        navHostController = rememberNavController()
     )
 }
