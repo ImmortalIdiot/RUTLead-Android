@@ -115,9 +115,7 @@ fun LoginDesign(
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = modifier
-                    .fillMaxWidth(0.85f)
-
+                modifier = modifier.fillMaxWidth(0.85f)
             ) {
                 BoxLabel(
                     text = "Авторизация",
@@ -128,20 +126,17 @@ fun LoginDesign(
                     hint = "Номер студенческого билета",
                     palette = palette,
                     value = uiState.studentID,
-                    onTextChange = { studentID ->
-                        viewModel.changeLogin(studentID)
-                    }
+                    onTextChange = { studentID -> viewModel.changeLogin(studentID) }
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalXLarge))
                 PasswordField(
                     hint = "Пароль",
                     palette = palette,
-                    modifier = modifier
-                        .border(
-                            width = dimensions.borderSSmall,
-                            color = palette.outline,
-                            shape = roundedShape
-                        ),
+                    modifier = modifier.border(
+                        width = dimensions.borderSSmall,
+                        color = palette.outline,
+                        shape = roundedShape
+                    ),
                     passwordValue = uiState.password,
                     imageVector = if (uiState.isPasswordVisible) {
                         ImageVector.vectorResource(id = R.drawable.password_visibility_on)
@@ -161,9 +156,7 @@ fun LoginDesign(
                     onIconClick = {
                         viewModel.changePasswordVisibility(uiState.isPasswordVisible)
                     },
-                    onTextChange = { password ->
-                        viewModel.changePassword(password)
-                    },
+                    onTextChange = { password -> viewModel.changePassword(password) },
                 )
                 Spacer(modifier = Modifier.height(dimensions.verticalXLarge))
                 SignInButton(
@@ -181,9 +174,7 @@ fun LoginDesign(
                     modifier = modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    AccountMissing(
-                        palette = palette
-                    )
+                    AccountMissing(palette = palette)
                     RedirectText(
                         modifier = modifier,
                         text = "Зарегистрируйтесь",
@@ -218,7 +209,6 @@ fun LoginDesign(
 fun LoginScreenPreview() {
     LoginDesign(
         viewModel = LoginScreenViewModel(),
-        palette = if (isSystemInDarkTheme()) ThemeColors.Dark
-        else ThemeColors.Light
+        palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
     )
 }

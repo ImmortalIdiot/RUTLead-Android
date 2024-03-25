@@ -172,9 +172,7 @@ fun ResetPassword(
                         unfocusedIndicatorColor = Color.Transparent,
                         focusedIndicatorColor = Color.Transparent
                     ),
-                    onTextChange = { email ->
-                        viewModel.changeEmail(email = email)
-                    }
+                    onTextChange = { email -> viewModel.changeEmail(email = email) }
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalXLarge))
                 PasswordField(
@@ -200,9 +198,7 @@ fun ResetPassword(
                     onIconClick = {
                         viewModel.changePasswordVisibility(uiState.isPasswordVisible)
                     },
-                    onTextChange = { password ->
-                        viewModel.changePassword(password)
-                    },
+                    onTextChange = { password -> viewModel.changePassword(password) },
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalXLarge))
                 PasswordField(
