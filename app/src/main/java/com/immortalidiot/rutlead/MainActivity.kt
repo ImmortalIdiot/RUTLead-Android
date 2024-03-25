@@ -13,10 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import com.immortalidiot.rutlead.providers.LocalSnackbarHostState
-import com.immortalidiot.rutlead.screens.LoginDesign
+import com.immortalidiot.rutlead.presentation.screens.auth.LoginDesign
 import com.immortalidiot.rutlead.ui.theme.RUTLeadTheme
 import com.immortalidiot.rutlead.ui.theme.ThemeColors
-import com.immortalidiot.rutlead.viewmodels.LoginScreenViewModel
+import com.immortalidiot.rutlead.presentation.viemodels.auth.LoginScreenViewModel
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalComposeUiApi::class)

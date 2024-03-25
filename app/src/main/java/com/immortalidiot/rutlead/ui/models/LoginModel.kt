@@ -1,4 +1,4 @@
-package com.immortalidiot.rutlead.models
+package com.immortalidiot.rutlead.ui.models
 
 data class LoginModel(
     val studentID: String,

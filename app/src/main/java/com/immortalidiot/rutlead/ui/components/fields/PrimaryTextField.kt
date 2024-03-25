@@ -1,4 +1,4 @@
-package com.immortalidiot.rutlead.fields
+package com.immortalidiot.rutlead.ui.components.fields
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions

@@ -1,4 +1,4 @@
-package com.immortalidiot.rutlead.buttons.login
+package com.immortalidiot.rutlead.ui.components.buttons
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
