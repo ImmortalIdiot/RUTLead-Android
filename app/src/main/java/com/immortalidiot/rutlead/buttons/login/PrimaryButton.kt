@@ -2,8 +2,6 @@ package com.immortalidiot.rutlead.buttons.login
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -16,7 +14,7 @@ import com.immortalidiot.rutlead.ui.theme.ThemeColors
 import com.immortalidiot.rutlead.ui.theme.boldLato20
 
 @Composable
-fun SignInButton(
+fun PrimaryButton(
     modifier: Modifier,
     palette: ThemeColors,
     text: String,
@@ -26,17 +24,12 @@ fun SignInButton(
     val roundedShape = RoundedCornerShape(dimensions.shapeSLarge)
 
     Button(
-        onClick = {
-            onButtonClick()
-        },
-        modifier = modifier
-            .fillMaxHeight(0.3f)
-            .fillMaxWidth(0.55f)
-            .border(
-                width = dimensions.borderSSmall,
-                shape = roundedShape,
-                color = palette.outline
-            ),
+        onClick = { onButtonClick() },
+        modifier = modifier.border(
+            width = dimensions.borderSSmall,
+            shape = roundedShape,
+            color = palette.outline
+        ),
         shape = roundedShape,
         colors = ButtonDefaults.buttonColors(containerColor = palette.container)
     ) {

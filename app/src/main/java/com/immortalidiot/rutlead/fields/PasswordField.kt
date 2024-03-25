@@ -44,7 +44,7 @@ fun PasswordField(
     passwordValue: String = "",
     imageVector: ImageVector,
     visualTransformation: VisualTransformation,
-    onDoneAction: () -> Unit?,
+    onDoneAction: () -> Unit,
     onIconClick: () -> Unit,
     onTextChange: (password: String) -> Unit
 ) {
@@ -92,11 +92,7 @@ fun PasswordField(
             },
             isSingleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            keyboardActions = KeyboardActions(
-                onDone = {
-                    onDoneAction()
-                }
-            ),
+            keyboardActions = KeyboardActions(onDone = { onDoneAction() }),
             colors = TextFieldDefaults.textFieldColors(
                 containerColor = palette.container,
                 textColor = palette.containerText,
