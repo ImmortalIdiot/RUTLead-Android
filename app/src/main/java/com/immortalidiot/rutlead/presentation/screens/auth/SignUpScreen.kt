@@ -354,7 +354,6 @@ fun SignUpScreen(
                                     saveState = false
                                 }
                             }
-                            // TODO: move the user to login screen
                         }
                     )
                 }
