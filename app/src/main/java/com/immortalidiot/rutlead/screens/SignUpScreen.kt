@@ -207,9 +207,7 @@ fun SignUpScreen(
                             unfocusedIndicatorColor = Color.Transparent,
                             focusedIndicatorColor = Color.Transparent
                         ),
-                        onTextChange = { email ->
-                            viewModel.changeEmail(email = email)
-                        }
+                        onTextChange = { email -> viewModel.changeEmail(email = email) }
                     )
                     Spacer(modifier = modifier.height(dimensions.verticalXLarge))
                     PasswordField(
@@ -238,9 +236,7 @@ fun SignUpScreen(
                         onIconClick = {
                             viewModel.changePasswordVisibility(uiState.isPasswordVisible)
                         },
-                        onTextChange = { password ->
-                            viewModel.changePassword(password = password)
-                        }
+                        onTextChange = { password -> viewModel.changePassword(password = password) }
                     )
                     Spacer(modifier = modifier.height(dimensions.verticalXLarge))
                     PrimaryButton(
@@ -286,9 +282,7 @@ fun SignUpScreen(
                             unfocusedIndicatorColor = Color.Transparent,
                             focusedIndicatorColor = Color.Transparent
                         ),
-                        onTextChange = { name ->
-                            viewModel.changeName(name = name)
-                        }
+                        onTextChange = { name -> viewModel.changeName(name = name) }
                     )
                     Spacer(modifier = modifier.height(dimensions.verticalXLarge))
                     PrimaryTextField(
@@ -319,9 +313,7 @@ fun SignUpScreen(
                             unfocusedIndicatorColor = Color.Transparent,
                             focusedIndicatorColor = Color.Transparent
                         ),
-                        onTextChange = { group ->
-                            viewModel.changeGroup(group = group)
-                        }
+                        onTextChange = { group -> viewModel.changeGroup(group = group) }
                     )
                     Spacer(modifier = modifier.height(dimensions.verticalXLarge))
                     PrimaryButton(

@@ -92,11 +92,7 @@ fun PasswordField(
             },
             isSingleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            keyboardActions = KeyboardActions(
-                onDone = {
-                    onDoneAction()
-                }
-            ),
+            keyboardActions = KeyboardActions(onDone = { onDoneAction() }),
             colors = TextFieldDefaults.textFieldColors(
                 containerColor = palette.container,
                 textColor = palette.containerText,

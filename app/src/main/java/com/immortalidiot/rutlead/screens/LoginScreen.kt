@@ -222,7 +222,6 @@ fun LoginDesign(
 fun LoginScreenPreview() {
     LoginDesign(
         viewModel = LoginScreenViewModel(),
-        palette = if (isSystemInDarkTheme()) ThemeColors.Dark
-        else ThemeColors.Light
+        palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
     )
 }

@@ -20,9 +20,7 @@ fun RedirectText(
     Text(
         modifier = modifier
             .padding(start = LocalDimensions.current.verticalSmallPadding)
-            .clickable {
-                onTextClick()
-            },
+            .clickable { onTextClick() },
         text = text,
         style = boldInter14,
         color = palette.text,
