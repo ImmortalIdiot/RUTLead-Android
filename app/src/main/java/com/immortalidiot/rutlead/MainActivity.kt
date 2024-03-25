@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import com.immortalidiot.rutlead.providers.LocalSnackbarHostState
-import com.immortalidiot.rutlead.presentation.screens.auth.LoginDesign
+import com.immortalidiot.rutlead.presentation.screens.auth.LoginScreen
 import com.immortalidiot.rutlead.ui.theme.RUTLeadTheme
 import com.immortalidiot.rutlead.ui.theme.ThemeColors
 import com.immortalidiot.rutlead.presentation.viemodels.auth.LoginScreenViewModel
@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
                 val palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
 
                 CompositionLocalProvider(LocalSnackbarHostState provides snackbarHostState) {
-                    LoginDesign(
+                    LoginScreen(
                         modifier = Modifier.pointerInput(Unit) {
                             detectTapGestures(
                                 onTap = {

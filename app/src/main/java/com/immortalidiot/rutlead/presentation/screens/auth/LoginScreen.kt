@@ -46,7 +46,7 @@ import com.immortalidiot.rutlead.presentation.viemodels.auth.LoginScreenViewMode
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun LoginDesign(
+fun LoginScreen(
     modifier: Modifier = Modifier,
     viewModel: LoginScreenViewModel,
     palette: ThemeColors,
@@ -214,7 +214,7 @@ fun LoginDesign(
 @Preview
 @Composable
 fun LoginScreenPreview() {
-    LoginDesign(
+    LoginScreen(
         viewModel = LoginScreenViewModel(),
         palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
     )
