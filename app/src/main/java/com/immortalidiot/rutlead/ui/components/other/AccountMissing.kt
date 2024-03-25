@@ -1,4 +1,4 @@
-package com.immortalidiot.rutlead.components.login
+package com.immortalidiot.rutlead.ui.components.other
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

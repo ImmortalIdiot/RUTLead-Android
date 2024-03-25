@@ -1,8 +1,8 @@
-package com.immortalidiot.rutlead.viewmodels
+package com.immortalidiot.rutlead.presentation.viemodels.auth
 
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
-import com.immortalidiot.rutlead.models.ResetPasswordModel
+import com.immortalidiot.rutlead.ui.models.ResetPasswordModel
 import com.immortalidiot.rutlead.validation.validateConfirmPassword
 import com.immortalidiot.rutlead.validation.validateEmail
 import com.immortalidiot.rutlead.validation.validatePassword

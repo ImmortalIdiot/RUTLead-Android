@@ -1,4 +1,4 @@
-package com.immortalidiot.rutlead.screens
+package com.immortalidiot.rutlead.presentation.screens.auth
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -39,12 +39,12 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import com.immortalidiot.rutlead.R
-import com.immortalidiot.rutlead.buttons.login.PrimaryButton
-import com.immortalidiot.rutlead.components.login.BottomSnackbar
-import com.immortalidiot.rutlead.components.login.BoxLabel
-import com.immortalidiot.rutlead.components.login.RedirectText
-import com.immortalidiot.rutlead.fields.PasswordField
-import com.immortalidiot.rutlead.fields.PrimaryTextField
+import com.immortalidiot.rutlead.ui.components.buttons.PrimaryButton
+import com.immortalidiot.rutlead.ui.components.other.BottomSnackbar
+import com.immortalidiot.rutlead.ui.components.other.BoxLabel
+import com.immortalidiot.rutlead.ui.components.other.RedirectText
+import com.immortalidiot.rutlead.ui.components.fields.PasswordField
+import com.immortalidiot.rutlead.ui.components.fields.PrimaryTextField
 import com.immortalidiot.rutlead.providers.LocalSnackbarHostState
 import com.immortalidiot.rutlead.providers.showMessage
 import com.immortalidiot.rutlead.ui.theme.LocalDimensions
@@ -52,7 +52,7 @@ import com.immortalidiot.rutlead.ui.theme.ThemeColors
 import com.immortalidiot.rutlead.ui.theme.boldInter14
 import com.immortalidiot.rutlead.ui.theme.mediumInter12
 import com.immortalidiot.rutlead.ui.theme.mediumInter14
-import com.immortalidiot.rutlead.viewmodels.ResetPasswordViewModel
+import com.immortalidiot.rutlead.presentation.viemodels.auth.ResetPasswordViewModel
 
 @OptIn(
     ExperimentalMaterial3Api::class,

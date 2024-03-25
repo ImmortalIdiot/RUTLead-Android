@@ -1,4 +1,4 @@
-package com.immortalidiot.rutlead.fields
+package com.immortalidiot.rutlead.ui.components.fields
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth

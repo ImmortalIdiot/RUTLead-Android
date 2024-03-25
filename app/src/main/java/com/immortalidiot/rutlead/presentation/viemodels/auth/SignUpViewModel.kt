@@ -1,8 +1,8 @@
-package com.immortalidiot.rutlead.viewmodels
+package com.immortalidiot.rutlead.presentation.viemodels.auth
 
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
-import com.immortalidiot.rutlead.models.SignUpModel
+import com.immortalidiot.rutlead.ui.models.SignUpModel
 import com.immortalidiot.rutlead.validation.validateEmail
 import com.immortalidiot.rutlead.validation.validateGroup
 import com.immortalidiot.rutlead.validation.validateName

@@ -1,9 +1,9 @@
-package com.immortalidiot.rutlead.viewmodels
+package com.immortalidiot.rutlead.presentation.viemodels.auth
 
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.immortalidiot.rutlead.models.LoginModel
+import com.immortalidiot.rutlead.ui.models.LoginModel
 import com.immortalidiot.rutlead.validation.validatePassword
 import com.immortalidiot.rutlead.validation.validateStudentID
 import kotlinx.coroutines.flow.MutableStateFlow
