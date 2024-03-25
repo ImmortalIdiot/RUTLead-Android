@@ -127,6 +127,9 @@ class SignUpViewModel : ViewModel() {
                 )
             }
         } else {
+            mutableState.update {
+                State.Success
+            }
             // TODO: register the user
         }
     }
