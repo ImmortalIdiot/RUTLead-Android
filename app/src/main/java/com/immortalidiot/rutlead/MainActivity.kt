@@ -28,20 +28,8 @@ class MainActivity : ComponentActivity() {
 
                 val keyboardController = LocalSoftwareKeyboardController.current
 
-                val palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
-
                 CompositionLocalProvider(LocalSnackbarHostState provides snackbarHostState) {
-                    LoginScreen(
-                        modifier = Modifier.pointerInput(Unit) {
-                            detectTapGestures(
-                                onTap = {
-                                    keyboardController?.hide()
-                                }
-                            )
-                        },
-                        viewModel = LoginScreenViewModel(),
-                        palette = palette
-                    )
+
                 }
             }
         }
