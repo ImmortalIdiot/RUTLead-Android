@@ -39,7 +39,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import com.immortalidiot.rutlead.R
-import com.immortalidiot.rutlead.buttons.login.SignInButton
+import com.immortalidiot.rutlead.buttons.login.PrimaryButton
 import com.immortalidiot.rutlead.components.login.BottomSnackbar
 import com.immortalidiot.rutlead.components.login.BoxLabel
 import com.immortalidiot.rutlead.components.login.RedirectText
@@ -233,7 +233,7 @@ fun ResetPassword(
                     },
                 )
                 Spacer(modifier = Modifier.height(dimensions.verticalXLarge))
-                SignInButton(
+                PrimaryButton(
                     modifier = modifier
                         .fillMaxHeight(0.16f)
                         .fillMaxWidth(0.55f),
