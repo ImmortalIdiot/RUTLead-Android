@@ -37,6 +37,8 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.immortalidiot.rutlead.R
 import com.immortalidiot.rutlead.ui.components.buttons.PrimaryButton
 import com.immortalidiot.rutlead.ui.components.other.BottomSnackbar
@@ -61,7 +63,8 @@ import com.immortalidiot.rutlead.presentation.viemodels.auth.SignUpViewModel
 @Composable
 fun SignUpScreen(
     modifier: Modifier = Modifier,
-    viewModel: SignUpViewModel
+    viewModel: SignUpViewModel,
+    navHostController: NavHostController
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val state by viewModel.mutableState.collectAsState()
@@ -367,7 +370,8 @@ fun SignUpScreenPreview() {
 
     CompositionLocalProvider(LocalSnackbarHostState provides snackbarHostState) {
         SignUpScreen(
-            viewModel = SignUpViewModel()
+            viewModel = SignUpViewModel(),
+            navHostController = rememberNavController()
         )
     }
 }
