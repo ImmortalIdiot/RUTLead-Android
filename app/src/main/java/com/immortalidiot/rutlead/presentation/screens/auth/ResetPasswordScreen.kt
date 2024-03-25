@@ -62,7 +62,6 @@ import com.immortalidiot.rutlead.presentation.viemodels.auth.ResetPasswordViewMo
 fun ResetPassword(
     modifier: Modifier = Modifier,
     viewModel: ResetPasswordViewModel,
-    palette: ThemeColors
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val state by viewModel.mutableState.collectAsState()
@@ -71,6 +70,8 @@ fun ResetPassword(
     val keyboardController = LocalSoftwareKeyboardController.current
     val snackbarHostState = LocalSnackbarHostState.current
     val focusManager = LocalFocusManager.current
+
+    val palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
 
     val roundedShape = RoundedCornerShape(dimensions.shapeXLarge)
 
@@ -281,7 +282,6 @@ fun ResetPasswordPreview() {
     CompositionLocalProvider(LocalSnackbarHostState provides snackbarHostState) {
         ResetPassword(
             viewModel = ResetPasswordViewModel(),
-            palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
         )
     }
 }
