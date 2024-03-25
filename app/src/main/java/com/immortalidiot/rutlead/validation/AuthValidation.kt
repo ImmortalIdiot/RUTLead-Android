@@ -79,3 +79,40 @@ fun String.validateEmail(): Result<Boolean> {
         )
     }
 }
+
+fun String.validateGroup(): Result<Boolean> {
+    val containsFirstLetters = this.take(3).all { it.isLetter() }
+    val containsLastDigits = this.takeLast(3).all { it.isDigit() }
+
+    return if (this.isNotBlank()
+        && this.length == 7
+        && this[3] == '-'
+        && containsFirstLetters
+        && containsLastDigits
+    ) {
+        Result.success(true)
+    } else {
+        Result.failure(
+            AuthValidationException(
+                "Неверный формат группы. Пример: УВП-111"
+            )
+        )
+    }
+}
+
+fun String.validateName(): Result<Boolean> {
+    val fullName = this.split(' ')
+
+    return if (fullName.size == 3 &&
+        fullName.all { it.isNotBlank() } &&
+        fullName.all { it.all { it.isLetter() } }
+    ) {
+        Result.success(true)
+    } else {
+        Result.failure(
+            AuthValidationException(
+                "Введите верные ФИО. Пример: Иванов Иван Иванович"
+            )
+        )
+    }
+}

@@ -14,7 +14,7 @@ import com.immortalidiot.rutlead.ui.theme.ThemeColors
 import com.immortalidiot.rutlead.ui.theme.boldLato20
 
 @Composable
-fun SignInButton(
+fun PrimaryButton(
     modifier: Modifier,
     palette: ThemeColors,
     text: String,
@@ -24,15 +24,12 @@ fun SignInButton(
     val roundedShape = RoundedCornerShape(dimensions.shapeSLarge)
 
     Button(
-        onClick = {
-            onButtonClick()
-        },
-        modifier = modifier
-            .border(
-                width = dimensions.borderSSmall,
-                shape = roundedShape,
-                color = palette.outline
-            ),
+        onClick = { onButtonClick() },
+        modifier = modifier.border(
+            width = dimensions.borderSSmall,
+            shape = roundedShape,
+            color = palette.outline
+        ),
         shape = roundedShape,
         colors = ButtonDefaults.buttonColors(containerColor = palette.container)
     ) {
