@@ -6,4 +6,5 @@ import androidx.compose.runtime.Immutable
 sealed class AuthScreen(val route: String) {
     object LoginScreen: AuthScreen("Login")
     object SignUpScreen: AuthScreen("SignUp")
+    object ResetPasswordScreen: AuthScreen("ResetPassword")
 }
