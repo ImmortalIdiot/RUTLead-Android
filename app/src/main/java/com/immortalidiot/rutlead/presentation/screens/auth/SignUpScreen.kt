@@ -346,10 +346,8 @@ fun SignUpScreen(
                         modifier = modifier,
                         text = "Войдите",
                         palette = palette,
-                        onTextClick = remember {
-                            {
-                                // TODO: move the user to login screen
-                            }
+                        onTextClick = {
+                            // TODO: move the user to login screen
                         }
                     )
                 }
