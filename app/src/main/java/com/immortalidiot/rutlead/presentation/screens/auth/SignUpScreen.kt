@@ -61,7 +61,6 @@ import com.immortalidiot.rutlead.presentation.viemodels.auth.SignUpViewModel
 @Composable
 fun SignUpScreen(
     modifier: Modifier = Modifier,
-    palette: ThemeColors,
     viewModel: SignUpViewModel
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -71,6 +70,8 @@ fun SignUpScreen(
     val keyboardController = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
     val snackbarHostState = LocalSnackbarHostState.current
+
+    val palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
 
     val roundedShape = RoundedCornerShape(dimensions.shapeXLarge)
 
@@ -366,7 +367,6 @@ fun SignUpScreenPreview() {
 
     CompositionLocalProvider(LocalSnackbarHostState provides snackbarHostState) {
         SignUpScreen(
-            palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light,
             viewModel = SignUpViewModel()
         )
     }
