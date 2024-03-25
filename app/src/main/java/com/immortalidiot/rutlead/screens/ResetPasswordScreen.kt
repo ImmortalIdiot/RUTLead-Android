@@ -15,74 +15,92 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import com.immortalidiot.rutlead.R
 import com.immortalidiot.rutlead.buttons.login.PrimaryButton
-import com.immortalidiot.rutlead.components.login.AccountMissing
 import com.immortalidiot.rutlead.components.login.BottomSnackbar
 import com.immortalidiot.rutlead.components.login.BoxLabel
 import com.immortalidiot.rutlead.components.login.RedirectText
 import com.immortalidiot.rutlead.fields.PasswordField
-import com.immortalidiot.rutlead.fields.StudentIdTextField
+import com.immortalidiot.rutlead.fields.PrimaryTextField
 import com.immortalidiot.rutlead.providers.LocalSnackbarHostState
 import com.immortalidiot.rutlead.providers.showMessage
 import com.immortalidiot.rutlead.ui.theme.LocalDimensions
 import com.immortalidiot.rutlead.ui.theme.ThemeColors
-import com.immortalidiot.rutlead.viewmodels.LoginScreenViewModel
+import com.immortalidiot.rutlead.ui.theme.boldInter14
+import com.immortalidiot.rutlead.ui.theme.mediumInter12
+import com.immortalidiot.rutlead.ui.theme.mediumInter14
+import com.immortalidiot.rutlead.viewmodels.ResetPasswordViewModel
 
-@OptIn(ExperimentalComposeUiApi::class)
+@OptIn(
+    ExperimentalMaterial3Api::class,
+    ExperimentalComposeUiApi::class
+)
 @Composable
-fun LoginDesign(
+fun ResetPassword(
     modifier: Modifier = Modifier,
-    viewModel: LoginScreenViewModel,
-    palette: ThemeColors,
+    viewModel: ResetPasswordViewModel,
+    palette: ThemeColors
 ) {
-    val dimensions = LocalDimensions.current
-    val roundedShape = RoundedCornerShape(dimensions.shapeXLarge)
-
     val uiState by viewModel.uiState.collectAsState()
     val state by viewModel.mutableState.collectAsState()
 
-    val snackbarHostState = LocalSnackbarHostState.current
+    val dimensions = LocalDimensions.current
     val keyboardController = LocalSoftwareKeyboardController.current
+    val snackbarHostState = LocalSnackbarHostState.current
     val focusManager = LocalFocusManager.current
 
-    var studentIDErrorMessage = ""
-    var passwordErrorMessage = ""
+    val roundedShape = RoundedCornerShape(dimensions.shapeXLarge)
 
-    (state as? LoginScreenViewModel.State.ValidationError)?.let { errorState ->
-        studentIDErrorMessage = errorState.studentIDError.toString()
-        passwordErrorMessage = errorState.passwordError.toString()
-    }
+    var emailErrorMessage = ""
+    var passwordErrorMessage = ""
+    var confirmPasswordErrorMessage = ""
+
 
     LaunchedEffect(key1 = state) {
-        if (state is LoginScreenViewModel.State.ValidationError) {
-            val errorState = state as LoginScreenViewModel.State.ValidationError
+        (state as? ResetPasswordViewModel.State.ValidationError)?.let {
+            emailErrorMessage = it.emailError.toString()
+            passwordErrorMessage = it.passwordError.toString()
+            confirmPasswordErrorMessage = it.confirmPasswordError.toString()
+        }
+
+        if (state is ResetPasswordViewModel.State.ValidationError) {
+            val errorState = state as ResetPasswordViewModel.State.ValidationError
 
             when {
-                errorState.studentIDError != null ->
-                    snackbarHostState.showMessage(studentIDErrorMessage)
-
+                errorState.emailError != null ->
+                    snackbarHostState.showMessage(emailErrorMessage)
                 errorState.passwordError != null ->
                     snackbarHostState.showMessage(passwordErrorMessage)
+                errorState.confirmPasswordError != null ->
+                    snackbarHostState.showMessage(confirmPasswordErrorMessage)
             }
             viewModel.clearErrorStack()
         }
     }
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -118,24 +136,47 @@ fun LoginDesign(
                 .padding(vertical = dimensions.verticalBigPadding)
         ) {
             Column(
-                modifier = modifier.fillMaxWidth(0.85f),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+                modifier = modifier.fillMaxWidth(0.85f)
             ) {
                 BoxLabel(
-                    text = "Авторизация",
+                    text = stringResource(id = R.string.reset_password),
                     palette = palette
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalXXLarge))
-                StudentIdTextField(
-                    hint = "Номер студенческого билета",
-                    palette = palette,
-                    value = uiState.studentID,
-                    onTextChange = { studentID -> viewModel.changeLogin(studentID) }
+                PrimaryTextField(
+                    modifier = modifier.border(
+                        width = dimensions.borderSSmall,
+                        color = palette.outline,
+                        shape = roundedShape
+                    ),
+                    value = uiState.email,
+                    isSingleLine = true,
+                    label = {
+                        Text(
+                            text = stringResource(id = R.string.email),
+                            style = if (uiState.isFocused || uiState.email.isNotBlank()) {
+                                mediumInter12.copy(color = palette.containerText)
+                            } else {
+                                mediumInter14.copy(color = palette.containerText)
+                            }
+                        )
+                    },
+                    colors = TextFieldDefaults.textFieldColors(
+                        containerColor = palette.container,
+                        textColor = palette.containerText,
+                        cursorColor = palette.cursor,
+                        unfocusedLabelColor = palette.label,
+                        focusedLabelColor = palette.label,
+                        focusedSupportingTextColor = Color.White,
+                        unfocusedIndicatorColor = Color.Transparent,
+                        focusedIndicatorColor = Color.Transparent
+                    ),
+                    onTextChange = { email -> viewModel.changeEmail(email = email) }
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalXLarge))
                 PasswordField(
-                    hint = "Пароль",
+                    hint = stringResource(id = R.string.password),
                     palette = palette,
                     modifier = modifier.border(
                         width = dimensions.borderSSmall,
@@ -153,54 +194,75 @@ fun LoginDesign(
                     } else {
                         PasswordVisualTransformation()
                     },
-                    onDoneAction = {
-                        focusManager.clearFocus()
-                        keyboardController?.hide()
-                        viewModel.request()
-                    },
+                    onDoneAction = {},
                     onIconClick = {
                         viewModel.changePasswordVisibility(uiState.isPasswordVisible)
                     },
                     onTextChange = { password -> viewModel.changePassword(password) },
                 )
+                Spacer(modifier = modifier.height(dimensions.verticalXLarge))
+                PasswordField(
+                    hint = stringResource(id = R.string.confirm_password),
+                    palette = palette,
+                    modifier = modifier.border(
+                        width = dimensions.borderSSmall,
+                        color = palette.outline,
+                        shape = roundedShape
+                    ),
+                    passwordValue = uiState.confirmPassword,
+                    imageVector = if (uiState.isPasswordVisible) {
+                        ImageVector.vectorResource(id = R.drawable.password_visibility_on)
+                    } else {
+                        ImageVector.vectorResource(id = R.drawable.password_visibility_off)
+                    },
+                    visualTransformation = if (uiState.isPasswordVisible) {
+                        VisualTransformation.None
+                    } else {
+                        PasswordVisualTransformation()
+                    },
+                    onDoneAction = {
+                        focusManager.clearFocus()
+                        keyboardController?.hide()
+                        viewModel.resetPassword()
+                    },
+                    onIconClick = {
+                        viewModel.changePasswordVisibility(uiState.isPasswordVisible)
+                    },
+                    onTextChange = { confirmPassword ->
+                        viewModel.changeConfirmPassword(confirmPassword = confirmPassword)
+                    },
+                )
                 Spacer(modifier = Modifier.height(dimensions.verticalXLarge))
                 PrimaryButton(
                     modifier = modifier
-                        .fillMaxHeight(0.14f)
+                        .fillMaxHeight(0.16f)
                         .fillMaxWidth(0.55f),
                     palette = palette,
-                    text = "Войти",
+                    text = stringResource(id = R.string.change_password),
                     onButtonClick = {
                         focusManager.clearFocus()
                         keyboardController?.hide()
-                        viewModel.request()
-                    }
+                        viewModel.resetPassword()
+                    },
                 )
-                Spacer(modifier = modifier.height(dimensions.verticalXLarge))
+                Spacer(modifier = modifier.height(dimensions.verticalSLarge))
                 Row(
                     modifier = modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    AccountMissing(palette = palette)
+                    Text(
+                        text = stringResource(id = R.string.account_existing),
+                        style = boldInter14.copy(color = palette.text),
+                    )
                     RedirectText(
                         modifier = modifier,
-                        text = "Зарегистрируйтесь",
+                        text = stringResource(id = R.string.login_text_button),
                         palette = palette,
                         onTextClick = {
-                            // TODO: move user to sign up screen
+                            // TODO: move the user to login screen
                         }
                     )
                 }
-                Spacer(modifier = modifier.height(dimensions.verticalXSmall))
-                RedirectText(
-                    modifier = modifier,
-                    text = "Забыли пароль?",
-                    palette = palette,
-                    onTextClick = {
-                        // TODO: show the password changing window to the user
-                    }
-                )
-                Spacer(modifier = modifier.height(dimensions.verticalSLarge))
             }
         }
     }
@@ -213,9 +275,13 @@ fun LoginDesign(
 
 @Preview
 @Composable
-fun LoginScreenPreview() {
-    LoginDesign(
-        viewModel = LoginScreenViewModel(),
-        palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
-    )
+fun ResetPasswordPreview() {
+    val snackbarHostState = remember { SnackbarHostState() }
+
+    CompositionLocalProvider(LocalSnackbarHostState provides snackbarHostState) {
+        ResetPassword(
+            viewModel = ResetPasswordViewModel(),
+            palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
+        )
+    }
 }

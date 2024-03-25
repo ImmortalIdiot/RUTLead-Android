@@ -50,6 +50,18 @@ fun String.validatePassword(): Result<Boolean> {
     }
 }
 
+fun validateConfirmPassword(password: String, confirmPassword: String):Result<Unit> {
+    return if (password == confirmPassword) {
+        Result.success(Unit)
+    } else {
+        Result.failure(
+            AuthValidationException(
+                "Пароли не совпадают"
+            )
+        )
+    }
+}
+
 fun String.validateEmail(): Result<Boolean> {
     return if (this.isNotBlank() && Patterns.EMAIL_ADDRESS.matcher(this).matches()) {
         Result.success(true)
