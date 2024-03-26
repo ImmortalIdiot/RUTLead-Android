@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.immortalidiot.rutlead.navigation.auth.authScreenFlow
+import com.immortalidiot.rutlead.navigation.main.mainScreenFlow
 
 @Composable
 fun RUTLeadScreenFlow(
@@ -21,5 +22,6 @@ fun RUTLeadScreenFlow(
          startDestination = RUTLeadScreen.AuthScreenFlow.route
      ) {
          authScreenFlow(navController = navController) { isNavigationBarVisible(false) }
+         mainScreenFlow(navController = navController) { isNavigationBarVisible(true) }
      }
 }
