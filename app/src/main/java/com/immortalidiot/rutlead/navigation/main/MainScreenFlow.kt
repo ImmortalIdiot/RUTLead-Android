@@ -11,7 +11,8 @@ import com.immortalidiot.rutlead.presentation.screens.main.JournalScreen
 import com.immortalidiot.rutlead.presentation.screens.main.ProfileScreen
 
 fun NavGraphBuilder.mainScreenFlow(
-    navController: NavHostController
+    navController: NavHostController,
+    screenName: (String) -> Unit,
 ) {
     navigation(
         startDestination = MainScreen.JournalScreen.route,
@@ -23,6 +24,7 @@ fun NavGraphBuilder.mainScreenFlow(
             exitTransition = { fadeOut() }
         ) {
             JournalScreen(navController = navController)
+            screenName("Журнал")
         }
 
         composable(
@@ -31,6 +33,7 @@ fun NavGraphBuilder.mainScreenFlow(
             exitTransition = { fadeOut() }
         ) {
             ProfileScreen(navController = navController)
+            screenName("Профиль")
         }
     }
 }
