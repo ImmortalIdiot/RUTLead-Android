@@ -1,28 +1,23 @@
 package com.immortalidiot.rutlead.navigation.navBars
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.ui.graphics.vector.ImageVector
+import com.immortalidiot.rutlead.R
 import com.immortalidiot.rutlead.navigation.main.MainScreen
 
 
 sealed class NavigationBarItem(
     val route: String,
     val name: String,
-    val icon: ImageVector
+    val icon: Int
 ) {
-
-    // TODO(): replace icons from drawable folder
-
     object Journal : NavigationBarItem(
         route = MainScreen.JournalScreen.route,
         name = "Журнал",
-        icon = Icons.Default.FavoriteBorder
+        icon = R.drawable.journal
     )
 
     object Profile : NavigationBarItem(
         route = MainScreen.ProfileScreen.route,
         name = "Профиль",
-        icon = Icons.Default.FavoriteBorder
+        icon = R.drawable.profile
     )
 }
