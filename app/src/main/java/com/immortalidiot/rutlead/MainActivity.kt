@@ -30,7 +30,9 @@ class MainActivity : ComponentActivity() {
                 CompositionLocalProvider(LocalSnackbarHostState provides snackbarHostState) {
                     Scaffold(
                         bottomBar = {
-                            BottomNavigationBar(navController = navController)
+                            if (isNavigationBarVisible) {
+                                BottomNavigationBar(navController = navController)
+                            }
                         }
                     ) { padding ->
                         RUTLeadScreenFlow(
