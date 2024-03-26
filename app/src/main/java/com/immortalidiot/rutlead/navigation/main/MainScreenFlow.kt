@@ -7,6 +7,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.immortalidiot.rutlead.navigation.RUTLeadScreen
+import com.immortalidiot.rutlead.presentation.screens.main.JournalScreen
+import com.immortalidiot.rutlead.presentation.screens.main.ProfileScreen
 
 fun NavGraphBuilder.mainScreenFlow(
     navController: NavHostController
@@ -20,7 +22,7 @@ fun NavGraphBuilder.mainScreenFlow(
             enterTransition = { fadeIn() },
             exitTransition = { fadeOut() }
         ) {
-            // TODO(): add journal screen
+            JournalScreen(navController = navController)
         }
 
         composable(
@@ -28,7 +30,7 @@ fun NavGraphBuilder.mainScreenFlow(
             enterTransition = { fadeIn() },
             exitTransition = { fadeOut() }
         ) {
-            // TODO(): add profile screen
+            ProfileScreen(navController = navController)
         }
     }
 }
