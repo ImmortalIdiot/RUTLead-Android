@@ -21,3 +21,8 @@ sealed class NavigationBarItem(
         icon = R.drawable.profile
     )
 }
+
+val navigationBarItems = listOf(
+    NavigationBarItem.Journal,
+    NavigationBarItem.Profile
+)
