@@ -38,7 +38,11 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.immortalidiot.rutlead.R
+import com.immortalidiot.rutlead.navigation.auth.AuthScreen
+import com.immortalidiot.rutlead.navigation.main.RUTLeadScreen
 import com.immortalidiot.rutlead.ui.components.buttons.PrimaryButton
 import com.immortalidiot.rutlead.ui.components.other.BottomSnackbar
 import com.immortalidiot.rutlead.ui.components.other.BoxLabel
@@ -62,7 +66,7 @@ import com.immortalidiot.rutlead.presentation.viemodels.auth.ResetPasswordViewMo
 fun ResetPassword(
     modifier: Modifier = Modifier,
     viewModel: ResetPasswordViewModel,
-    palette: ThemeColors
+    navController: NavHostController
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val state by viewModel.mutableState.collectAsState()
@@ -71,6 +75,8 @@ fun ResetPassword(
     val keyboardController = LocalSoftwareKeyboardController.current
     val snackbarHostState = LocalSnackbarHostState.current
     val focusManager = LocalFocusManager.current
+
+    val palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
 
     val roundedShape = RoundedCornerShape(dimensions.shapeXLarge)
 
@@ -258,9 +264,7 @@ fun ResetPassword(
                         modifier = modifier,
                         text = stringResource(id = R.string.login_text_button),
                         palette = palette,
-                        onTextClick = {
-                            // TODO: move the user to login screen
-                        }
+                        onTextClick = { navController.navigate(AuthScreen.LoginScreen.route) }
                     )
                 }
             }
@@ -281,7 +285,7 @@ fun ResetPasswordPreview() {
     CompositionLocalProvider(LocalSnackbarHostState provides snackbarHostState) {
         ResetPassword(
             viewModel = ResetPasswordViewModel(),
-            palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
+            navController = rememberNavController()
         )
     }
 }

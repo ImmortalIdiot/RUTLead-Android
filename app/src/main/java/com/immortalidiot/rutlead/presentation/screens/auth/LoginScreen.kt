@@ -30,7 +30,10 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.immortalidiot.rutlead.R
+import com.immortalidiot.rutlead.navigation.auth.AuthScreen
 import com.immortalidiot.rutlead.ui.components.buttons.PrimaryButton
 import com.immortalidiot.rutlead.ui.components.other.AccountMissing
 import com.immortalidiot.rutlead.ui.components.other.BottomSnackbar
@@ -49,8 +52,10 @@ import com.immortalidiot.rutlead.presentation.viemodels.auth.LoginScreenViewMode
 fun LoginScreen(
     modifier: Modifier = Modifier,
     viewModel: LoginScreenViewModel,
-    palette: ThemeColors,
+    navHostController: NavHostController
 ) {
+    val palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
+
     val dimensions = LocalDimensions.current
     val roundedShape = RoundedCornerShape(dimensions.shapeXLarge)
 
@@ -187,7 +192,12 @@ fun LoginScreen(
                         text = "Зарегистрируйтесь",
                         palette = palette,
                         onTextClick = {
-                            // TODO: move user to sign up screen
+                            navHostController.navigate(AuthScreen.SignUpScreen.route) {
+                                popUpTo(0) {
+                                    inclusive = true
+                                    saveState = false
+                                }
+                            }
                         }
                     )
                 }
@@ -197,7 +207,7 @@ fun LoginScreen(
                     text = "Забыли пароль?",
                     palette = palette,
                     onTextClick = {
-                        // TODO: show the password changing window to the user
+                        navHostController.navigate(AuthScreen.ResetPasswordScreen.route)
                     }
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalSLarge))
@@ -216,6 +226,6 @@ fun LoginScreen(
 fun LoginScreenPreview() {
     LoginScreen(
         viewModel = LoginScreenViewModel(),
-        palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
+        navHostController = rememberNavController()
     )
 }

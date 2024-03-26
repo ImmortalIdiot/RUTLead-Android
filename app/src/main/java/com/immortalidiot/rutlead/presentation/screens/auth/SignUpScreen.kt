@@ -37,7 +37,10 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.immortalidiot.rutlead.R
+import com.immortalidiot.rutlead.navigation.auth.AuthScreen
 import com.immortalidiot.rutlead.ui.components.buttons.PrimaryButton
 import com.immortalidiot.rutlead.ui.components.other.BottomSnackbar
 import com.immortalidiot.rutlead.ui.components.other.BoxLabel
@@ -61,8 +64,8 @@ import com.immortalidiot.rutlead.presentation.viemodels.auth.SignUpViewModel
 @Composable
 fun SignUpScreen(
     modifier: Modifier = Modifier,
-    palette: ThemeColors,
-    viewModel: SignUpViewModel
+    viewModel: SignUpViewModel,
+    navHostController: NavHostController
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val state by viewModel.mutableState.collectAsState()
@@ -71,6 +74,8 @@ fun SignUpScreen(
     val keyboardController = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
     val snackbarHostState = LocalSnackbarHostState.current
+
+    val palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
 
     val roundedShape = RoundedCornerShape(dimensions.shapeXLarge)
 
@@ -342,11 +347,7 @@ fun SignUpScreen(
                         modifier = modifier,
                         text = "Войдите",
                         palette = palette,
-                        onTextClick = remember {
-                            {
-                                // TODO: move the user to login screen
-                            }
-                        }
+                        onTextClick = { navHostController.navigate(AuthScreen.LoginScreen.route) }
                     )
                 }
             }
@@ -366,8 +367,8 @@ fun SignUpScreenPreview() {
 
     CompositionLocalProvider(LocalSnackbarHostState provides snackbarHostState) {
         SignUpScreen(
-            palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light,
-            viewModel = SignUpViewModel()
+            viewModel = SignUpViewModel(),
+            navHostController = rememberNavController()
         )
     }
 }
