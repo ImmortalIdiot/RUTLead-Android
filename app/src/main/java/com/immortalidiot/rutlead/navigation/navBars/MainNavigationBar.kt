@@ -32,7 +32,8 @@ fun BottomNavigationBar(
     NavigationBar(
         modifier = modifier.background(
             color = MaterialTheme.colorScheme.surfaceColorAtElevation(
-                LocalAbsoluteTonalElevation.current)
+                LocalAbsoluteTonalElevation.current
+            )
         )
     ) {
         navigationBarItems.forEach { item: NavigationBarItem ->
@@ -42,11 +43,7 @@ fun BottomNavigationBar(
                 onClick = {
                     if (currentRoute != item.route) {
                         navController.navigate(item.route) {
-                            // TODO(): clear the stack incompletely if it is possible
-                            popUpTo(0) {
-                                inclusive = true
-                                saveState = false
-                            }
+                            if (currentRoute != null) { popUpTo(route = currentRoute) }
                         }
                     }
                 },
@@ -61,7 +58,8 @@ fun BottomNavigationBar(
                 alwaysShowLabel = false,
                 colors = NavigationBarItemDefaults.colors(
                     indicatorColor = MaterialTheme.colorScheme.surfaceColorAtElevation(
-                        LocalAbsoluteTonalElevation.current)
+                        LocalAbsoluteTonalElevation.current
+                    )
                 )
             )
         }
