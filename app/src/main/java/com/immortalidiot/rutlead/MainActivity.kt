@@ -13,6 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.navigation.compose.rememberNavController
 import com.immortalidiot.rutlead.navigation.RUTLeadScreenFlow
+import com.immortalidiot.rutlead.navigation.navBars.BottomNavigationBar
 import com.immortalidiot.rutlead.providers.LocalSnackbarHostState
 import com.immortalidiot.rutlead.ui.theme.RUTLeadTheme
 
@@ -29,7 +30,7 @@ class MainActivity : ComponentActivity() {
                 CompositionLocalProvider(LocalSnackbarHostState provides snackbarHostState) {
                     Scaffold(
                         bottomBar = {
-                            // TODO(): create custom bottom bar
+                            BottomNavigationBar(navController = navController)
                         }
                     ) { padding ->
                         RUTLeadScreenFlow(
