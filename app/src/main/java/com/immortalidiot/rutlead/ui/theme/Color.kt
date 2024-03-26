@@ -22,6 +22,7 @@ val DarkRed = Color(0xFF51221f)
 sealed class ThemeColors(
     val header: Color,
     val surface: Color,
+    val backgroundScreen: Color,
     val primary: Color,
     val content: Color,
     val outline: Color,
@@ -40,8 +41,9 @@ sealed class ThemeColors(
 ) {
     object Light : ThemeColors(
         header = ClassicWhite,
-        surface = Color.Transparent,
+        surface = ClassicWhite,
         primary = LightBlue,
+        backgroundScreen = Color.Transparent,
         content = LightBlue,
         outline = Color.Transparent,
         text = ClassicWhite,
@@ -62,6 +64,7 @@ sealed class ThemeColors(
         header = DarkWhite,
         surface = DarkBlack,
         primary = LightBlack,
+        backgroundScreen = DarkBlack,
         content = DarkWhite,
         outline = PrimaryDarkBlue,
         text = DarkWhite,
