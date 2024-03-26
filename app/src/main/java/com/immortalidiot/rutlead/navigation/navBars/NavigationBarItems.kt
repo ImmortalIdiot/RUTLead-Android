@@ -3,7 +3,6 @@ package com.immortalidiot.rutlead.navigation.navBars
 import com.immortalidiot.rutlead.R
 import com.immortalidiot.rutlead.navigation.main.MainScreen
 
-
 sealed class NavigationBarItem(
     val route: String,
     val name: String,

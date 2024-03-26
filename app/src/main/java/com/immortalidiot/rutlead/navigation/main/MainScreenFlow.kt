@@ -3,7 +3,6 @@ package com.immortalidiot.rutlead.navigation.main
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.immortalidiot.rutlead.navigation.RUTLeadScreen
