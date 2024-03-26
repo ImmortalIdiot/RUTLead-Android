@@ -264,14 +264,7 @@ fun ResetPassword(
                         modifier = modifier,
                         text = stringResource(id = R.string.login_text_button),
                         palette = palette,
-                        onTextClick = {
-                            navController.navigate(AuthScreen.LoginScreen.route) {
-                                popUpTo(0) {
-                                    inclusive = true
-                                    saveState = false
-                                }
-                            }
-                        }
+                        onTextClick = { navController.navigate(AuthScreen.LoginScreen.route) }
                     )
                 }
             }

@@ -207,12 +207,7 @@ fun LoginScreen(
                     text = "Забыли пароль?",
                     palette = palette,
                     onTextClick = {
-                        navHostController.navigate(AuthScreen.ResetPasswordScreen.route) {
-                            popUpTo(0) {
-                                inclusive = true
-                                saveState = false
-                            }
-                        }
+                        navHostController.navigate(AuthScreen.ResetPasswordScreen.route)
                     }
                 )
                 Spacer(modifier = modifier.height(dimensions.verticalSLarge))

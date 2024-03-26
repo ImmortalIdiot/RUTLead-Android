@@ -347,14 +347,7 @@ fun SignUpScreen(
                         modifier = modifier,
                         text = "Войдите",
                         palette = palette,
-                        onTextClick = {
-                            navHostController.navigate(AuthScreen.LoginScreen.route) {
-                                popUpTo(0) {
-                                    inclusive = true
-                                    saveState = false
-                                }
-                            }
-                        }
+                        onTextClick = { navHostController.navigate(AuthScreen.LoginScreen.route) }
                     )
                 }
             }
