@@ -40,7 +40,15 @@ fun BottomNavigationBar(
             NavigationBarItem(
                 selected = (currentRoute == item.route),
                 onClick = {
-                    if (currentRoute != item.route) { navController.navigate(item.route) }
+                    if (currentRoute != item.route) {
+                        navController.navigate(item.route) {
+                            // TODO(): clear the stack incompletely if it is possible
+                            popUpTo(0) {
+                                inclusive = true
+                                saveState = false
+                            }
+                        }
+                    }
                 },
                 icon = {
                     Icon(
