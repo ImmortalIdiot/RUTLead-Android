@@ -12,6 +12,7 @@ val LightBlue = Color(0xFF2A5EBD)
 val ClassicGray = Color.Gray
 val DarkGray = Color.DarkGray
 val LightGray = Color.LightGray
+val DarkLightGray = Color(0xFF878787)
 
 val DarkBlack = Color(0xFF1C1B1B)
 val LightBlack = Color(0xFF232323)
@@ -38,7 +39,8 @@ sealed class ThemeColors(
     val textSelection: Color,
     val handle: Color,
     val handleBackground: Color,
-    val indicatorNavBar: Color
+    val indicatorNavBar: Color,
+    val textNavBar: Color
 ) {
     object Light : ThemeColors(
         header = ClassicWhite,
@@ -59,7 +61,8 @@ sealed class ThemeColors(
         textSelection = DarkWhite,
         handle = LightGray,
         handleBackground = LightGray,
-        indicatorNavBar = ClassicWhite
+        indicatorNavBar = ClassicWhite,
+        textNavBar = LightBlue
     )
 
     object Dark : ThemeColors(
@@ -81,6 +84,7 @@ sealed class ThemeColors(
         textSelection = PrimaryDarkBlue,
         handle = DarkWhite,
         handleBackground = LightBlue,
-        indicatorNavBar = DarkBlack
+        indicatorNavBar = DarkBlack,
+        textNavBar = DarkLightGray
     )
 }

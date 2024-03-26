@@ -16,7 +16,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.immortalidiot.rutlead.ui.theme.ClassicGray
+import com.immortalidiot.rutlead.ui.theme.DarkGray
 import com.immortalidiot.rutlead.ui.theme.LightBlue
+import com.immortalidiot.rutlead.ui.theme.LightGray
 import com.immortalidiot.rutlead.ui.theme.ThemeColors
 
 @Composable
@@ -51,7 +53,12 @@ fun BottomNavigationBar(
                         tint = if (isSelected) LightBlue else ClassicGray
                     )
                 },
-                label = { Text(text = item.name) },
+                label = {
+                    Text(
+                        text = item.name,
+                        color = palette.textNavBar
+                    )
+                },
                 alwaysShowLabel = false,
                 colors = NavigationBarItemDefaults.colors(
                     indicatorColor = palette.indicatorNavBar,
