@@ -15,7 +15,7 @@ fun NavGraphBuilder.mainScreenFlow(
 ) {
     navigation(
         startDestination = MainScreen.JournalScreen.route,
-        route = RUTLeadScreen.AuthScreenFlow.route
+        route = RUTLeadScreen.MainScreenFlow.route
     ) {
         composable(
             route = MainScreen.JournalScreen.route,
