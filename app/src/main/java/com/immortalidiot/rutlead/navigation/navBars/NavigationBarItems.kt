@@ -25,10 +25,4 @@ sealed class NavigationBarItem(
         name = "Профиль",
         icon = Icons.Default.FavoriteBorder
     )
-
-    object Settings : NavigationBarItem(
-        route = MainScreen.SettingsScreen.route,
-        name = "Настройки",
-        icon = Icons.Default.FavoriteBorder
-    )
 }
