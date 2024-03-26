@@ -16,9 +16,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.immortalidiot.rutlead.ui.theme.ClassicGray
-import com.immortalidiot.rutlead.ui.theme.DarkGray
 import com.immortalidiot.rutlead.ui.theme.LightBlue
-import com.immortalidiot.rutlead.ui.theme.LightGray
 import com.immortalidiot.rutlead.ui.theme.ThemeColors
 
 @Composable
@@ -36,8 +34,9 @@ fun BottomNavigationBar(
     ) {
         navigationBarItems.forEach { item: NavigationBarItem ->
             val isSelected = currentRoute == item.route
+
             NavigationBarItem(
-                selected = (currentRoute == item.route),
+                selected = isSelected,
                 onClick = {
                     if (currentRoute != item.route) {
                         navController.navigate(item.route) {
