@@ -34,14 +34,7 @@ fun BottomNavigationBar(
             NavigationBarItem(
                 selected = (currentRoute == item.route),
                 onClick = {
-                      if (currentRoute != item.route) {
-                          navController.navigate(item.route) {
-                              popUpTo(0) {
-                                  inclusive = true
-                                  saveState = false
-                              }
-                          }
-                      }
+                      if (currentRoute != item.route) { navController.navigate(item.route) }
                 },
                 icon = {
                     Icon(
@@ -50,9 +43,7 @@ fun BottomNavigationBar(
                         tint = if (isSelected) LightBlue else ClassicGray
                     )
                 },
-                label = {
-                    Text(text = item.name)
-                }
+                label = { Text(text = item.name) }
             )
         }
     }
