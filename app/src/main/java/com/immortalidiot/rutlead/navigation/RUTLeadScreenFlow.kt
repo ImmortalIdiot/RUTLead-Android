@@ -22,6 +22,6 @@ fun RUTLeadScreenFlow(
          startDestination = RUTLeadScreen.AuthScreenFlow.route
      ) {
          authScreenFlow(navController = navController) { isNavigationBarVisible(false) }
-         mainScreenFlow(navController = navController) { isNavigationBarVisible(true) }
+         mainScreenFlow { isNavigationBarVisible(true) }
      }
 }

@@ -18,7 +18,6 @@ import com.immortalidiot.rutlead.ui.theme.ThemeColors
 @Composable
 fun JournalScreen(
     modifier: Modifier = Modifier,
-    navController: NavHostController
 ) {
     val palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
 
@@ -36,5 +35,5 @@ fun JournalScreen(
 @Preview
 @Composable
 fun JournalScreenPreview() {
-    JournalScreen(navController = rememberNavController())
+    JournalScreen()
 }

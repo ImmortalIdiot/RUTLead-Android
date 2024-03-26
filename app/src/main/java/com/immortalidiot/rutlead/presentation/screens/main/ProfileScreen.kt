@@ -18,7 +18,6 @@ import com.immortalidiot.rutlead.ui.theme.ThemeColors
 @Composable
 fun ProfileScreen(
     modifier: Modifier = Modifier,
-    navController: NavHostController
 ) {
     val palette = if (isSystemInDarkTheme()) ThemeColors.Dark else ThemeColors.Light
 
@@ -36,5 +35,5 @@ fun ProfileScreen(
 @Preview
 @Composable
 fun ProfileScreenPreview() {
-    ProfileScreen(navController = rememberNavController())
+    ProfileScreen()
 }
