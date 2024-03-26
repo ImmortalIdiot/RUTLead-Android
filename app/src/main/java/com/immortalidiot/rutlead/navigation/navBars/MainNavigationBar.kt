@@ -43,6 +43,7 @@ fun BottomNavigationBar(
                 onClick = {
                     if (currentRoute != item.route) {
                         navController.navigate(item.route) {
+                            // TODO: send the user when the stack is empty and the user press back system button
                             if (currentRoute != null) { popUpTo(route = currentRoute) }
                         }
                     }
