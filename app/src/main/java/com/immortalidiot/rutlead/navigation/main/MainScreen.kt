@@ -6,5 +6,4 @@ import androidx.compose.runtime.Immutable
 sealed class MainScreen (val route: String) {
     object JournalScreen: MainScreen("Журнал")
     object ProfileScreen: MainScreen("Профиль")
-    object SettingsScreen: MainScreen("Настройки")
 }
