@@ -37,7 +37,8 @@ sealed class ThemeColors(
     val buttonOutline: Color,
     val textSelection: Color,
     val handle: Color,
-    val handleBackground: Color
+    val handleBackground: Color,
+    val indicatorNavBar: Color
 ) {
     object Light : ThemeColors(
         header = ClassicWhite,
@@ -57,7 +58,8 @@ sealed class ThemeColors(
         buttonOutline = Color.White,
         textSelection = DarkWhite,
         handle = LightGray,
-        handleBackground = LightGray
+        handleBackground = LightGray,
+        indicatorNavBar = ClassicWhite
     )
 
     object Dark : ThemeColors(
@@ -78,6 +80,7 @@ sealed class ThemeColors(
         buttonOutline = DarkBlue,
         textSelection = PrimaryDarkBlue,
         handle = DarkWhite,
-        handleBackground = LightBlue
+        handleBackground = LightBlue,
+        indicatorNavBar = DarkBlack
     )
 }
