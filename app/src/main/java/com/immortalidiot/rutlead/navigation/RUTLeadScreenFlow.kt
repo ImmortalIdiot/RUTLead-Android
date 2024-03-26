@@ -1,4 +1,4 @@
-package com.immortalidiot.rutlead.navigation.main
+package com.immortalidiot.rutlead.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding

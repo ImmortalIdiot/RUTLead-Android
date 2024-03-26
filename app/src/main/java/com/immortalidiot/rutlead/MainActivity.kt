@@ -12,7 +12,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.navigation.compose.rememberNavController
-import com.immortalidiot.rutlead.navigation.main.RUTLeadScreenFlow
+import com.immortalidiot.rutlead.navigation.RUTLeadScreenFlow
 import com.immortalidiot.rutlead.providers.LocalSnackbarHostState
 import com.immortalidiot.rutlead.ui.theme.RUTLeadTheme
 
