@@ -46,7 +46,7 @@ fun UserAvatar(
             drawCircle(SolidColor(backgroundColor))
         }
         Text(
-            text = initials,
+            text = initials.uppercase(),
             style = textStyle,
         )
     }
