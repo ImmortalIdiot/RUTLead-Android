@@ -1,12 +1,13 @@
 package com.immortalidiot.rutlead.navigation.navBars
 
+import androidx.annotation.DrawableRes
 import com.immortalidiot.rutlead.R
 import com.immortalidiot.rutlead.navigation.main.MainScreen
 
 sealed class NavigationBarItem(
     val route: String,
     val name: String,
-    val icon: Int
+    @DrawableRes val icon: Int
 ) {
     object Journal : NavigationBarItem(
         route = MainScreen.JournalScreen.route,
