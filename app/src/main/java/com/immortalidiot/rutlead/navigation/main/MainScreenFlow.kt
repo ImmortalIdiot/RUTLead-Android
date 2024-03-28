@@ -9,9 +9,7 @@ import com.immortalidiot.rutlead.navigation.RUTLeadScreen
 import com.immortalidiot.rutlead.presentation.screens.main.JournalScreen
 import com.immortalidiot.rutlead.presentation.screens.main.ProfileScreen
 
-fun NavGraphBuilder.mainScreenFlow(
-    screenName: (String) -> Unit,
-) {
+fun NavGraphBuilder.mainScreenFlow(screenName: (String) -> Unit) {
     navigation(
         startDestination = MainScreen.JournalScreen.route,
         route = RUTLeadScreen.MainScreenFlow.route
